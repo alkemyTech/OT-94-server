@@ -1,10 +1,12 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
+import './contactForm.css';
+
 export default function ContactForm() {
 
     return(
-        <div>
+        <div className="formContainer">
             <h1>Contacto</h1>
             <Formik
                 initialValues={{
@@ -50,48 +52,52 @@ export default function ContactForm() {
 
             >
                 {( {errors} ) => (
-                    <Form>
-                        <div>
-                            <label htmlFor="name">Nombre</label>
+                    <Form className="form">
+                        <div className="form__section">
+                            <label htmlFor="name" className="form__section--label">Nombre</label>
                             <Field 
+                                className="form__section--field"
                                 type="text"
                                 id="name"
                                 name="name"
                                 placeholder="Ingrese su nombre"
                             />
-                            <ErrorMessage name="name" component={() => (<div>{errors.name}</div>)} />
+                            <ErrorMessage name="name" component={() => (<div className="form__section--error">{errors.name}</div>)} />
                         </div>
-                        <div>
-                            <label htmlFor="email">Email</label>
+                        <div className="form__section">
+                            <label htmlFor="email" className="form__section--label">Email</label>
                             <Field 
+                                className="form__section--field"
                                 type="email"
                                 id="email"
                                 name="email"
                                 placeholder="Ingrese su correo"
                             />
-                            <ErrorMessage name="email" component={() => (<div>{errors.email}</div>)} />
+                            <ErrorMessage name="email" component={() => (<div className="form__section--error">{errors.email}</div>)} />
                         </div>
-                        <div>
-                            <label htmlFor="phone">Teléfono</label>
-                            <Field 
+                        <div className="form__section">
+                            <label htmlFor="phone" className="form__section--label">Teléfono</label>
+                            <Field
+                                className="form__section--field"
                                 type="text"
                                 id="phone"
                                 name="phone"
                                 placeholder="Ingrese su telefono"
                             />
-                            <ErrorMessage name="phone" component={() => (<div>{errors.phone}</div>)} />
+                            <ErrorMessage name="phone" component={() => (<div className="form__section--error">{errors.phone}</div>)} />
                         </div>
-                        <div>
-                            <label htmlFor="message">Mensaje</label>
-                            <Field 
+                        <div className="form__section">
+                            <label htmlFor="message" className="form__section--label">Mensaje</label>
+                            <Field
+                                className="form__section--textarea"
                                 as="textarea"
                                 id="message"
                                 name="message"
                                 placeholder="Ingrese el mensaje"
                             />
-                            <ErrorMessage name="message" component={() => (<div>{errors.message}</div>)} />
+                            <ErrorMessage name="message" component={() => (<div className="form__section--error">{errors.message}</div>)} />
                         </div>
-                        <button type="submit">Enviar</button>
+                        <button type="submit" className="form__submit">Enviar</button>
                     </Form>
                 )}
             </Formik>
