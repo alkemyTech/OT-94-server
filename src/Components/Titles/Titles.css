@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+h1 {
+    color: black;
+    font-family: 'Lato', sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.titulo-contenedor{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
