@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
 }
 
 .formContainer {
@@ -10,6 +11,7 @@
 }
 
 .formContainer h1 {
+    font-family: 'Lato', sans-serif;
     text-align: center;
 }
 
@@ -33,7 +35,6 @@
     margin-bottom: 0.5rem;
     padding: 0.2rem 0.7rem;
     border-radius: 0.25rem;
-    /* height: 1.8rem; */
     width: 100%;
     border: 1px solid #9AC9FB;
     display: block;
@@ -43,7 +44,6 @@
 
 .form__section--textarea {
     resize: none;
-    font-family: Arial, Helvetica, sans-serif;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     padding: 0.2rem 0.7rem;
@@ -58,7 +58,7 @@
 
 .form__section--field:focus, .form__section--textarea:focus {
     outline: 0;
-    box-shadow: 0 0 0 0.20rem rgb(13 110 253 / 25%);
+    box-shadow: 0 0 0 0.25rem rgb(154 201 251 / 25%);
 }
 
 .form__section--error {
@@ -71,4 +71,10 @@
     padding: 0.5rem;
     border-radius: 0.5rem;
     background-color: #9AC9FB;
+}
+
+@media screen and (max-width: 600px) {
+    .form {
+        width: 15rem;
+    }
 }
