@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Formik, Form, Field, ErrorMessage} from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import '../FormStyles.css';
 
 const RegisterForm = () => {
@@ -21,16 +21,16 @@ const RegisterForm = () => {
                 validate={(values) => {
                     let errors = {};
                     if (!validation.email.test(values.email)) {
-                        errors.email = "Error, debe completar el email";
+                        errors.email = "Error, you must complete the email";
                     }
                     if (!validation.password.test(values.password)) {
-                        errors.password = "Error, debe tener una longitud mínima de 6 caraceteres, y contener al menos un número, una letra y un símbolo ";
+                        errors.password = "Error, it must have a minimum length of 6 characters, and contain at least one number, one letter and one symbol";
                     }
-                    if (!validation.name_lastName.test(values.name)){
-                        errors.name = "Error, debe contener solo letras en nombre"
+                    if (!validation.name_lastName.test(values.name)) {
+                        errors.name = "Error, must only contains letters in name"
                     }
-                    if (!validation.name_lastName.test(values.lastName)){
-                        errors.lastName = "Error, debe contener solo letras en apellido"
+                    if (!validation.name_lastName.test(values.lastName)) {
+                        errors.lastName = "Error, must only contains letter in last name"
                     }
                     return errors;
                 }}
@@ -51,7 +51,7 @@ const RegisterForm = () => {
                 }}
             >
                 {({ errors }) => (
-                    <Form>
+                    <Form className="form-container">
                         <div>
                             <label id="labelName">Name: </label>
                             <Field className="input-field" id="labelName" name="name" type="text" placeholder="Your name" />
@@ -63,7 +63,7 @@ const RegisterForm = () => {
                             <ErrorMessage name="lastName" component={() => <p>{errors.lastName}</p>} />
                         </div>
                         <div>
-                            <label id="labelEmail">Email </label>
+                            <label id="labelEmail">Email: </label>
                             <Field className="input-field" id="labelEmail" name="email" type="email" placeholder="Your Email" />
                             <ErrorMessage name="email" component={() => <p>{errors.email}</p>} />
                         </div>
@@ -79,39 +79,13 @@ const RegisterForm = () => {
                         </div>
                         <div>
                             <button className="submit-btn" type="submit">Register</button>
-                            {msjPasswordRepeatError ? <p>Error, compruebe los datos</p> : null}
+                            {msjPasswordRepeatError ? <p>Error, check the data</p> : null}
                         </div>
                     </Form>
                 )}
             </Formik>
         </div>
     )
-    // const [initialValues, setInitialValues] = useState({
-    //     name: '',
-    //     lastName: ''
-    // })
-    
-    // const handleChange = (e) => {
-    //     if(e.target.name === 'name'){
-    //         setInitialValues({...initialValues, name: e.target.value})
-    //     } if(e.target.name === 'lastName'){
-    //         setInitialValues({...initialValues, lastName: e.target.value})
-    //     }
-    // }
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log(initialValues);
-    //     localStorage.setItem('token', 'tokenValueExample')
-    // }
-
-    // return (
-    //     <form className="form-container" onSubmit={handleSubmit}>
-    //         <input className="input-field" type="text" name="name" value={initialValues.name} onChange={handleChange} placeholder="Enter name"></input>
-    //         <input className="input-field" type="text" name="lastName" value={initialValues.lastName} onChange={handleChange} placeholder="Enter last name"></input>
-    //         <button className="submit-btn" type="submit">Register</button>
-    //     </form>
-    // );
 }
- 
+
 export default RegisterForm;
