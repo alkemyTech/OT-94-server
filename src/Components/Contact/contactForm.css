@@ -63,7 +63,7 @@
 
 .form__section--error {
     padding-left: 0.7rem;
-    color: red;
+    color: #ff0000;
 }
 
 .form__submit {

@@ -25,8 +25,8 @@ export default function ContactForm() {
 
                     if(!values.email){
                         errors.email = 'Ingrese una dirección de correo'
-                    }else if(!values.email.includes('@')) {
-                        errors.email = 'La dirección de correo debe incluir un @'
+                    }else if(!/^[0-9a-zA-Z\._-]+@[0-9a-zA-Z\._-]+\.[a-z\.]{2,6}$/.test(values.email)) {
+                        errors.email = 'Formato inválido. Ejemplo de formato válido: correo@correo.com'
                     }
 
                     if(!values.phone){
