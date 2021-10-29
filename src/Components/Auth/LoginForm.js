@@ -1,33 +1,56 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import '../FormStyles.css';
 
 const LoginForm = () => {
-    const [initialValues, setInitialValues] = useState({
-        email: '',
-        password: ''
-    });
-
-    const handleChange = (e) => {
-        if(e.target.name === 'email'){
-            setInitialValues({...initialValues, email: e.target.value})
-        } if(e.target.name === 'password'){
-            setInitialValues({...initialValues, password: e.target.value})
-        }
+    const validation = {
+        password: /(?=(.*[0-9]))(?=(.*[a-zA-Z]))(?=.*[\!@#$%&/()\[\]{}\-_+='|:;<>,./?])(?=.*).{6,}$/,
+        email: /^[0-9a-zA-Z\._-]+@[0-9a-zA-Z\._-]+\.[a-z\.]{2,6}$/
     }
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(initialValues);
-        localStorage.setItem('token', 'tokenValueExample')
-    }
-
     return (
-        <form className="form-container" onSubmit={handleSubmit}>
-            <input className="input-field" type="text" name="email" value={initialValues.name} onChange={handleChange} placeholder="Enter email"></input>
-            <input className="input-field" type="text" name="password" value={initialValues.password} onChange={handleChange} placeholder="Enter password"></input>
-            <button className="submit-btn" type="submit">Log In</button>
-        </form>
-    );
+        <div>
+            <Formik initialValues={{
+                email: "",
+                password: ""
+            }}
+                validate={(values) => {
+                    let errors = {};
+                    if (!validation.email.test(values.email)) {
+                        errors.email = "Error, you must complete the email";
+                    }
+                    if (!validation.password.test(values.password)) {
+                        errors.password = "Error, it must have a minimum length of 6 characters, and contain at least one number, one letter and one symbol";
+                    }
+                    return errors;
+                }}
+                onSubmit={(values) => {
+                    const USERLOGGED = {
+                        email: values.email,
+                        password: values.password
+                    }
+                    return USERLOGGED;
+                }}
+            >
+                {({ errors }) => (
+                    <Form className="form-container">
+                        <div>
+                            <label id="labelEmail">Email: </label>
+                            <Field className="input-field" id="labelEmail" name="email" type="email" placeholder="Your Email" />
+                            <ErrorMessage name="email" component={() => <p>{errors.email}</p>} />
+                        </div>
+                        <div>
+                            <label id="labelPassword">Password: </label>
+                            <Field id="labelPassword" className="input-field" name="password" type="password" placeholder="Your password" />
+                            <ErrorMessage name="password" component={() => <p>{errors.password}</p>} />
+                        </div>
+                        <div>
+                            <button className="submit-btn" type="submit">Login</button>
+                        </div>
+                    </Form>
+                )}
+            </Formik>
+        </div>
+    )
 }
- 
+
 export default LoginForm;
