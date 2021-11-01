@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer h1 {
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+}
+
+.form {
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form__section {
+    margin-bottom: 1.5rem;
+}
+
+.form__section--label {
+    margin-bottom: 0.5rem;
+}
+
+.form__section--field {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 0.25rem;
+    width: 100%;
+    border: 1px solid #9AC9FB;
+    display: block;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.form__section--textarea {
+    resize: none;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 0.25rem;
+    height: 6rem;
+    width: 100%;
+    border: 1px solid #9AC9FB;
+    display: block;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.form__section--field:focus, .form__section--textarea:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(154 201 251 / 25%);
+}
+
+.form__section--error {
+    padding-left: 0.7rem;
+    color: #ff0000;
+}
+
+.form__submit {
+    border-style: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #9AC9FB;
+}
+
+@media screen and (max-width: 600px) {
+    .form {
+        width: 15rem;
+    }
+}
