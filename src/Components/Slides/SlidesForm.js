@@ -1,11 +1,22 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import imagen from '../Slides/imagenPrueba.jpg'
 
 import '../FormStyles.css';
 
 export default function ContactForm() {
+
+    const buttonRef = useRef()
+
+    const data = [
+        'nombre',
+        'esta es una descripción',
+        1,
+        imagen
+
+    ]
 
     return(
         <div>
@@ -45,6 +56,7 @@ export default function ContactForm() {
 
 
                 onSubmit={(values) => {
+                    console.log(buttonRef.current)
                     console.log(values)
                     console.log({ 
                         fileName: values.image.name, 
@@ -92,11 +104,23 @@ export default function ContactForm() {
                         </div>
                         <div>
                             <label htmlFor="image">Imagen</label>
-                            <input id="image" name="image" type="file" onChange={(event) => {
+                            <input ref={buttonRef} id="image" name="image" type="file" onChange={(event) => {
+                                event.currentTarget.files[0] = imagen
                                 setFieldValue("image", event.currentTarget.files[0]);
                             }} />
                             <ErrorMessage name="image" component={() => (<div>{errors.image}</div>)} />
                         </div>
+                        <button 
+                            type="button"
+                            className="submit-btn"
+                            onClick={() => {
+                                setFieldValue("name", data[0])
+                                setFieldValue("description", data[1])
+                                setFieldValue("order", data[2])
+                                
+                            }}
+                        >Editar ya existente
+                        </button>
                         <button className="submit-btn" type="submit">Enviar</button>
                     </Form>
                 )}
