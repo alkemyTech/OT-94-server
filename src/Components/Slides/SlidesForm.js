@@ -1,5 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import '../FormStyles.css';
 
@@ -7,7 +9,6 @@ export default function ContactForm() {
 
     return(
         <div>
-            <h1>Contacto</h1>
             <Formik
                 initialValues={{
                     name: '',
@@ -35,7 +36,7 @@ export default function ContactForm() {
 
                     if(!values.image){
                         errors.image = 'Ingrese una imagen'
-                    }else if(!values.image.name.includes('.JPG') || !values.image.name.includes('.jpg') || !values.image.name.includes('.PNG') || !values.image.name.includes('.png')){
+                    }else if(!values.image.name.includes('.jpg') && !values.image.name.includes('.png')){
                         errors.image = 'Imagen con formato inválido'
                     }
 
@@ -44,6 +45,7 @@ export default function ContactForm() {
 
 
                 onSubmit={(values) => {
+                    console.log(values)
                     console.log({ 
                         fileName: values.image.name, 
                         type: values.image.type,
@@ -67,12 +69,13 @@ export default function ContactForm() {
                         </div>
                         <div>
                             <label htmlFor="description">Descripción</label>
-                            <Field 
-                                className="input-field"
-                                type="text"
-                                id="description"
-                                name="description"
-                                placeholder="Ingrese una descripción"
+                            <CKEditor 
+                                onChange={(event, editor) => {
+                                    setFieldValue("description", editor.getData())
+                                }} 
+                                id="description" 
+                                name="description" 
+                                editor={ClassicEditor}
                             />
                             <ErrorMessage name="description" component={() => (<div>{errors.description}</div>)} />
                         </div>
