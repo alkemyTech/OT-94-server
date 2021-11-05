@@ -2,14 +2,14 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Titles from '../../Titles/Titles'
 
-export default function Detail(props) {
+export default function ActivitiesDetail(props) {
 
     const [content, setContent] = useState()
 
     async function getActivity() {
         try {
-            const respuesta = await axios.get('url')
-            setContent(respuesta)
+            const {data} = await axios.get('url')
+            setContent(data)
         } catch(error) {
             console.log(error)
         }

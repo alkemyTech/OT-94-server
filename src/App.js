@@ -5,9 +5,11 @@ import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import ActivitiesForm from './Components/Activities/ActivitiesForm';
 import ActivitiesList from './Components/Activities/ActivitiesList';
-import Detail from './Components/Activities/Detail/Detail';
+import ActivitiesDetail from './Components/Activities/Detail/ActivitiesDetail';
 import CategoriesForm from './Components/Categories/CategoriesForm';
 import NewsForm from './Components/News/NewsForm';
+import NewsList from './Components/News/NewsList';
+import NewsDetail from './Components/News/Detail/NewsDetail';
 import SlidesForm from './Components/Slides/SlidesForm';
 import TestimonialForm from './Components/Testimonials/TestimonialsForm';
 import UserForm from './Components/Users/UsersForm';
@@ -18,6 +20,8 @@ import ProjectsForm from './Components/Projects/ProjectsForm';
 import ContactForm from './Components/Contact/ContactForm';
 
 
+
+
 function App() {
   return (
     <>
@@ -25,9 +29,12 @@ function App() {
         <Switch>
           {/* <Route path="/" exact component={} />           Esta ruta debe ser para el Home */}
           <Route path="/create-activity" component={ActivitiesForm} />
-          <Route path="/actividades/:id" component={Detail} />
+          <Route path="/actividades/:id" component={ActivitiesDetail} />
+          <Route path="/actividades" component={ActivitiesList} />
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/create-news" component={NewsForm} />
+          <Route path="/novedades/:id" component={NewsDetail} />
+          <Route path="/novedades" component={NewsList} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
           <Route path="/create-testimonials" component={TestimonialForm} />
           <Route path="/create-user" component={UserForm} />
