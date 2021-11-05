@@ -14,6 +14,7 @@ import ToysCampaign from './Campaigns/Toys/ToysCampaign';
 import MembersForm from './Components/Members/MembersForm';
 import ProjectsForm from './Components/Projects/ProjectsForm';
 import ContactForm from './Components/Contact/ContactForm';
+import UsersFormCreateEdit from './Components/Users/UsersFormCreateEdit';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
           <Route path="/contacto" component={ContactForm} />
+          <Route path="/backoffice/create-user" component={UsersFormCreateEdit} />
         </Switch>
       </BrowserRouter>
     <div className="App">
