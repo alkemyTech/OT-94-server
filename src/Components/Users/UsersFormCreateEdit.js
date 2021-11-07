@@ -84,7 +84,7 @@ const UserForm = ({ props = {} }) => {
           alert("User modified");
         })
         .catch(function (error) {
-          console.log(`User cannot be modified ${error}`);
+          console.log(`User cannot be modified - error: ${error}`);
         });
     } else {
       axios
@@ -96,17 +96,17 @@ const UserForm = ({ props = {} }) => {
           alert("User saved");
         })
         .catch(function (error) {
-          console.log(`User cannot be saved ${error}`);
+          console.log(`User cannot be saved - error: ${error}`);
         });
     }
-    /** ------------------ */
   };
 
   const formik = useFormik({
     initialValues: { ...initialValues },
     validate,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      alert(`  User saved \n ${JSON.stringify(values, null, 2)}`);
+
       axiosCall();
     },
   });
@@ -125,107 +125,48 @@ const UserForm = ({ props = {} }) => {
   }, []);
 
   return (
-    <>
-      <form className="form-container" onSubmit={formik.handleSubmit}>
-        <input
-          className="input-field"
-          type="text"
-          name="name"
-          value={formik.values.name || ""}
-          onChange={formik.handleChange}
-          placeholder="Name"
-        ></input>
-
-        {formik.touched.name && formik.errors.name ? (
-          <p>{formik.errors.name}</p>
-        ) : null}
-        <input
-          className="input-field"
-          type="text"
-          name="email"
-          value={formik.values.email || ""}
-          onChange={formik.handleChange}
-          placeholder="Email"
-        ></input>
-
-        {formik.touched.email && formik.errors.email ? (
-          <p>{formik.errors.email}</p>
-        ) : null}
-        <input
-          className="input-field"
-          type="text"
-          name="profilePhoto"
-          value={formik.values.profilePhoto || ""}
-          onChange={formik.handleChange}
-          placeholder="Profile Photo"
-        ></input>
-
-        {formik.touched.profilePhoto && formik.errors.profilePhoto ? (
-          <p>{formik.errors.profilePhoto}</p>
-        ) : null}
-        <select
-          name="roleId"
-          className="input-field"
-          value={formik.values.roleId || ""}
-          onChange={formik.handleChange}
-        >
-          <option value="" disabled>
-            Select the role
-          </option>
-          <option value="1">Admin</option>
-          <option value="2">User</option>
-        </select>
-        {formik.touched.roleId && formik.errors.roleId ? (
-          <p>{formik.errors.roleId}</p>
-        ) : null}
-        <input
-          className="input-field"
-          type="password"
-          name="password"
-          value={formik.values.password || ""}
-          onChange={formik.handleChange}
-          placeholder="Password"
-        ></input>
-
-        {formik.touched.password && formik.errors.password ? (
-          <p>{formik.errors.password}</p>
-        ) : null}
-        <button className="submit-btn" type="submit">
-          Send Formik
-        </button>
-      </form>
-
-      {/*   <form className="form-container" onSubmit={handleSubmit}>
+    <form className="form-container" onSubmit={formik.handleSubmit}>
       <input
         className="input-field"
         type="text"
         name="name"
-        value={changedValues.name || ""}
-        onChange={handleChange}
+        value={formik.values.name || ""}
+        onChange={formik.handleChange}
         placeholder="Name"
       ></input>
+      {formik.touched.name && formik.errors.name ? (
+        <div className="input-error-message">{formik.errors.name}</div>
+      ) : null}
+
       <input
         className="input-field"
         type="text"
         name="email"
-        value={changedValues.email || ""}
-        onChange={handleChange}
+        value={formik.values.email || ""}
+        onChange={formik.handleChange}
         placeholder="Email"
       ></input>
+      {formik.touched.email && formik.errors.email ? (
+        <p className="input-error-message">{formik.errors.email}</p>
+      ) : null}
+
       <input
         className="input-field"
         type="text"
         name="profilePhoto"
-        value={changedValues.profilePhoto || ""}
-        onChange={handleChange}
+        value={formik.values.profilePhoto || ""}
+        onChange={formik.handleChange}
         placeholder="Profile Photo"
       ></input>
+      {formik.touched.profilePhoto && formik.errors.profilePhoto ? (
+        <p className="input-error-message">{formik.errors.profilePhoto}</p>
+      ) : null}
+
       <select
+        name="roleId"
         className="input-field"
-        value={changedValues.roleId || ""}
-        onChange={(e) =>
-          setChangedValues({ ...changedValues, roleId: e.target.value })
-        }
+        value={formik.values.roleId || ""}
+        onChange={formik.handleChange}
       >
         <option value="" disabled>
           Select the role
@@ -233,11 +174,26 @@ const UserForm = ({ props = {} }) => {
         <option value="1">Admin</option>
         <option value="2">User</option>
       </select>
+      {formik.touched.roleId && formik.errors.roleId ? (
+        <p className="input-error-message">{formik.errors.roleId}</p>
+      ) : null}
+
+      <input
+        className="input-field"
+        type="password"
+        name="password"
+        value={formik.values.password || ""}
+        onChange={formik.handleChange}
+        placeholder="Password"
+      ></input>
+      {formik.touched.password && formik.errors.password ? (
+        <p className="input-error-message">{formik.errors.password}</p>
+      ) : null}
+
       <button className="submit-btn" type="submit">
-        Send without formik
+        Send
       </button>
-    </form> */}
-    </>
+    </form>
   );
 };
 
