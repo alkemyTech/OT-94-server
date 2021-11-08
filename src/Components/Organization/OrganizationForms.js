@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import "../FormStyles.css";
 import { useFormik } from "formik";
+/* import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic"; */
 
 const OrganizationForm = ({ props }) => {
   const [initialValues, setInitialValues] = useState({
@@ -32,15 +34,14 @@ const OrganizationForm = ({ props }) => {
     }
 
     if (!values.shortDescription) {
-      errors.roleId = "Required";
+      errors.shortDescription = "Required";
     }
 
     if (!values.longDescription) {
-      errors.roleId = "Required";
+      errors.longDescription = "Required";
     }
 
     if (values.links.length > 0) {
-      !values.link.match(expRegEmail);
       const badLink = values.links.filter((link) => !link.match(expRegLink));
       if (badLink) {
         errors.links = `URL ${badLink} is invalid`;
