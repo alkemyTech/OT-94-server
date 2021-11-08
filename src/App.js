@@ -15,6 +15,7 @@ import MembersForm from './Components/Members/MembersForm';
 import ProjectsForm from './Components/Projects/ProjectsForm';
 import ContactPage from './Components/Contact/ContactPage';
 import Home from './Components/home';
+import AboutPage from './Components/About/AboutPage';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/toys-campaign" component={ToysCampaign} />
           <Route path="/contacto" component={ContactPage} />
           <Route exact path="/" component={Home} />
+          <Route path="/nosotros" component={AboutPage} />
         </Switch>
       </BrowserRouter>
     <div className="App">
