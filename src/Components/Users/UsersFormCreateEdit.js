@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../FormStyles.css";
-import { useFormik } from 'formik';
+import { useFormik } from "formik";
 
 const UserForm = ({ props = {} }) => {
   const [initialValues, setInitialValues] = useState({
@@ -9,81 +9,53 @@ const UserForm = ({ props = {} }) => {
     email: "",
     roleId: "",
     profilePhoto: "",
-    password:""
+    password: "",
   });
 
   const [changedValues, setChangedValues] = useState({ ...initialValues });
+  const [formModified, setFormModified] = useState(false);
+  let objectReceived = true;
 
-  const validate = values => {
+  const validate = (values) => {
     const errors = {};
     const expRegEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     if (!values.name) {
-      errors.name = 'Required';
+      errors.name = "Required";
     } else if (values.name.length < 4) {
-      errors.name = 'Must be 4 characters or more';
+      errors.name = "Must be 4 characters or more";
     }
-  
+
     if (!values.email) {
-      errors.email = 'Required';    
+      errors.email = "Required";
     } else if (!values.email.match(expRegEmail)) {
-      errors.email = 'Invalid email address';
+      errors.email = "Invalid email address";
     }
 
     if (!values.profilePhoto) {
-      errors.profilePhoto = 'Required';
-    } else if (!values.profilePhoto.includes(".jpg") && !values.profilePhoto.includes(".png")) {
-      errors.profilePhoto = 'The image needs a .jpg or .png extension';
+      errors.profilePhoto = "Required";
+    } else if (
+      !values.profilePhoto.includes(".jpg") &&
+      !values.profilePhoto.includes(".png")
+    ) {
+      errors.profilePhoto = "The image needs a .jpg or .png extension";
     }
 
     if (!values.roleId) {
-      errors.roleId = 'Required';
-    } 
-
-    if (!values.password) {
-      errors.password = 'Required';
-    } else if (values.password.length < 8) {
-      errors.password = 'Must be 8 characters or more';
+      errors.roleId = "Required";
     }
 
+    if (!values.password) {
+      errors.password = "Required";
+    } else if (values.password.length < 8) {
+      errors.password = "Must be 8 characters or more";
+    }
+
+    setChangedValues({ ...values });
+    validateChanges();
     return errors;
   };
 
-  
-  const formik = useFormik({
-    initialValues: { ...initialValues },
-    validate,
-    onSubmit: (values) => 
-              {
-      alert(JSON.stringify(values, null, 2));
-      handleSubmite();
-            }  
-  });
-
-  let objectReceived = true;
-
-  const [formModified, setFormModified] = useState(false);
-
-
-
-  const handleChange = (e) => {
-    setChangedValues(prevValues => ({
-      ...prevValues,
-      [e.target.name]: e.target.value
-    })
-    )
- /*    if (e.target.name === "name") {
-      setChangedValues({ ...changedValues, name: e.target.value });
-    }
-    if (e.target.name === "email") {
-      setChangedValues({ ...changedValues, email: e.target.value });
-    }
-    if (e.target.name === "profilePhoto") {
-      setChangedValues({ ...changedValues, profilePhoto: e.target.value });
-    }
-    if (e.target.name === "roleId") {
-      setChangedValues({ ...changedValues, roleId: e.target.value });
-    }
- */
+  const validateChanges = () => {
     if (
       changedValues.name !== initialValues.name ||
       changedValues.email !== initialValues.email ||
@@ -94,14 +66,9 @@ const UserForm = ({ props = {} }) => {
     } else {
       setFormModified(false);
     }
-    console.log("handleChanged");
   };
 
-  const handleSubmite = (e) => {
-    e.preventDefault();
-    console.log(initialValues);
-    console.log(formModified);
-    /* --------------------*/
+  const axiosCall = () => {
     if (!formModified) {
       alert("Without changes, cannot be saved");
       return;
@@ -117,7 +84,7 @@ const UserForm = ({ props = {} }) => {
           alert("User modified");
         })
         .catch(function (error) {
-          console.log(`User cannot be modified ${error}`);
+          console.log(`User cannot be modified - error: ${error}`);
         });
     } else {
       axios
@@ -129,11 +96,20 @@ const UserForm = ({ props = {} }) => {
           alert("User saved");
         })
         .catch(function (error) {
-          console.log(`User cannot be saved ${error}`);
+          console.log(`User cannot be saved - error: ${error}`);
         });
     }
-    /** ------------------ */
   };
+
+  const formik = useFormik({
+    initialValues: { ...initialValues },
+    validate,
+    onSubmit: (values) => {
+      alert(`  User saved \n ${JSON.stringify(values, null, 2)}`);
+
+      axiosCall();
+    },
+  });
 
   useEffect(() => {
     if (typeof props.id === "undefined") {
@@ -149,50 +125,48 @@ const UserForm = ({ props = {} }) => {
   }, []);
 
   return (
-    <> 
-
-    <form className="form-container" onSubmit={formik.handleSubmit}>   
+    <form className="form-container" onSubmit={formik.handleSubmit}>
       <input
-          className="input-field"
-          type="text"
-          name="name"
-          value={formik.values.name || ""}
-          onChange={formik.handleChange}
-          placeholder="Name"
+        className="input-field"
+        type="text"
+        name="name"
+        value={formik.values.name || ""}
+        onChange={formik.handleChange}
+        placeholder="Name"
       ></input>
-      
       {formik.touched.name && formik.errors.name ? (
-         <p>{formik.errors.name}</p>
-       ) : null}
-      <input
-          className="input-field"
-          type="text"
-          name="email"
-          value={formik.values.email || ""}
-          onChange={formik.handleChange}
-          placeholder="Email"
-      ></input>
+        <div className="input-error-message">{formik.errors.name}</div>
+      ) : null}
 
-      {formik.touched.email && formik.errors.email ? (
-         <p>{formik.errors.email}</p>
-       ) : null}
       <input
-          className="input-field"
-          type="text"
-          name="profilePhoto"
-          value={formik.values.profilePhoto || ""}
-          onChange={formik.handleChange}
-          placeholder="Profile Photo"
+        className="input-field"
+        type="text"
+        name="email"
+        value={formik.values.email || ""}
+        onChange={formik.handleChange}
+        placeholder="Email"
       ></input>
-      
+      {formik.touched.email && formik.errors.email ? (
+        <p className="input-error-message">{formik.errors.email}</p>
+      ) : null}
+
+      <input
+        className="input-field"
+        type="text"
+        name="profilePhoto"
+        value={formik.values.profilePhoto || ""}
+        onChange={formik.handleChange}
+        placeholder="Profile Photo"
+      ></input>
       {formik.touched.profilePhoto && formik.errors.profilePhoto ? (
-         <p>{formik.errors.profilePhoto}</p>
-       ) : null}
-       <select
-          name="roleId"
-          className="input-field"
-          value={formik.values.roleId || ""}
-          onChange={formik.handleChange}
+        <p className="input-error-message">{formik.errors.profilePhoto}</p>
+      ) : null}
+
+      <select
+        name="roleId"
+        className="input-field"
+        value={formik.values.roleId || ""}
+        onChange={formik.handleChange}
       >
         <option value="" disabled>
           Select the role
@@ -201,69 +175,25 @@ const UserForm = ({ props = {} }) => {
         <option value="2">User</option>
       </select>
       {formik.touched.roleId && formik.errors.roleId ? (
-         <p>{formik.errors.roleId}</p>
-       ) : null}
+        <p className="input-error-message">{formik.errors.roleId}</p>
+      ) : null}
+
       <input
-          className="input-field"
-          type="password"
-          name="password"
-          value={formik.values.password || ""}
-          onChange={formik.handleChange}
-          placeholder="Password"
+        className="input-field"
+        type="password"
+        name="password"
+        value={formik.values.password || ""}
+        onChange={formik.handleChange}
+        placeholder="Password"
       ></input>
-      
       {formik.touched.password && formik.errors.password ? (
-         <p>{formik.errors.password}</p>
-       ) : null}
-       <button className="submit-btn" type="submit">
-        Send Formik
-      </button>      
-    </form>
-    
-  {/*   <form className="form-container" onSubmit={handleSubmit}>
-      <input
-        className="input-field"
-        type="text"
-        name="name"
-        value={changedValues.name || ""}
-        onChange={handleChange}
-        placeholder="Name"
-      ></input>
-      <input
-        className="input-field"
-        type="text"
-        name="email"
-        value={changedValues.email || ""}
-        onChange={handleChange}
-        placeholder="Email"
-      ></input>
-      <input
-        className="input-field"
-        type="text"
-        name="profilePhoto"
-        value={changedValues.profilePhoto || ""}
-        onChange={handleChange}
-        placeholder="Profile Photo"
-      ></input>
-      <select
-        className="input-field"
-        value={changedValues.roleId || ""}
-        onChange={(e) =>
-          setChangedValues({ ...changedValues, roleId: e.target.value })
-        }
-      >
-        <option value="" disabled>
-          Select the role
-        </option>
-        <option value="1">Admin</option>
-        <option value="2">User</option>
-      </select>
+        <p className="input-error-message">{formik.errors.password}</p>
+      ) : null}
+
       <button className="submit-btn" type="submit">
-        Send without formik
+        Send
       </button>
-    </form> */}
-    
-    </>
+    </form>
   );
 };
 
