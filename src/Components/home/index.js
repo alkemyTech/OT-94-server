@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Home = () => {
+
+    // const [dataONG, setDataONG] = useState([]);
+
+    // useEffect(() => {
+    //     const getDataONG = () => {
+    //       fetch('https://example')
+    //         .then((res) => res.json())
+    //         .then((res) => setDataONG(res));
+    //     };
+    //     getDataONG();
+    //   }, []);
+
     return (
         <div>
-            pagina de inicio works .... 
+            <h1>welcome text</h1>
+            <div>//placeholder
+            //slider  //listado de novedades
+            </div>
         </div>
     )
 }
