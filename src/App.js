@@ -22,6 +22,9 @@ import UsersFormCreateEdit from './Components/Users/UsersFormCreateEdit';
 import ProjectsFormCreateEdit from "./Components/Projects/ProjectsFormCreateEdit";
 
 
+import ContactPage from './Components/Contact/ContactPage';
+import Home from './Components/home';
+import AboutPage from './Components/About/AboutPage';
 
 
 function App() {
@@ -29,7 +32,7 @@ function App() {
     <>
       <BrowserRouter>
         <Switch>
-          {/* <Route path="/" exact component={} />           Esta ruta debe ser para el Home */}
+          <Route path="/" exact component={Home} />           
           <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/actividades/:id" component={ActivitiesDetail} />
           <Route path="/actividades" component={ActivitiesList} />
@@ -44,9 +47,11 @@ function App() {
           <Route path="/create-project" component={ProjectsForm} />
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
-          <Route path="/contacto" component={ContactForm} />
+          <Route path="/contacto" component={ContactPage} />
+          <Route path="/nosotros" component={AboutPage} />
           <Route path="/backoffice/create-user" component={UsersFormCreateEdit} />
           <Route path="/backoffice/create-project" component={ProjectsFormCreateEdit}/>
+
         </Switch>
       </BrowserRouter>
       <div className="App">
