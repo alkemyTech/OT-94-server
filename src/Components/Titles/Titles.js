@@ -6,8 +6,8 @@ const Titles = (props) => {
     return (
         <div className="titulo-contenedor">
             <h1>{props.titulo}</h1>
-            <img src={props.imagenTitulo ? props.imagenTitulo : "/images/latest-02.jpg"}/>
-            
+            <img alt={props.titulo} src={props.imagenTitulo ? props.imagenTitulo : "/images/latest-02.jpg"} />
+
         </div>
     )
 }
