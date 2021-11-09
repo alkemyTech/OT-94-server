@@ -169,6 +169,17 @@ const OrganizationForm = ({ props }) => {
         <p className="input-error-message">{formik.errors.longDescription}</p>
       ) : null}
 
+      <label for="url">Enter an https:// URL:</label>
+
+      <input
+        type="url"
+        name="url"
+        id="url"
+        placeholder="https://example.com"
+        pattern="https://.*"
+        size="30"
+        required
+      ></input>
       {/*  <select
         name="roleId"
         className="input-field"
