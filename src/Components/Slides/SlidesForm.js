@@ -6,7 +6,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import '../FormStyles.css';
 
-export default function ContactForm() {
+export default function SlideForm() {
 
     let objectRecieved = false;
 

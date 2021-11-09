@@ -17,7 +17,6 @@ import SchoolCampaign from './Campaigns/School/SchoolCampaign';
 import ToysCampaign from './Campaigns/Toys/ToysCampaign';
 import MembersForm from './Components/Members/MembersForm';
 import ProjectsForm from './Components/Projects/ProjectsForm';
-import ContactForm from './Components/Contact/ContactForm';
 import UsersFormCreateEdit from './Components/Users/UsersFormCreateEdit';
 import ProjectsFormCreateEdit from "./Components/Projects/ProjectsFormCreateEdit";
 
