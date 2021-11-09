@@ -58,7 +58,7 @@ const OrganizationForm = ({ props }) => {
       changedValues.name !== initialValues.name ||
       changedValues.logo !== initialValues.logo ||
       changedValues.shortDescription !== initialValues.shortDescription ||
-      changedValues.longtDescription !== initialValues.longDescription //||
+      changedValues.longDescription !== initialValues.longDescription //||
       //changedValues.links !== initialValues.links
     ) {
       setFormModified(true);
