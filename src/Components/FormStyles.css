@@ -7,6 +7,7 @@
 }
 
 .input-field {
+  display: block;
   padding: 15px 30px;
   border: 1px solid #c1c1c1;
 }
