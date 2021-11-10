@@ -1,6 +1,7 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import Titles from '../../Titles/Titles'
+import ActivitiesContent from './ActivitiesContent'
 
 export default function ActivitiesDetail(props) {
 
@@ -20,7 +21,13 @@ export default function ActivitiesDetail(props) {
     return (
         <div>
             <Titles imagenTitulo={props.imagenDetail} titulo={props.tituloDetail} />
-            <p>{content}</p>
+            <ActivitiesContent 
+                contenido={
+                    content 
+                    ? content 
+                    : <p>Esta actividad todavía no tiene contenido.</p>
+                }
+            />
         </div>
     )
 }
