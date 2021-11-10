@@ -19,7 +19,9 @@ const OrganizationForm = ({ props }) => {
 
   const validate = (values) => {
     const errors = {};
-    const expRegLink = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
+    const expRegLink =
+      /^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}?/;
+
     if (!values.name) {
       errors.name = "Required";
     }
@@ -54,7 +56,8 @@ const OrganizationForm = ({ props }) => {
       changedValues.name !== initialValues.name ||
       changedValues.logo !== initialValues.logo ||
       changedValues.shortDescription !== initialValues.shortDescription ||
-      changedValues.longDescription !== initialValues.longDescription //||
+      changedValues.longDescription !== initialValues.longDescription ||
+      changedValues.links !== initialValues.links //||
       //changedValues.links !== initialValues.links
     ) {
       setFormModified(true);
@@ -155,8 +158,6 @@ const OrganizationForm = ({ props }) => {
         <p className="input-error-message">{formik.errors.longDescription}</p>
       ) : null}
 
-      <label for="url">Enter an https:// URL:</label>
-
       <input
         className="input-field"
         type="url"
@@ -164,7 +165,7 @@ const OrganizationForm = ({ props }) => {
         value={formik.values.links || ""}
         onChange={formik.handleChange}
         placeholder="https://example.com"
-        pattern="https://.*"
+        multiple
       ></input>
       {formik.touched.links && formik.errors.links ? (
         <p className="input-error-message">{formik.errors.links}</p>
