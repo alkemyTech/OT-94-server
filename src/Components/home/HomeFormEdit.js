@@ -4,22 +4,22 @@ import "../FormStyles.css";
 import { useFormik } from "formik";
 
 const HomeFormEdit = ({ props }) => {
-  const [initialValues, setInitialValues] = useState({
-    welcome: "",
+  const mockDataHome = {
+    welcome: "Mensaje de bienvenida",
     slideImage1: "",
-    slideText1: "",
+    slideText1: "Text Slide 1",
     slideImage2: "",
-    slideText2: "",
+    slideText2: "Text Slide 2",
     slideImage3: "",
     slideText3: "",
-  });
-
+  };
+  const [initialValues, setInitialValues] = useState({ ...mockDataHome });
   const [changedValues, setChangedValues] = useState({ ...initialValues });
   const [formModified, setFormModified] = useState(false);
 
   const validate = (values) => {
     const errors = {};
-    const expRegImage = /(?i)\.(jpg|png|gif)$/;
+    const expRegImage = /\w+\.(jpg|png|JPG|PNG)/g;
 
     if (!values.welcome) {
       errors.welcome = "Required";
@@ -42,15 +42,6 @@ const HomeFormEdit = ({ props }) => {
     } else if (!values.slideImage3.match(expRegImage)) {
       errors.slideImage3 = "The image needs a .jpg or .png extension";
     }
-    /* 
-    if (!values.profilePhoto) {
-      errors.profilePhoto = "Required";
-    } else if (
-      !values.profilePhoto.includes(".jpg") &&
-      !values.profilePhoto.includes(".png")
-    ) {
-      errors.profilePhoto = "The image needs a .jpg or .png extension";
-    } */
 
     if (!values.slideText1) {
       errors.slideText1 = "Required";
@@ -89,10 +80,10 @@ const HomeFormEdit = ({ props }) => {
       return;
     }
 
-    console.log(changedValues);
+    console.log(JSON.stringify(changedValues));
     return;
     axios
-      .patch(`/home/${props.id}`, changedValues)
+      .patch(`/home/edit`, changedValues)
       .then(function (response) {
         console.log(`Home changed ${response}`);
         setInitialValues({ ...changedValues });
@@ -100,7 +91,7 @@ const HomeFormEdit = ({ props }) => {
         alert("Home modified");
       })
       .catch(function (error) {
-        console.log(`User cannot be modified - error: ${error}`);
+        console.log(`Home content cannot be modified - error: ${error}`);
       });
   };
 
@@ -115,33 +106,28 @@ const HomeFormEdit = ({ props }) => {
   });
 
   useEffect(() => {
-    setInitialValues({ ...initialValues, welcome: props.welcome });
-    setInitialValues({ ...initialValues, slideImage1: props.slideImage1 });
-    setInitialValues({ ...initialValues, slideImage2: props.slideImage2 });
-    setInitialValues({ ...initialValues, slideImage3: props.slideImage3 });
-    setInitialValues({ ...initialValues, slideText1: props.slideText1 });
-    setInitialValues({ ...initialValues, slideText2: props.slideText2 });
-    setInitialValues({ ...initialValues, slideText3: props.slideText3 });
-
+    // descomentar la siguiente linea cuando vengan los datos en props
+    //setInitialValues({ ...props });
     setChangedValues({ ...initialValues });
   }, []);
 
   return (
     <form className="form-container" onSubmit={formik.handleSubmit}>
-      <input
-        className="input-field"
-        type="text"
+      <textarea
+        className="input-field input-textarea"
         name="welcome"
-        value={formik.values.welcome || ""}
-        onChange={formik.handleChange}
+        rows="3"
+        minLength="20"
         placeholder="Texto de Bienvenida"
-      ></input>
+        onChange={formik.handleChange}
+        defaultValue={formik.values.welcome || ""}
+      ></textarea>
       {formik.touched.welcome && formik.errors.welcome ? (
         <div className="input-error-message">{formik.errors.welcome}</div>
       ) : null}
 
       <input
-        className="input-field"
+        className="select-file"
         type="file"
         name="slideImage1"
         value={formik.values.slideImage1 || ""}
@@ -165,7 +151,7 @@ const HomeFormEdit = ({ props }) => {
       ) : null}
 
       <input
-        className="input-field"
+        className="select-file"
         type="file"
         name="slideImage2"
         value={formik.values.slideImage2 || ""}
@@ -189,7 +175,7 @@ const HomeFormEdit = ({ props }) => {
       ) : null}
 
       <input
-        className="input-field"
+        className="select-file"
         type="file"
         name="slideImage3"
         value={formik.values.slideImage3 || ""}
