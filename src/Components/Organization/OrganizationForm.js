@@ -1,4 +1,4 @@
-/* import axios from "axios"; */
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../FormStyles.css";
 import { useFormik } from "formik";
@@ -11,7 +11,7 @@ const OrganizationForm = ({ props }) => {
     logo: "",
     shortDescription: "",
     longDescription: "",
-    links: "",
+    links: [""],
   });
 
   const [changedValues, setChangedValues] = useState({ ...initialValues });
@@ -40,10 +40,14 @@ const OrganizationForm = ({ props }) => {
       errors.longDescription = "Required";
     }
 
-    if (!values.links) {
-      errors.links = "Required";
-    } else if (!values.links.match(expRegLink)) {
-      errors.links = `URL is invalid`;
+    if (!values.links[0]) {
+      errors.links[0] = "Required";
+    } else {
+      values.links.forEach((element, index) => {
+        if (!element.match(expRegLink)) {
+          errors.links[index] = `URL is invalid`;
+        }
+      });
     }
 
     setChangedValues({ ...values });
@@ -75,18 +79,19 @@ const OrganizationForm = ({ props }) => {
     alert("Next step, made a axios call");
     setInitialValues({ ...changedValues });
     setFormModified(false);
+    console.log(JSON.stringify(changedValues));
     return;
-    /*  axios
-        .patch(`/organization/edit`, changedValues)
-        .then(function (response) {
-          console.log(`Organizations changed ${response}`);
-          setInitialValues({ ...changedValues });
-          setFormModified(false);
-          alert("User modified");
-        })
-        .catch(function (error) {
-          console.log(`ORganization cannot be modified - error: ${error}`);
-        }); */
+    axios
+      .patch(`/organization/edit`, changedValues)
+      .then(function (response) {
+        console.log(`Organizations changed ${response}`);
+        setInitialValues({ ...changedValues });
+        setFormModified(false);
+        alert("User modified");
+      })
+      .catch(function (error) {
+        console.log(`ORganization cannot be modified - error: ${error}`);
+      });
   };
 
   const formik = useFormik({
@@ -119,7 +124,7 @@ const OrganizationForm = ({ props }) => {
       ) : null}
 
       <input
-        /* className="input-field" */
+        className="select-file"
         type="file"
         name="logo"
         value={formik.values.logo || ""}
@@ -162,13 +167,13 @@ const OrganizationForm = ({ props }) => {
         className="input-field"
         type="url"
         name="links"
-        value={formik.values.links || ""}
+        value={formik.values.links[0] || ""}
         onChange={formik.handleChange}
         placeholder="https://example.com"
         multiple
       ></input>
-      {formik.touched.links && formik.errors.links ? (
-        <p className="input-error-message">{formik.errors.links}</p>
+      {formik.touched.links[0] && formik.errors.links[0] ? (
+        <p className="input-error-message">{formik.errors.links[0]}</p>
       ) : null}
 
       <button className="submit-btn" type="submit">
