@@ -19,7 +19,7 @@ import MembersForm from "./Components/Members/MembersForm";
 import ProjectsForm from "./Components/Projects/ProjectsForm";
 import UsersFormCreateEdit from "./Components/Users/UsersFormCreateEdit";
 import ProjectsFormCreateEdit from "./Components/Projects/ProjectsFormCreateEdit";
-import OrganizationForm from "./Components/Organization/OrganizationForms";
+import OrganizationForm from "./Components/Organization/OrganizationForm";
 
 import ContactPage from "./Components/Contact/ContactPage";
 import Home from "./Components/home";

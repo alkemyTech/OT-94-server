@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 import "../FormStyles.css";
 import { useFormik } from "formik";
-/* import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic"; */
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const OrganizationForm = ({ props }) => {
   const [initialValues, setInitialValues] = useState({
@@ -11,7 +11,7 @@ const OrganizationForm = ({ props }) => {
     logo: "",
     shortDescription: "",
     longDescription: "",
-    links: [],
+    links: "",
   });
 
   const [changedValues, setChangedValues] = useState({ ...initialValues });
@@ -19,17 +19,14 @@ const OrganizationForm = ({ props }) => {
 
   const validate = (values) => {
     const errors = {};
-    const expRegLink =
-      /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    const expRegLink = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
     if (!values.name) {
       errors.name = "Required";
     }
 
-    if (
-      values.logo &&
-      !values.logo.includes(".jpg") &&
-      !values.logo.includes(".png")
-    ) {
+    if (!values.logo) {
+      errors.logo = "Required";
+    } else if (!values.logo.includes(".jpg") && !values.logo.includes(".png")) {
       errors.logo = "The logo needs a .jpg or .png extension";
     }
 
@@ -41,11 +38,10 @@ const OrganizationForm = ({ props }) => {
       errors.longDescription = "Required";
     }
 
-    if (values.links.length > 0) {
-      const badLink = values.links.filter((link) => !link.match(expRegLink));
-      if (badLink) {
-        errors.links = `URL ${badLink} is invalid`;
-      }
+    if (!values.links) {
+      errors.links = "Required";
+    } else if (!values.links.match(expRegLink)) {
+      errors.links = `URL is invalid`;
     }
 
     setChangedValues({ ...values });
@@ -74,6 +70,8 @@ const OrganizationForm = ({ props }) => {
     }
 
     alert("Next step, made a axios call");
+    setInitialValues({ ...changedValues });
+    setFormModified(false);
     return;
     /*  axios
         .patch(`/organization/edit`, changedValues)
@@ -92,7 +90,7 @@ const OrganizationForm = ({ props }) => {
     initialValues: { ...initialValues },
     validate,
     onSubmit: (values) => {
-      alert(`  Organization saved \n ${JSON.stringify(values, null, 2)}`);
+      alert(`  Call to save \n ${JSON.stringify(values, null, 2)}`);
 
       axiosCall();
     },
@@ -118,8 +116,8 @@ const OrganizationForm = ({ props }) => {
       ) : null}
 
       <input
-        className="input-field"
-        type="text"
+        /* className="input-field" */
+        type="file"
         name="logo"
         value={formik.values.logo || ""}
         onChange={formik.handleChange}
@@ -128,34 +126,22 @@ const OrganizationForm = ({ props }) => {
       {formik.touched.logo && formik.errors.logo ? (
         <p className="input-error-message">{formik.errors.logo}</p>
       ) : null}
-      {/* -------------------- */}
 
-      <input
-        className="input-field"
-        type="text"
+      <CKEditor
+        editor={ClassicEditor}
+        onChange={(event, editor) => {
+          setChangedValues({ ...changedValues, description: editor.getData() });
+          formik.setFieldValue("shortDescription", editor.getData());
+          console.log(event);
+        }}
+        id="shortDescription"
         name="shortDescription"
-        value={formik.values.shortDescription || ""}
-        onChange={formik.handleChange}
-        placeholder="Short Description ckEditor"
-      ></input>
+        config={{ placeholder: "Short Description..." }}
+        data={formik.values.shortDescription || ""}
+      />
       {formik.touched.shortDescription && formik.errors.shortDescription ? (
         <p className="input-error-message">{formik.errors.shortDescription}</p>
       ) : null}
-
-      {/*      <label htmlFor="description">Description</label>
-                            <CKEditor 
-                                onChange={(event, editor) => {
-                                    setFieldValue("description", editor.getData())
-                                }} 
-                                id="description" 
-                                name="description" 
-                                editor={ClassicEditor}
-                            />
-                            
-
-
- */}
-      {/* -------------------- */}
 
       <input
         className="input-field"
@@ -172,41 +158,17 @@ const OrganizationForm = ({ props }) => {
       <label for="url">Enter an https:// URL:</label>
 
       <input
+        className="input-field"
         type="url"
-        name="url"
-        id="url"
+        name="links"
+        value={formik.values.links || ""}
+        onChange={formik.handleChange}
         placeholder="https://example.com"
         pattern="https://.*"
-        size="30"
-        required
       ></input>
-      {/*  <select
-        name="roleId"
-        className="input-field"
-        value={formik.values.roleId || ""}
-        onChange={formik.handleChange}
-      >
-        <option value="" disabled>
-          Select the role
-        </option>
-        <option value="1">Admin</option>
-        <option value="2">User</option>
-      </select>
-      {formik.touched.roleId && formik.errors.roleId ? (
-        <p className="input-error-message">{formik.errors.roleId}</p>
+      {formik.touched.links && formik.errors.links ? (
+        <p className="input-error-message">{formik.errors.links}</p>
       ) : null}
-
-      <input
-        className="input-field"
-        type="password"
-        name="password"
-        value={formik.values.password || ""}
-        onChange={formik.handleChange}
-        placeholder="Password"
-      ></input>
-      {formik.touched.password && formik.errors.password ? (
-        <p className="input-error-message">{formik.errors.password}</p>
-      ) : null} */}
 
       <button className="submit-btn" type="submit">
         Send
