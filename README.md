@@ -30,11 +30,14 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## React Skeletor
+
 ### Installation
+
 > yarn add react-loading-skeleton
-npm install react-loading-skeleton
+> npm install react-loading-skeleton
 
 ### Basic Usage
+
 ```javascript
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -44,40 +47,124 @@ import 'react-loading-skeleton/dist/skeleton.css'
 ```
 
 ### Theming
+
 Customize individual skeletons with props, or render a SkeletonTheme to style all skeletons below it in the React hierarchy:
 
 ```javascript
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 return (
-    <SkeletonTheme baseColor="#202020" highlightColor="#444">
-        <div>
-            <Skeleton count={3} />
-        </div>
-    </SkeletonTheme>
-)
+  <SkeletonTheme baseColor="#202020" highlightColor="#444">
+    <div>
+      <Skeleton count={3} />
+    </div>
+  </SkeletonTheme>
+);
 ```
 
 ### Props Reference
+
 #### Skeleton only
-|  Prop | Description  | Default
-| ------------ | ------------ |
-| count?: number  | The number of lines of skeletons to render.   | 1
-| circle?: boolean  |  Makes the skeleton circular by setting border-radius to 50%. | false
-| className?: string | A custom class name for the individual skeleton elements which is used alongside the default class, react-loading-skeleton. |    -
-| containerClassName?: string | A custom class name for the < span >  that wraps the individual skeleton elements. |  -
-| containerTestId?: string | A string that is added to the container element as a data-testid attribute. Use it with screen.getByTestId('...') from React Testing Library. | -  |
-| style?: React.CSSProperties | This is an escape hatch for advanced use cases and is not the preferred way to style the skeleton. Props (e.g. width, borderRadius) take priority over this style object. | -
+
+| Prop                        | Description                                                                                                                                                               | Default |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| count?: number              | The number of lines of skeletons to render.                                                                                                                               | 1       |
+| circle?: boolean            | Makes the skeleton circular by setting border-radius to 50%.                                                                                                              | false   |
+| className?: string          | A custom class name for the individual skeleton elements which is used alongside the default class, react-loading-skeleton.                                               | -       |
+| containerClassName?: string | A custom class name for the < span > that wraps the individual skeleton elements.                                                                                         | -       |
+| containerTestId?: string    | A string that is added to the container element as a data-testid attribute. Use it with screen.getByTestId('...') from React Testing Library.                             | -       |
+| style?: React.CSSProperties | This is an escape hatch for advanced use cases and is not the preferred way to style the skeleton. Props (e.g. width, borderRadius) take priority over this style object. | -       |
 
 #### Skeleton and SkeletonTheme
-| Prop  | Description | Default
-| ------------ | ------------ |
-| baseColor?: string | The background color of the skeleton. | #ebebeb
-| highlightColor?: string | The highlight color in the skeleton animation. | #f5f5f5
-| width?: string / number | The width of the skeleton. | 100%
-| height?: string / number | The height of each skeleton line. | The font size
-| borderRadius?: string / number | The border radius of the skeleton. | 0.25rem
-| inline?: boolean | By default, a < br /> is inserted after each skeleton so that each skeleton gets its own line. When inline is true, no line breaks are inserted. | false
-| duration?: number | The length of the animation in seconds. | 1.5
-| direction?: 'ltr' / 'rtl' | The direction of the animation, either left-to-right or right-to-left. | 'ltr'
-| enableAnimation?: boolean | Whether the animation should play. The skeleton will be a solid color when this is false. You could use this prop to stop the animation if an error occurs. | true
+
+| Prop                           | Description                                                                                                                                                 | Default       |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| baseColor?: string             | The background color of the skeleton.                                                                                                                       | #ebebeb       |
+| highlightColor?: string        | The highlight color in the skeleton animation.                                                                                                              | #f5f5f5       |
+| width?: string / number        | The width of the skeleton.                                                                                                                                  | 100%          |
+| height?: string / number       | The height of each skeleton line.                                                                                                                           | The font size |
+| borderRadius?: string / number | The border radius of the skeleton.                                                                                                                          | 0.25rem       |
+| inline?: boolean               | By default, a < br /> is inserted after each skeleton so that each skeleton gets its own line. When inline is true, no line breaks are inserted.            | false         |
+| duration?: number              | The length of the animation in seconds.                                                                                                                     | 1.5           |
+| direction?: 'ltr' / 'rtl'      | The direction of the animation, either left-to-right or right-to-left.                                                                                      | 'ltr'         |
+| enableAnimation?: boolean      | Whether the animation should play. The skeleton will be a solid color when this is false. You could use this prop to stop the animation if an error occurs. | true          |
+
+#
+
+## sweetalert2-react
+
+### Install
+
+```
+$ npm install sweetalert2-react
+```
+
+## WebSite
+
+#
+
+Web Site [sweetalert2](https://sweetalert2.github.io/)
+
+#
+
+## Usage
+
+# implementation
+
+```js
+import React, { useState } from "react";
+import SweetAlert from "sweetalert2-react";
+
+// ...
+// Types :  success | error | warning | info | question
+const Alert = ({
+  showAlert = false,
+  title = "title-default",
+  text = "text-default",
+  type = "success",
+  cancelButton = false,
+  confirmButtonText = "OK",
+  cancelButtonText = "Cancel",
+  showDenyButton = true,
+}) => {
+  const [show, setShow] = useState(showAlert);
+  return (
+    <SweetAlert
+      show={show}
+      title={title}
+      type={type}
+      text={text}
+      showConfirmButton={true}
+      showCancelButton={cancelButton}
+      confirmButtonText={confirmButtonText}
+      cancelButtonText={cancelButtonText}
+      showDenyButton={showDenyButton}
+      onConfirm={() => setShow(false)}
+    />
+  );
+};
+
+export default Alert;
+```
+
+```js
+//... to use
+import Alert from './Components/Skeleton/Alert';
+
+// ...
+// you can call without arguments and use defaults
+// Types Icons :  success | error | warning | info | question
+      <Alert />
+
+// or you can call with special arguments
+     <Alert
+        showAlert = {true},
+        title = "Your Title",
+        text = "Your Text",
+        type = "error",
+        confirmButtonText = "OK",
+        cancelButtonText = "Cancel",
+     />
+// ...
+}
+```
