@@ -58,8 +58,6 @@ const OrganizationForm = ({ props }) => {
   const [formModified, setFormModified] = useState(false);
 
   const validate = (values) => {
-    console.log("validate");
-    console.log(values);
     const errors = {};
 
     if (!values.name) {
@@ -82,7 +80,6 @@ const OrganizationForm = ({ props }) => {
 
     values["url"] = [...changedValues["url"]];
 
-    console.log(changedValues["url"].length);
     if (changedValues["url"].length === 0) {
       errors.url = "Required";
       setErrorUrl("Required");
@@ -94,13 +91,7 @@ const OrganizationForm = ({ props }) => {
   };
 
   const validateChanges = () => {
-    if (
-      changedValues.name !== initialValues.name ||
-      changedValues.logo !== initialValues.logo ||
-      changedValues.shortDescription !== initialValues.shortDescription ||
-      changedValues.longDescription !== initialValues.longDescription //||
-      // !equalArrays(initialValues["url"],changedValues["url"])
-    ) {
+    if (JSON.stringify(initialValues) != JSON.stringify(changedValues)) {
       setFormModified(true);
     } else {
       setFormModified(false);
@@ -176,7 +167,6 @@ const OrganizationForm = ({ props }) => {
         onChange={(event, editor) => {
           setChangedValues({ ...changedValues, description: editor.getData() });
           formik.setFieldValue("shortDescription", editor.getData());
-          console.log(event);
         }}
         id="shortDescription"
         name="shortDescription"
