@@ -59,6 +59,7 @@ const OrganizationForm = ({ props }) => {
 
   const validate = (values) => {
     const errors = {};
+    const expRegImage = /\w+.(jpg|png)$/i;
 
     if (!values.name) {
       errors.name = "Required";
@@ -66,8 +67,8 @@ const OrganizationForm = ({ props }) => {
 
     if (!values.logo) {
       errors.logo = "Required";
-    } else if (!values.logo.includes(".jpg") && !values.logo.includes(".png")) {
-      errors.logo = "The logo needs a .jpg or .png extension";
+    } else if (!values.logo.match(expRegImage)) {
+      errors.logo = "The image needs a .jpg or .png extension";
     }
 
     if (!values.shortDescription) {
@@ -159,9 +160,11 @@ const OrganizationForm = ({ props }) => {
         onChange={formik.handleChange}
         placeholder="Logo name"
       ></input>
+
       {formik.touched.logo && formik.errors.logo ? (
         <p className="input-error-message">{formik.errors.logo}</p>
       ) : null}
+
       <CKEditor
         editor={ClassicEditor}
         onChange={(event, editor) => {
