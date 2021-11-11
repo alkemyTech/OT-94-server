@@ -19,7 +19,7 @@ const HomeFormEdit = ({ props }) => {
 
   const validate = (values) => {
     const errors = {};
-    const expRegImage = /\w+\.(jpg|png|JPG|PNG)/g;
+    const expRegImage = /\w+.(jpg|png)$/i;
 
     if (!values.welcome) {
       errors.welcome = "Required";
@@ -59,15 +59,7 @@ const HomeFormEdit = ({ props }) => {
   };
 
   const validateChanges = () => {
-    if (
-      changedValues.welcome !== initialValues.welcome ||
-      changedValues.slideImage1 !== initialValues.slideImage1 ||
-      changedValues.slideImage2 !== initialValues.slideImage2 ||
-      changedValues.slideImage3 !== initialValues.slideImage3 ||
-      changedValues.slideText1 !== initialValues.slideText1 ||
-      changedValues.slideText2 !== initialValues.slideText2 ||
-      changedValues.slideText3 !== initialValues.slideText3
-    ) {
+    if (JSON.stringify(initialValues) != JSON.stringify(changedValues)) {
       setFormModified(true);
     } else {
       setFormModified(false);
@@ -80,6 +72,9 @@ const HomeFormEdit = ({ props }) => {
       return;
     }
 
+    alert("Next step, made a axios call");
+    setInitialValues({ ...changedValues });
+    setFormModified(false);
     console.log(JSON.stringify(changedValues));
     return;
     axios
