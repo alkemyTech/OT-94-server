@@ -47,18 +47,9 @@ function App() {
           <Route path="/toys-campaign" component={ToysCampaign} />
           <Route path="/contacto" component={ContactPage} />
           <Route path="/nosotros" component={AboutPage} />
-          <Route
-            path="/backoffice/create-user"
-            component={UsersFormCreateEdit}
-          />
-          <Route
-            path="/backoffice/create-project"
-            component={ProjectsFormCreateEdit}
-          />
-          <Route
-            path="/backoffice/organization/edit"
-            component={OrganizationForm}
-          />
+          <Route path="/backoffice/create-user" component={UsersFormCreateEdit}/>
+          <Route path="/backoffice/create-project" component={ProjectsFormCreateEdit}/>
+          <Route path="/backoffice/organization/edit" component={OrganizationForm}/>
         </Switch>
       </BrowserRouter>
       <div className="App">
