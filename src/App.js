@@ -24,6 +24,7 @@ import ProjectsFormCreateEdit from "./Components/Projects/ProjectsFormCreateEdit
 import ContactPage from './Components/Contact/ContactPage';
 import Home from './Components/home';
 import AboutPage from './Components/About/AboutPage';
+import MemberFormCreateEdit from './Components/Members/MemberFormCreateEdit';
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
           <Route path="/nosotros" component={AboutPage} />
           <Route path="/backoffice/create-user" component={UsersFormCreateEdit} />
           <Route path="/backoffice/create-project" component={ProjectsFormCreateEdit}/>
+          <Route path="/backoffice/members/edit" component={MemberFormCreateEdit}/>
 
         </Switch>
       </BrowserRouter>
