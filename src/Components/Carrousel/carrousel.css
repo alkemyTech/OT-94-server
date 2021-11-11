@@ -19,6 +19,13 @@
     z-index: 100;
     cursor: pointer;
 }
+@media screen and (max-width: 768px) {
+    .left-arrow, .right-arrow {
+        width: 50px;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
 .left-arrow {
     left: 0;
 }
@@ -48,6 +55,13 @@
     font-size: 52px;
     color: #ffffff;
 }
+@media screen and (max-width: 768px) {
+    .slide--title {
+        left: 15%;
+        right: 15%;
+        font-size: 38px;
+    }
+}
 .slide--description {
     position: absolute;
     left: 10%;
@@ -56,8 +70,16 @@
     font-size: 24px;
     color: #ffffff;
 }
+@media screen and (max-width:768px) {
+    .slide--description {
+        font-size: 18px;
+        left: 15%;
+        right: 15%;
+    }
+}
 .slide--image {
     width: 100vw;
     height: 60vh;
     object-fit: cover;
 }
+

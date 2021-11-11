@@ -2,7 +2,33 @@ import React, { useState, useEffect } from 'react';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "./carrousel.css";
 const Carrousel = () => {
-  const data = [];
+  const data = [
+    {
+      title: "imagen 1",
+      description: "texto mas texto y nose uqe mas poner pero bueno creo uqes por aca",
+      image: "https://images.freeimages.com/images/large-previews/b2d/kiwi-fruit-macros-1313905.jpg"
+    },
+    {
+      title: "imagen 2",
+      description: "texto mas texto y nose uqe mas poner pero bueno creo uqes por aca",
+      image: "https://images.freeimages.com/images/large-previews/047/headed-down-1400175.jpg"
+    },
+    {
+      title: "imagen 3",
+      description: "texto mas texto y nose uqe mas poner pero bueno creo uqes por aca",
+      image: "https://images.freeimages.com/images/large-previews/bd7/falloxbow-1058032.jpg"
+    },
+    {
+      title: "imagen 4",
+      description: "texto mas texto y nose uqe mas poner pero bueno creo uqes por aca",
+      image: "https://images.freeimages.com/images/large-previews/b8d/irish-landscape-1393571.jpg"
+    },
+    {
+      title: "imagen 5",
+      description: "texto mas texto y nose uqe mas poner pero bueno creo uqes por aca texto mas texto y nose uqe mas poner pero bueno creo uqes por ac",
+      image: "https://media.istockphoto.com/photos/dunluce-castle-picture-id492959422?b=1&k=20&m=492959422&s=170x170&h=81undclnuMxXsOEoWbS0z-4VxfQ86gJ6UHbpd2RTk98="
+    }
+  ];
   let interval;
   const [current, setCurrent] = useState(0);
   useEffect(() => {
