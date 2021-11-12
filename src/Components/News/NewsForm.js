@@ -26,7 +26,15 @@ const NewsForm = () => {
         file: null
     });
 
-    
+    const verificarSiRecibeNovedades  = () => {
+        if(initialValues.title !== '' || initialValues.content !== '' || initialValues.category !== '' || initialValues !== null) {
+            setRecieveNews(true)
+        } else {
+            setRecieveNews(false)
+        }
+    }
+
+    verificarSiRecibeNovedades()
 
     const [file, setFile] = useState(null);
 
