@@ -26,6 +26,8 @@ const NewsForm = () => {
         file: null
     });
 
+    
+
     const [file, setFile] = useState(null);
 
     const handleChangeFile = (e) => {
@@ -79,14 +81,6 @@ const NewsForm = () => {
             .then((res) => console.log(res));
 
         console.log(initialValues)
-
-        // // reiniciando el estado
-        // setInitialValues({
-        //     title: '',
-        //     content: '',
-        //     category: '',
-        //     file: null
-        // });
     };
 
     const sendData = (id) => {
