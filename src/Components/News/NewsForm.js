@@ -6,8 +6,10 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const NewsForm = () => {
 
+    const [recieveNews, setRecieveNews] = useState(true);
+
     const [categories, setCategories] = useState([]);
-    
+
     useEffect(() => {
         const getCategories = () => {
             fetch('/categories')
@@ -55,17 +57,68 @@ const NewsForm = () => {
         }
     }
 
-    const handleSubmit = (e) => {
+    const sendNewData = (e) => {
         e.preventDefault();
+        // validacion de los datos
+        if (initialValues.content === '' || initialValues.category === '' || initialValues.file === null) {
+            alert('todos los campos son obligatorios');
+            return;
+        } else if (initialValues.title.length < 4) {
+            alert('el titulo debe tener mas de 4 caracteres')
+            return
+        }
+
+        // consulta
+        const requestInit = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(),
+        };
+        fetch('/news', requestInit)
+            .then((res) => res.text())
+            .then((res) => console.log(res));
+
+        console.log(initialValues)
+
+        // // reiniciando el estado
+        // setInitialValues({
+        //     title: '',
+        //     content: '',
+        //     category: '',
+        //     file: null
+        // });
+    };
+
+    const sendData = (id) => {
+        id.preventDefault()
+        // validacion de los datos
+        if (initialValues.content === '' || initialValues.category === '' || initialValues.file === null) {
+            alert('todos los campos son obligatorios');
+            return;
+        } else if (initialValues.title.length < 4) {
+            alert('el titulo debe tener mas de 4 caracteres')
+            return
+        }
+        // consulta
+        const requestInit = {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(),
+        };
+        fetch(`/news/${id}`, requestInit)
+            .then((res) => res.text())
+            .then((res) => console.log(res));
+
         console.log(initialValues);
-    }
+    };
+
 
     return (
         <div >
             <h1 > Formulario Edición / Creación de Novedades </h1>
 
             <form className="form-container"
-                onSubmit={handleSubmit} >
+                onSubmit={recieveNews ? sendData : sendNewData} >
 
                 <input className="input-field"
                     placeholder="titulo"
@@ -76,7 +129,7 @@ const NewsForm = () => {
 
                 <CKEditor
                     editor={ClassicEditor}
-                    data="<p>Hello from CKEditor 5!</p>"
+                    data=""
                     onReady={editor => {
                         // You can store the "editor" and use when it is needed.
                         console.log('Editor is ready to use!', editor);
