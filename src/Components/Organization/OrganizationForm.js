@@ -9,7 +9,7 @@ import "./styles.css";
 
 const OrganizationForm = ({ props }) => {
   const expRegLink =
-    /^(http[s]?:\/\/){0,1}(www\.){0,1}[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,5}[\.]{0,1}?/;
+    /^(https?:\/\/)(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#()?&//=]*)/;
 
   const [url, setUrl] = useState({});
   const [urls, setUrls] = useState([""]);
