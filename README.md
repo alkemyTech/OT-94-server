@@ -89,6 +89,87 @@ return (
 | direction?: 'ltr' / 'rtl'      | The direction of the animation, either left-to-right or right-to-left.                                                                                      | 'ltr'         |
 | enableAnimation?: boolean      | Whether the animation should play. The skeleton will be a solid color when this is false. You could use this prop to stop the animation if an error occurs. | true          |
 
+<<<<<<< HEAD
+#
+
+## sweetalert2-react
+
+### Install
+
+```
+$ npm install sweetalert2-react
+```
+
+## WebSite
+
+#
+
+Web Site [sweetalert2](https://sweetalert2.github.io/)
+
+#
+
+## Usage
+
+# implementation
+
+```js
+import React, { useState } from "react";
+import SweetAlert from "sweetalert2-react";
+
+// ...
+// Types :  success | error | warning | info | question
+const Alert = ({
+  showAlert = false,
+  title = "title-default",
+  text = "text-default",
+  type = "success",
+  cancelButton = false,
+  confirmButtonText = "OK",
+  cancelButtonText = "Cancel",
+  showDenyButton = true,
+}) => {
+  const [show, setShow] = useState(showAlert);
+  return (
+    <SweetAlert
+      show={show}
+      title={title}
+      type={type}
+      text={text}
+      showConfirmButton={true}
+      showCancelButton={cancelButton}
+      confirmButtonText={confirmButtonText}
+      cancelButtonText={cancelButtonText}
+      showDenyButton={showDenyButton}
+      onConfirm={() => setShow(false)}
+    />
+  );
+};
+
+export default Alert;
+```
+
+```js
+//... to use
+import Alert from './Components/Skeleton/Alert';
+
+// ...
+// you can call without arguments and use defaults
+// Types Icons :  success | error | warning | info | question
+      <Alert />
+
+// or you can call with special arguments
+     <Alert
+        showAlert = {true},
+        title = "Your Title",
+        text = "Your Text",
+        type = "error",
+        confirmButtonText = "OK",
+        cancelButtonText = "Cancel",
+     />
+// ...
+}
+```
+=======
 ## REACT-LOADER-SPINNER
 
 `react-spinner-loader` provides simple React SVG spinner component which can be implemented for async await operation before data loads to the view.
@@ -139,3 +220,4 @@ react-loader-spinner component has the following types of spinners.
 | Rings         | `<Loader type="Rings" color="#00BFFF" height={80} width={80} />`        |
 | TailSpin      | `<Loader type="TailSpin" color="#00BFFF" height={80} width={80} />`     |
 | ThreeDots     | `<Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />`    |
+>>>>>>> main
