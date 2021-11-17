@@ -18,6 +18,9 @@ import MembersList from './Components/Members/MembersList';
 import ProjectsForm from './Components/Projects/ProjectsForm';
 import UsersFormCreateEdit from './Components/Users/UsersFormCreateEdit';
 import ProjectsFormCreateEdit from "./Components/Projects/ProjectsFormCreateEdit";
+import Donacion from './Components/Donations/Donacion';
+import Gracias from './Components/Donations/Gracias';
+
 import Organization from "./Components/Organization/Organization";
 
 import ContactPage from './Components/Contact/ContactPage';
@@ -50,6 +53,9 @@ function App() {
           <Route path="/nosotros" component={AboutPage} />
           <Route path="/backoffice/create-user" component={UsersFormCreateEdit} />
           <Route path="/backoffice/create-project" component={ProjectsFormCreateEdit}/>
+          <Route path="/donar" component={Donacion} />
+          <Route path="/gracias" component={Gracias} />
+
           <Route path="/backoffice/organization" component={Organization} />
         </Switch>
       </BrowserRouter>
