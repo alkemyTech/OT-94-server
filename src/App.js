@@ -22,14 +22,11 @@ import OrganizationForm from './Components/Organization/OrganizationForm';
 import ScreenDashboard from './Components/Backoffice/ScreenDashboard';
 import Donacion from './Components/Donations/Donacion';
 import Gracias from './Components/Donations/Gracias';
-
 import Organization from "./Components/Organization/Organization";
-
 import ContactPage from './Components/Contact/ContactPage';
 import Home from './Components/home';
 import AboutPage from './Components/About/AboutPage';
 import MemberFormCreateEdit from './Components/Members/MemberFormCreateEdit';
-
 import HomeFormEdit from './Components/home/HomeFormEdit';
 
 function App() {
@@ -72,7 +69,6 @@ function App() {
           <Route path="/backoffice" component={ScreenDashboard}/>
           <Route path="/donar" component={Donacion} />
           <Route path="/gracias" component={Gracias} />
-
           <Route path="/backoffice/organization" component={Organization} />
         </Switch>
       </BrowserRouter>

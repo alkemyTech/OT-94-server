@@ -30,11 +30,14 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## React Skeletor
+
 ### Installation
+
 > yarn add react-loading-skeleton
-npm install react-loading-skeleton
+> npm install react-loading-skeleton
 
 ### Basic Usage
+
 ```javascript
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -44,40 +47,95 @@ import 'react-loading-skeleton/dist/skeleton.css'
 ```
 
 ### Theming
+
 Customize individual skeletons with props, or render a SkeletonTheme to style all skeletons below it in the React hierarchy:
 
 ```javascript
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 return (
-    <SkeletonTheme baseColor="#202020" highlightColor="#444">
-        <div>
-            <Skeleton count={3} />
-        </div>
-    </SkeletonTheme>
-)
+  <SkeletonTheme baseColor="#202020" highlightColor="#444">
+    <div>
+      <Skeleton count={3} />
+    </div>
+  </SkeletonTheme>
+);
 ```
 
 ### Props Reference
+
 #### Skeleton only
-|  Prop | Description  | Default
-| ------------ | ------------ |
-| count?: number  | The number of lines of skeletons to render.   | 1
-| circle?: boolean  |  Makes the skeleton circular by setting border-radius to 50%. | false
-| className?: string | A custom class name for the individual skeleton elements which is used alongside the default class, react-loading-skeleton. |    -
-| containerClassName?: string | A custom class name for the < span >  that wraps the individual skeleton elements. |  -
-| containerTestId?: string | A string that is added to the container element as a data-testid attribute. Use it with screen.getByTestId('...') from React Testing Library. | -  |
-| style?: React.CSSProperties | This is an escape hatch for advanced use cases and is not the preferred way to style the skeleton. Props (e.g. width, borderRadius) take priority over this style object. | -
+
+| Prop                        | Description                                                                                                                                                               | Default |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| count?: number              | The number of lines of skeletons to render.                                                                                                                               | 1       |
+| circle?: boolean            | Makes the skeleton circular by setting border-radius to 50%.                                                                                                              | false   |
+| className?: string          | A custom class name for the individual skeleton elements which is used alongside the default class, react-loading-skeleton.                                               | -       |
+| containerClassName?: string | A custom class name for the < span > that wraps the individual skeleton elements.                                                                                         | -       |
+| containerTestId?: string    | A string that is added to the container element as a data-testid attribute. Use it with screen.getByTestId('...') from React Testing Library.                             | -       |
+| style?: React.CSSProperties | This is an escape hatch for advanced use cases and is not the preferred way to style the skeleton. Props (e.g. width, borderRadius) take priority over this style object. | -       |
 
 #### Skeleton and SkeletonTheme
-| Prop  | Description | Default
-| ------------ | ------------ |
-| baseColor?: string | The background color of the skeleton. | #ebebeb
-| highlightColor?: string | The highlight color in the skeleton animation. | #f5f5f5
-| width?: string / number | The width of the skeleton. | 100%
-| height?: string / number | The height of each skeleton line. | The font size
-| borderRadius?: string / number | The border radius of the skeleton. | 0.25rem
-| inline?: boolean | By default, a < br /> is inserted after each skeleton so that each skeleton gets its own line. When inline is true, no line breaks are inserted. | false
-| duration?: number | The length of the animation in seconds. | 1.5
-| direction?: 'ltr' / 'rtl' | The direction of the animation, either left-to-right or right-to-left. | 'ltr'
-| enableAnimation?: boolean | Whether the animation should play. The skeleton will be a solid color when this is false. You could use this prop to stop the animation if an error occurs. | true
+
+| Prop                           | Description                                                                                                                                                 | Default       |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| baseColor?: string             | The background color of the skeleton.                                                                                                                       | #ebebeb       |
+| highlightColor?: string        | The highlight color in the skeleton animation.                                                                                                              | #f5f5f5       |
+| width?: string / number        | The width of the skeleton.                                                                                                                                  | 100%          |
+| height?: string / number       | The height of each skeleton line.                                                                                                                           | The font size |
+| borderRadius?: string / number | The border radius of the skeleton.                                                                                                                          | 0.25rem       |
+| inline?: boolean               | By default, a < br /> is inserted after each skeleton so that each skeleton gets its own line. When inline is true, no line breaks are inserted.            | false         |
+| duration?: number              | The length of the animation in seconds.                                                                                                                     | 1.5           |
+| direction?: 'ltr' / 'rtl'      | The direction of the animation, either left-to-right or right-to-left.                                                                                      | 'ltr'         |
+| enableAnimation?: boolean      | Whether the animation should play. The skeleton will be a solid color when this is false. You could use this prop to stop the animation if an error occurs. | true          |
+
+## REACT-LOADER-SPINNER
+
+`react-spinner-loader` provides simple React SVG spinner component which can be implemented for async await operation before data loads to the view.
+
+See the oficial page [react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner)
+See the repository [repository](https://github.com/mhnpd/react-loader-spinner)
+
+### Installation
+
+##### Using NPM:
+
+#
+
+```sh
+$ npm install react-loader-spinner --save
+```
+
+##### Using yarn
+
+#
+
+```sh
+$ yarn add react-loader-spinner
+```
+
+##### Import required css
+
+#
+
+```js
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+```
+
+### Types of Spinner
+
+react-loader-spinner component has the following types of spinners.
+
+| Spinner Type  | Implementation                                                          |
+| ------------- | ----------------------------------------------------------------------- |
+| Audio         | `<Loader type="Audio" color="#00BFFF" height={80} width={80} />`        |
+| Ball-Triangle | `<Loader type="BallTriangle" color="#00BFFF" height={80} width={80} />` |
+| Bars          | `<Loader type="Bars" color="#00BFFF" height={80} width={80} />`         |
+| Circles       | `<Loader type="Circles" color="#00BFFF" height={80} width={80}/>`       |
+| Grid          | `<Loader type="Grid" color="#00BFFF" height={80} width={80} />`         |
+| Hearts        | `<Loader type="Hearts" color="#00BFFF" height={80} width={80} />`       |
+| Oval          | `<Loader type="Oval" color="#00BFFF" height={80} width={80} />`         |
+| Puff          | `<Loader type="Puff" color="#00BFFF" height={80} width={80} />`         |
+| Rings         | `<Loader type="Rings" color="#00BFFF" height={80} width={80} />`        |
+| TailSpin      | `<Loader type="TailSpin" color="#00BFFF" height={80} width={80} />`     |
+| ThreeDots     | `<Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />`    |
