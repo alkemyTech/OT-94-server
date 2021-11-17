@@ -28,6 +28,7 @@ import Organization from "./Components/Organization/Organization";
 import ContactPage from './Components/Contact/ContactPage';
 import Home from './Components/home';
 import AboutPage from './Components/About/AboutPage';
+import HomeFormEdit from './Components/home/HomeFormEdit';
 
 function App() {
 
@@ -62,9 +63,10 @@ function App() {
           <Route path="/contacto" component={ContactPage} />
           <Route path="/nosotros" component={AboutPage} />
           <Route path="/backoffice/create-user" component={UsersFormCreateEdit}/>
+          <Route path="/backoffice/create-project" component={ProjectsFormCreateEdit}/>
+          <Route path="/backoffice/home" component={HomeFormEdit} />
           <Route path="/backoffice/create-project" component={ProjectsFormCreateEdit}/>          
-          <Route path="/backoffice/organization/edit" component={OrganizationForm}/>
-          <Route path="/backoffice/create-user" component={UsersFormCreateEdit} />
+          <Route path="/backoffice/organization/edit" component={OrganizationForm}/>          
           <Route path="/backoffice" component={ScreenDashboard}/>
           <Route path="/donar" component={Donacion} />
           <Route path="/gracias" component={Gracias} />
