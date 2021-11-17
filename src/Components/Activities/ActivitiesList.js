@@ -1,5 +1,6 @@
 import React from 'react';
 import '../CardListStyles.css';
+import Titles from '../Titles/Titles';
 
 const ActivitiesList = () => {
     const activitiesMock = [
@@ -10,7 +11,7 @@ const ActivitiesList = () => {
 
     return (
         <div>
-            <h1>Listado Actividades</h1>
+            <Titles titulo="Actividades"/>
             <ul className="list-container">
                 {activitiesMock.length > 0 ?
                     activitiesMock.map((activity) => {

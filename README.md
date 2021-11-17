@@ -89,6 +89,7 @@ return (
 | direction?: 'ltr' / 'rtl'      | The direction of the animation, either left-to-right or right-to-left.                                                                                      | 'ltr'         |
 | enableAnimation?: boolean      | Whether the animation should play. The skeleton will be a solid color when this is false. You could use this prop to stop the animation if an error occurs. | true          |
 
+<<<<<<< HEAD
 #
 
 ## sweetalert2-react
@@ -168,3 +169,55 @@ import Alert from './Components/Skeleton/Alert';
 // ...
 }
 ```
+=======
+## REACT-LOADER-SPINNER
+
+`react-spinner-loader` provides simple React SVG spinner component which can be implemented for async await operation before data loads to the view.
+
+See the oficial page [react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner)
+See the repository [repository](https://github.com/mhnpd/react-loader-spinner)
+
+### Installation
+
+##### Using NPM:
+
+#
+
+```sh
+$ npm install react-loader-spinner --save
+```
+
+##### Using yarn
+
+#
+
+```sh
+$ yarn add react-loader-spinner
+```
+
+##### Import required css
+
+#
+
+```js
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+```
+
+### Types of Spinner
+
+react-loader-spinner component has the following types of spinners.
+
+| Spinner Type  | Implementation                                                          |
+| ------------- | ----------------------------------------------------------------------- |
+| Audio         | `<Loader type="Audio" color="#00BFFF" height={80} width={80} />`        |
+| Ball-Triangle | `<Loader type="BallTriangle" color="#00BFFF" height={80} width={80} />` |
+| Bars          | `<Loader type="Bars" color="#00BFFF" height={80} width={80} />`         |
+| Circles       | `<Loader type="Circles" color="#00BFFF" height={80} width={80}/>`       |
+| Grid          | `<Loader type="Grid" color="#00BFFF" height={80} width={80} />`         |
+| Hearts        | `<Loader type="Hearts" color="#00BFFF" height={80} width={80} />`       |
+| Oval          | `<Loader type="Oval" color="#00BFFF" height={80} width={80} />`         |
+| Puff          | `<Loader type="Puff" color="#00BFFF" height={80} width={80} />`         |
+| Rings         | `<Loader type="Rings" color="#00BFFF" height={80} width={80} />`        |
+| TailSpin      | `<Loader type="TailSpin" color="#00BFFF" height={80} width={80} />`     |
+| ThreeDots     | `<Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />`    |
+>>>>>>> main
