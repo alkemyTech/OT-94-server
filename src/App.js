@@ -42,34 +42,43 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Home} />
+
+          <Route path="/backoffice/members/edit" component={MemberFormCreateEdit}/>
+          <Route path="/backoffice/organization/edit" component={OrganizationForm}/>
+          <Route path="/backoffice/home" component={HomeFormEdit} />
+          <Route path="/backoffice/news" component={NewsForm} />
+          <Route path="/backoffice/create-slide" component={SlidesForm} />
+          <Route path="/backoffice/members" component={MembersList}/>
+          <Route path="/backoffice/create-user" component={UsersFormCreateEdit}/>
+          <Route path="/backoffice/create-project" component={ProjectsFormCreateEdit}/>
+          <Route path="/backoffice/organization" component={Organization} />
+          <Route path="/backoffice" component={ScreenDashboard}/>
+
           <Route path="/create-activity" component={ActivitiesForm} />
+          <Route path="/create-category" component={CategoriesForm} />
+          <Route path="/create-testimonials" component={TestimonialForm} />-
+          <Route path="/create-user" component={UserForm} />
+          <Route path="/create-member" component={MembersForm} />
+          <Route path="/create-project" component={ProjectsForm} />
+
           <Route path="/actividades/:id" component={ActivitiesDetail} />
           <Route path="/actividades" component={ActivitiesList} />
-          <Route path="/create-category" component={CategoriesForm} />
-          <Route path="/backoffice/news" component={NewsForm} />
+          
           <Route path="/novedades/:id" component={NewsDetail} />
           <Route path="/novedades">
             <NewsList novedades={newsMock}/>
           </Route>
-          <Route path="/backoffice/create-slide" component={SlidesForm} />
-          <Route path="/create-testimonials" component={TestimonialForm} />-
-          <Route path="/create-user" component={UserForm} />
-          <Route path="/create-member" component={MembersForm} />
-          <Route path="/backoffice/members" component={MembersList}/>
-          <Route path="/create-project" component={ProjectsForm} />
+
           <Route path="/school-campaign" component={SchoolCampaign} />
           <Route path="/toys-campaign" component={ToysCampaign} />
+
           <Route path="/contacto" component={ContactPage} />
+
           <Route path="/nosotros" component={AboutPage} />
-          <Route path="/backoffice/create-user" component={UsersFormCreateEdit}/>
-          <Route path="/backoffice/create-project" component={ProjectsFormCreateEdit}/>
-          <Route path="/backoffice/members/edit" component={MemberFormCreateEdit}/>
-          <Route path="/backoffice/home" component={HomeFormEdit} />      
-          <Route path="/backoffice/organization/edit" component={OrganizationForm}/>          
-          <Route path="/backoffice" component={ScreenDashboard}/>
+          
           <Route path="/donar" component={Donacion} />
+
           <Route path="/gracias" component={Gracias} />
-          <Route path="/backoffice/organization" component={Organization} />
         </Switch>
       </BrowserRouter>  
     </>
