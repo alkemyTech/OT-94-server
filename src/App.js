@@ -29,6 +29,13 @@ import AboutPage from './Components/About/AboutPage';
 
 
 function App() {
+
+  const newsMock = [
+    {id: 2, name: 'Titulo de prueba', description: 'Descripcion de prueba'},
+    {id: 1, name: 'Titulo de prueba', description: 'Descripcion de prueba'},
+    {id: 3, name: 'Titulo de prueba', description: 'Descripcion de prueba'}
+  ];
+
   return (
     <>
       <BrowserRouter>
@@ -40,7 +47,9 @@ function App() {
           <Route path="/create-category" component={CategoriesForm} />
           <Route path="/backoffice/news" component={NewsForm} />
           <Route path="/novedades/:id" component={NewsDetail} />
-          <Route path="/novedades" component={NewsList} />
+          <Route path="/novedades">
+            <NewsList novedades={newsMock}/>
+          </Route>
           <Route path="/backoffice/create-slide" component={SlidesForm} />
           <Route path="/create-testimonials" component={TestimonialForm} />-
           <Route path="/create-user" component={UserForm} />
