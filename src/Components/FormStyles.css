@@ -36,3 +36,8 @@
   line-height: 15px;
   margin: -10px 12px 0px 20px;
 }
+
+.select-file {
+  padding: 10px;
+  /* border: 1px solid #c1c1c1; */
+}

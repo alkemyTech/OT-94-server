@@ -17,7 +17,8 @@ import MembersForm from './Components/Members/MembersForm';
 import MembersList from './Components/Members/MembersList';
 import ProjectsForm from './Components/Projects/ProjectsForm';
 import UsersFormCreateEdit from './Components/Users/UsersFormCreateEdit';
-import ProjectsFormCreateEdit from "./Components/Projects/ProjectsFormCreateEdit";
+import ProjectsFormCreateEdit from './Components/Projects/ProjectsFormCreateEdit';
+import OrganizationForm from './Components/Organization/OrganizationForm';
 import ScreenDashboard from './Components/Backoffice/ScreenDashboard';
 import Donacion from './Components/Donations/Donacion';
 import Gracias from './Components/Donations/Gracias';
@@ -27,7 +28,6 @@ import Organization from "./Components/Organization/Organization";
 import ContactPage from './Components/Contact/ContactPage';
 import Home from './Components/home';
 import AboutPage from './Components/About/AboutPage';
-
 
 function App() {
 
@@ -41,7 +41,7 @@ function App() {
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={Home} />           
+          <Route path="/" exact component={Home} />
           <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/actividades/:id" component={ActivitiesDetail} />
           <Route path="/actividades" component={ActivitiesList} />
@@ -61,8 +61,10 @@ function App() {
           <Route path="/toys-campaign" component={ToysCampaign} />
           <Route path="/contacto" component={ContactPage} />
           <Route path="/nosotros" component={AboutPage} />
+          <Route path="/backoffice/create-user" component={UsersFormCreateEdit}/>
+          <Route path="/backoffice/create-project" component={ProjectsFormCreateEdit}/>          
+          <Route path="/backoffice/organization/edit" component={OrganizationForm}/>
           <Route path="/backoffice/create-user" component={UsersFormCreateEdit} />
-          <Route path="/backoffice/create-project" component={ProjectsFormCreateEdit}/>
           <Route path="/backoffice" component={ScreenDashboard}/>
           <Route path="/donar" component={Donacion} />
           <Route path="/gracias" component={Gracias} />
