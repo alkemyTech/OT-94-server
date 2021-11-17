@@ -18,7 +18,7 @@ import MembersList from './Components/Members/MembersList';
 import ProjectsForm from './Components/Projects/ProjectsForm';
 import UsersFormCreateEdit from './Components/Users/UsersFormCreateEdit';
 import ProjectsFormCreateEdit from "./Components/Projects/ProjectsFormCreateEdit";
-
+import Organization from "./Components/Organization/Organization";
 
 import ContactPage from './Components/Contact/ContactPage';
 import Home from './Components/home';
@@ -50,7 +50,7 @@ function App() {
           <Route path="/nosotros" component={AboutPage} />
           <Route path="/backoffice/create-user" component={UsersFormCreateEdit} />
           <Route path="/backoffice/create-project" component={ProjectsFormCreateEdit}/>
-
+          <Route path="/backoffice/organization" component={Organization} />
         </Switch>
       </BrowserRouter>
     </>
