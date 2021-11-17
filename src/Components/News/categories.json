@@ -1,0 +1,14 @@
+[
+    {
+        "category":1,
+        "description": "Demo option 1"
+    },
+    {
+        "category":2,
+        "description" : "Demo option 2"
+    },
+    {
+        "category":3,
+        "description" : "Demo option 3"
+    }
+]
