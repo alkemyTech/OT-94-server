@@ -1,17 +1,16 @@
 import React from 'react'
-
+import Carrousel from '../Carrousel/Carrousel'
 const Home = () => {
-
-    const welcomeText = 'texto de bienvenida example'
-
+    const welcomeText = 'texto de bienvenida example';
     return (
         <div>
-            <h1>{welcomeText}</h1>
+            <h2>{welcomeText}</h2>
             <div>//placeholder
             //slider  //listado de novedades
             </div>
+            <Carrousel />
         </div>
     )
 }
 
-export default Home
+export default Home;
