@@ -28,7 +28,7 @@ import Gracias from './Components/Donations/Gracias';
 import Organization from "./Components/Organization/Organization";
 import MemberFormCreateEdit from './Components/Members/MemberFormCreateEdit';
 import HomeFormEdit from './Components/home/HomeFormEdit';
-
+import ActivitiesTable from "./Components/Activities/ActivitiesTable";
 function App() {
 
   const newsMock = [
@@ -42,7 +42,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Home} />
-
+          <Route path="/backoffice/activities" component={ActivitiesTable} />
           <Route path="/backoffice/members/edit" component={MemberFormCreateEdit}/>
           <Route path="/backoffice/organization/edit" component={OrganizationForm}/>
           <Route path="/backoffice/home" component={HomeFormEdit} />
