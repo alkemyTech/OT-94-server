@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const ActivitiesTable = () => {
     const data = [
         {
@@ -28,9 +28,19 @@ const ActivitiesTable = () => {
             createdAt: "algo 5"
         }
     ]
+
+    const eliminateData = () => {
+        console.log("Eliminar");
+    }
+
+    const editData = () => {
+        console.log("Editar");
+    }
+
     return (
         <div>
             <h1>Activiites table</h1>
+            <Link to="/backoffice/activities/create">Crear actividad</Link>
             {data ? 
                 <table>
                     <thead>
@@ -46,10 +56,11 @@ const ActivitiesTable = () => {
                                 <td>{dato.name}</td>
                                 <td><img src={dato.image} alt={dato.name} /></td>
                                 <td>{dato.createdAt}</td>
+                                <td><button onClick={eliminateData} >Eliminar</button></td>
+                                <td><button onClick={editData} >Editar</button></td>
                             </tr>
                             )}
                     </tbody>
-
                 </table>
             : <h2>No hay data para mostrar</h2>}
         </div>
