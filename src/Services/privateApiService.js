@@ -16,4 +16,18 @@ const Get = async (route, id, config) => {
     }
 }
 
+const Patch = (route, id) => {
+    const requestInit = {
+        method: 'PATCH',
+        headers: {    
+            Authorization: 'userToken'
+        },
+        body: JSON.stringify(),
+    };
+    fetch(`${route}/${id}`, requestInit)
+        .then((res) => res.text())
+        .then((res) => console.log(res))
+}
+
 export default Get;
+export default Patch;

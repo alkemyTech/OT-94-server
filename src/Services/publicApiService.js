@@ -6,13 +6,13 @@ const config = {
     }
 }
 
-const route = 'https://jsonplaceholder.typicode.com/users';
-const id = 1;
-
 const Get = (route, id) => {
     axios.get(`${route}/${id}`, config)
         .then(res => console.log(res))
         .catch(err => console.log(err))
 }
+
+// const route = 'https://jsonplaceholder.typicode.com/users';
+// Get(route,null)
 
 export default Get
