@@ -12,4 +12,10 @@ const Get = () => {
     .catch(err => console.log(err))
 }
 
+const POST = ( url, data){
+    axios.post(url, data, config)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+}
+
 export default Get
