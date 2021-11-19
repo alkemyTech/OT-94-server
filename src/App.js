@@ -30,7 +30,7 @@ import MemberFormCreateEdit from './Components/Members/MemberFormCreateEdit';
 import HomeFormEdit from './Components/home/HomeFormEdit';
 
 function App() {
-
+  
   const newsMock = [
     {id: 2, name: 'Titulo de prueba', description: 'Descripcion de prueba'},
     {id: 1, name: 'Titulo de prueba', description: 'Descripcion de prueba'},
