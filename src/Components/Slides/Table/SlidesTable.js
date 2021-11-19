@@ -52,8 +52,8 @@ const SlidesTable = () => {
                             </tr>
                         </thead>
                         <tbody className="table--container-body">
-                            {data.map(dato => 
-                                <tr className="body">
+                            {data.map((dato, i) => 
+                                <tr className="body" key={i}>
                                     <td className="body--text">{dato.title}</td>
                                     <td className="container--body-image"><img className="body--image" src={dato.image} alt={dato.title} /></td>
                                     <td className="body--text">{dato.order}</td>
