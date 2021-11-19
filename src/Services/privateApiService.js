@@ -16,4 +16,13 @@ const Get = async (route, id, config) => {
     }
 }
 
-export default Get;
+const Put = async (route, id, config) => {
+    try {
+        const results = await axios.put(`${route}/${id}`, config);
+        console.log(results.data)
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+export { Get, Put }
