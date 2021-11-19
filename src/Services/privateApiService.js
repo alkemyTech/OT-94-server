@@ -16,4 +16,13 @@ const Get = async (route, id, config) => {
     }
 }
 
-export default Get;
+const Delete = async (route, id) => {
+    try {
+        const results = await axios.delete(`${route}/${id}`);
+        console.log(results.data)
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+export { Get, Delete };
