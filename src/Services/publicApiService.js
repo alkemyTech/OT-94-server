@@ -1,21 +1,21 @@
 import axios from 'axios';
 
 const config = {
-    headers: {
-        Group: 01                //Aqui va el ID del equipo!!
-    }
-}
+  headers: {
+    Group: 01, //Aqui va el ID del equipo!!
+  },
+};
 
-const Get = () => {
-    axios.get('https://jsonplaceholder.typicode.com/users', config)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-}
+export const Get = () => {
+  axios
+    .get('https://jsonplaceholder.typicode.com/users', config)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+};
 
-const POST = ( url, data){
-    axios.post(url, data, config)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-}
-
-export default Get
+export const POST = (url, data) => {
+  axios
+    .post(url, data, config)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+};
