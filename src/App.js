@@ -28,7 +28,7 @@ import Gracias from './Components/Donations/Gracias';
 import Organization from "./Components/Organization/Organization";
 import MemberFormCreateEdit from './Components/Members/MemberFormCreateEdit';
 import HomeFormEdit from './Components/home/HomeFormEdit';
-import ActivitiesTable from "./Components/Activities/ActivitiesTable";
+import ActivitiesTable from "./Components/Activities/Table/ActivitiesTable";
 function App() {
 
   const newsMock = [
