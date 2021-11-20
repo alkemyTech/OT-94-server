@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "./categoriesTable.css";
-const categoriesTable = () => {
+import REACT_APP_CATEGORIES_LIST from "../../../../.env";
+import REACT_APP_CATEGORIES_ELIMINATION from "../../../../.env";
+const categoriesTable = () => { 
     const data = [
         {
             name: "Jorge",
