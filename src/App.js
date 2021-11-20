@@ -28,13 +28,15 @@ import Gracias from './Components/Donations/Gracias';
 import Organization from "./Components/Organization/Organization";
 import MemberFormCreateEdit from './Components/Members/MemberFormCreateEdit';
 import HomeFormEdit from './Components/home/HomeFormEdit';
+import UsersList from './Components/Users/UsersList';
+import NewsList2 from './Components/News/NewsList2';
 
 function App() {
 
   const newsMock = [
-    {id: 2, name: 'Titulo de prueba', description: 'Descripcion de prueba'},
-    {id: 1, name: 'Titulo de prueba', description: 'Descripcion de prueba'},
-    {id: 3, name: 'Titulo de prueba', description: 'Descripcion de prueba'}
+    { id: 2, name: 'Titulo de prueba', description: 'Descripcion de prueba' },
+    { id: 1, name: 'Titulo de prueba', description: 'Descripcion de prueba' },
+    { id: 3, name: 'Titulo de prueba', description: 'Descripcion de prueba' }
   ];
 
   return (
@@ -43,16 +45,21 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
 
-          <Route path="/backoffice/members/edit" component={MemberFormCreateEdit}/>
-          <Route path="/backoffice/organization/edit" component={OrganizationForm}/>
+          <Route path="/backoffice/members/edit" component={MemberFormCreateEdit} />
+          <Route path="/backoffice/organization/edit" component={OrganizationForm} />
           <Route path="/backoffice/home" component={HomeFormEdit} />
-          <Route path="/backoffice/news" component={NewsForm} />
+          <Route path="/backoffice/news/create" component={NewsForm} />
+          <Route path="/backoffice/news/edit" component={NewsForm} />
+          <Route path="/backoffice/news" component={NewsList} />
+          <Route path="/backoffice/news2" component={NewsList2} />
           <Route path="/backoffice/create-slide" component={SlidesForm} />
-          <Route path="/backoffice/members" component={MembersList}/>
-          <Route path="/backoffice/create-user" component={UsersFormCreateEdit}/>
-          <Route path="/backoffice/create-project" component={ProjectsFormCreateEdit}/>
+          <Route path="/backoffice/members" component={MembersList} />
+          <Route path="/backoffice/create-user" component={UsersFormCreateEdit} />
+          <Route path="/backoffice/create-project" component={ProjectsFormCreateEdit} />
           <Route path="/backoffice/organization" component={Organization} />
-          <Route path="/backoffice" component={ScreenDashboard}/>
+          <Route exact path="/backoffice" component={ScreenDashboard} />
+
+          <Route path="/backoffice/users" component={UsersList} />
 
           <Route path="/create-activity" component={ActivitiesForm} />
           <Route path="/create-category" component={CategoriesForm} />
@@ -63,10 +70,10 @@ function App() {
 
           <Route path="/actividades/:id" component={ActivitiesDetail} />
           <Route path="/actividades" component={ActivitiesList} />
-          
+
           <Route path="/novedades/:id" component={NewsDetail} />
           <Route path="/novedades">
-            <NewsList novedades={newsMock}/>
+            <NewsList novedades={newsMock} />
           </Route>
 
           <Route path="/school-campaign" component={SchoolCampaign} />
@@ -75,12 +82,12 @@ function App() {
           <Route path="/contacto" component={ContactPage} />
 
           <Route path="/nosotros" component={AboutPage} />
-          
+
           <Route path="/donar" component={Donacion} />
 
           <Route path="/gracias" component={Gracias} />
         </Switch>
-      </BrowserRouter>  
+      </BrowserRouter>
     </>
   );
 }
