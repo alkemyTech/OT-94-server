@@ -3,7 +3,7 @@ import '../../Components/FormStyles.css';
 import categoriesDEMO from './categories.json' //categorias locales hasta tener el endpoint real
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
+import getDataNewsForm from "../../Services/privateApiService";
 const NewsForm = () => {
 
     const [recieveNews, setRecieveNews] = useState(true);

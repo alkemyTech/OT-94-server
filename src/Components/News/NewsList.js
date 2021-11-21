@@ -1,7 +1,7 @@
 import React from 'react';
 import '../CardListStyles.css';
 import Titles from '../Titles/Titles';
-
+import getDataNewsList from "../../Services/privateApiService";
 const NewsList = ( {novedades} ) => {
 
     return (
