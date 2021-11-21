@@ -3,9 +3,15 @@ import axios from 'axios';
 const config = {
     headers: {
         Group: 94,              //Aqui va el ID del equipo!!
-        Authorization: 'userToken'          
+        Authorization: 'userToken'
     }
 }
+
+const authAxios = axios.create({
+    headers: {
+        Authorization: `Bearer ${config.headers.Authorization}`
+    }
+})
 
 const Get = async (route, id, config) => {
     try {
@@ -16,30 +22,23 @@ const Get = async (route, id, config) => {
     }
 }
 
-const Patch = (route, id, body) => {
-    const requestInit = {
-        method: 'PATCH',
-        headers: {    
-            Authorization: 'userToken'
-        },
-        body: JSON.stringify(body)
-    };
-    fetch(`${route}/${id}`, requestInit)
-        .then((res) => res.text())
-        .then((res) => console.log(res))
+const Patch = async (route, id, body) => {
+    try {
+        const results = await authAxios.patch(`${route}/${id}`, body)
+        console.log(results)
+    } catch (err) {
+        console.log(err)
+    }
 }
 
-const Post = (route, body) => {
-    const requestInit = {
-        method: 'POST',
-        headers: {    
-            Authorization: 'userToken'
-        },
-        body: JSON.stringify(body)
-    };
-    fetch(route, requestInit)
-        .then((res) => res.text())
-        .then((res) => console.log(res))
+const Post = async (route, body) => {
+    try {
+        const results = await authAxios.post(route, body)
+        console.log(results)
+    } catch (err) {
+        console.log(err)
+    }
+
 }
 
-export default {Get, Patch, Post}
+export default { Get, Patch, Post }

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import "../FormStyles.css";
 import { useFormik } from "formik";
 
+import UsersService from "../../Services/UsersService";
+
 const UserForm = ({ props = {} }) => {
   const [initialValues, setInitialValues] = useState({
     name: "",
@@ -68,7 +70,39 @@ const UserForm = ({ props = {} }) => {
     }
   };
 
+  //axios call function aquí
   const axiosCall = () => {
+    if (!formModified) {
+      alert("Without changes, cannot be saved");
+      return;
+    }
+
+    if (objectReceived) {
+      UsersService.Patch('/users', props.id, changedValues)
+        (function (response) {
+          console.log(`User changed ${response}`);
+          setInitialValues({ ...changedValues });
+          setFormModified(false);
+          alert("User modified");
+        })
+        .catch(function (error) {
+          console.log(`User cannot be modified - error: ${error}`);
+        });
+    } else {
+      UsersService.Post(`/users/create`, changedValues)
+        (function (response) {
+          console.log(`User saved ${response}`);
+          setInitialValues({ ...changedValues });
+          setFormModified(false);
+          alert("User saved");
+        })
+        .catch(function (error) {
+          console.log(`User cannot be saved - error: ${error}`);
+        });
+    }
+  };
+
+  /*const axiosCall = () => {
     if (!formModified) {
       alert("Without changes, cannot be saved");
       return;
@@ -99,7 +133,7 @@ const UserForm = ({ props = {} }) => {
           console.log(`User cannot be saved - error: ${error}`);
         });
     }
-  };
+  };*/
 
   const formik = useFormik({
     initialValues: { ...initialValues },
