@@ -85,9 +85,6 @@ const UserForm = ({ props = {} }) => {
           setFormModified(false);
           alert("User modified");
         })
-        .catch(function (error) {
-          console.log(`User cannot be modified - error: ${error}`);
-        });
     } else {
       UsersService.Post(`/users/create`, changedValues)
         (function (response) {
@@ -96,9 +93,6 @@ const UserForm = ({ props = {} }) => {
           setFormModified(false);
           alert("User saved");
         })
-        .catch(function (error) {
-          console.log(`User cannot be saved - error: ${error}`);
-        });
     }
   };
 

@@ -5,7 +5,7 @@ const Patch = async (route, id, body) => {
         const response = await axios.patch(`${route}/${id}`, body)
         return
     } catch (error) {
-        return error
+        console.log(`User cannot be modified - error: ${error}`)
     }
 }
 
@@ -14,7 +14,7 @@ const Post = async (route, body) => {
         const response = await axios.post(route, body)
         return
     } catch (error) {
-        return error
+        console.log(`User cannot be saved - error: ${error}`);
     }
 
 }
