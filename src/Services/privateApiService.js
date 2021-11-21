@@ -18,8 +18,10 @@ const Get = async (route, id, config) => {
 
 const Put = async (route, id, config) => {
     try {
+        /* IsTokenConnected() */ /*Método para agregar el header Authorization*/
         const results = await axios.put(`${route}/${id}`, config);
         console.log(results.data)
+        return results;
     } catch (err) {
         console.log(err.message)
     }
