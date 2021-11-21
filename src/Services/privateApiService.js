@@ -16,4 +16,18 @@ const Get = async (route, id, config) => {
     }
 }
 
+const IsTokenConnected = () => {
+    let token = localStorage.getItem("token");
+    if (token !== null) {
+        let data = {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        }
+        return data;
+    } else {
+        return console.log("Error, no hay token")
+    }
+}
+
 export default Get;
