@@ -18,8 +18,10 @@ const Get = async (route, id, config) => {
 
 const Delete = async (route, id) => {
     try {
-        const results = await axios.delete(`${route}/${id}`);
-        console.log(results.data)
+        /*IsTokenConnected()*/ /*Método para agregar el header Authorization*/
+        const deleted = await axios.delete(`${route}/${id}`);
+        console.log(deleted)
+        return deleted;
     } catch (err) {
         console.log(err.message)
     }
