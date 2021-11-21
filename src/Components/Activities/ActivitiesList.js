@@ -1,7 +1,7 @@
 import React from 'react';
 import '../CardListStyles.css';
 import Titles from '../Titles/Titles';
-
+import getDataActivityList from "../../Services/privateApiService";
 const ActivitiesList = () => {
     const activitiesMock = [
         {id: 2, name: 'Titulo de prueba', description: 'Descripcion de prueba'},
