@@ -32,7 +32,7 @@ import UsersList from './Components/Users/UsersList';
 import NewsList2 from './Components/News/NewsList2';
 
 function App() {
-
+  
   const newsMock = [
     { id: 2, name: 'Titulo de prueba', description: 'Descripcion de prueba' },
     { id: 1, name: 'Titulo de prueba', description: 'Descripcion de prueba' },
