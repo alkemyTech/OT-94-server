@@ -79,20 +79,18 @@ const UserForm = ({ props = {} }) => {
 
     if (objectReceived) {
       UsersService.Patch('/users', props.id, changedValues)
-        (function (response) {
-          console.log(`User changed ${response}`);
-          setInitialValues({ ...changedValues });
-          setFormModified(false);
-          alert("User modified");
-        })
+
+      setInitialValues({ ...changedValues });
+      setFormModified(false);
+      alert("User modified");
+
     } else {
       UsersService.Post(`/users/create`, changedValues)
-        (function (response) {
-          console.log(`User saved ${response}`);
-          setInitialValues({ ...changedValues });
-          setFormModified(false);
-          alert("User saved");
-        })
+
+      setInitialValues({ ...changedValues });
+      setFormModified(false);
+      alert("User saved");
+
     }
   };
 
