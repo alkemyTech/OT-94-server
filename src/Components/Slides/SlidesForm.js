@@ -8,6 +8,8 @@ import '../FormStyles.css';
 
 export default function SlideForm() {
 
+    const {REACT_APP_SLIDE_CREATION, REACT_APP_SLIDE_EDITION} = process.env
+
     let objectRecieved = false;
 
     return(
@@ -58,7 +60,7 @@ export default function SlideForm() {
                     /*Al ser requisito que cada numero de orden sea único, interpreto que el numero de orden se corresponde con el id*/
 
                     if(objectRecieved === true) {
-                        axios.patch(`/slides/${values.order}`, values)
+                        axios.patch(`${REACT_APP_SLIDE_EDITION}${values.order}`, values)
                             .then(function (response) {
                                 console.log(response);
                             })
@@ -66,7 +68,7 @@ export default function SlideForm() {
                                 console.log(error);
                             });
                     }else {
-                        axios.post('/slides/create', values)
+                        axios.post(REACT_APP_SLIDE_CREATION, values)
                             .then(function (response) {
                                 console.log(response);
                             })
