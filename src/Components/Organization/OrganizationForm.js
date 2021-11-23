@@ -1,19 +1,21 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import "../FormStyles.css";
-import { useFormik } from "formik";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import Todo from "./Todo";
-import "./styles.css";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import '../FormStyles.css';
+import { useFormik } from 'formik';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import Todo from './Todo';
+import './styles.css';
 
 const OrganizationForm = ({ props }) => {
+  const URL_ORGANIZATION_EDITION =
+    process.env.REACT_APP_URL_ORGANIZATION_EDITION;
   const expRegLink =
     /^(https?:\/\/)(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#()?&//=]*)/;
 
   const [url, setUrl] = useState({});
-  const [urls, setUrls] = useState([""]);
-  const [errorUrl, setErrorUrl] = useState("");
+  const [urls, setUrls] = useState(['']);
+  const [errorUrl, setErrorUrl] = useState('');
 
   const handleChange = (e) => {
     setUrl({ [e.target.name]: e.target.value });
@@ -27,30 +29,30 @@ const OrganizationForm = ({ props }) => {
   };
 
   const handleClick = (e) => {
-    if (Object.keys(url).length === 0 || url.url.trim() === "") {
+    if (Object.keys(url).length === 0 || url.url.trim() === '') {
       formik.errors.url = `Is Empty`;
-      setErrorUrl("Is Empty");
+      setErrorUrl('Is Empty');
       return;
     }
     if (!url.url.match(expRegLink)) {
       formik.errors.url = `URL is invalid`;
-      setErrorUrl("URL is Invalid");
+      setErrorUrl('URL is Invalid');
       return;
     }
-    document.getElementById("url").value = "";
+    document.getElementById('url').value = '';
     setUrl({});
-    setErrorUrl("");
+    setErrorUrl('');
 
-    formik.errors.url = "";
+    formik.errors.url = '';
     setUrls([...urls, url]);
     setChangedValues({ ...changedValues, url: [...urls, url] });
   };
 
   const [initialValues, setInitialValues] = useState({
-    name: "",
-    logo: "",
-    shortDescription: "",
-    longDescription: "",
+    name: '',
+    logo: '',
+    shortDescription: '',
+    longDescription: '',
     url: [],
   });
 
@@ -62,28 +64,28 @@ const OrganizationForm = ({ props }) => {
     const expRegImage = /\w+.(jpg|png)$/i;
 
     if (!values.name) {
-      errors.name = "Required";
+      errors.name = 'Required';
     }
 
     if (!values.logo) {
-      errors.logo = "Required";
+      errors.logo = 'Required';
     } else if (!values.logo.match(expRegImage)) {
-      errors.logo = "The image needs a .jpg or .png extension";
+      errors.logo = 'The image needs a .jpg or .png extension';
     }
 
     if (!values.shortDescription) {
-      errors.shortDescription = "Required";
+      errors.shortDescription = 'Required';
     }
 
     if (!values.longDescription) {
-      errors.longDescription = "Required";
+      errors.longDescription = 'Required';
     }
 
-    values["url"] = [...changedValues["url"]];
+    values['url'] = [...changedValues['url']];
 
-    if (changedValues["url"].length === 0) {
-      errors.url = "Required";
-      setErrorUrl("Required");
+    if (changedValues['url'].length === 0) {
+      errors.url = 'Required';
+      setErrorUrl('Required');
     }
 
     setChangedValues({ ...values });
@@ -101,22 +103,22 @@ const OrganizationForm = ({ props }) => {
 
   const axiosCall = () => {
     if (!formModified) {
-      alert("Without changes, cannot be saved");
+      alert('Without changes, cannot be saved');
       return;
     }
 
-    alert("Next step, made a axios call");
+    alert('Next step, made a axios call');
     setInitialValues({ ...changedValues });
     setFormModified(false);
     console.log(JSON.stringify(changedValues));
-    return;
+
     axios
-      .patch(`/organization/edit`, changedValues)
+      .patch(`${URL_ORGANIZATION_EDITION}/:id`, changedValues)
       .then(function (response) {
         console.log(`Organizations changed ${response}`);
         setInitialValues({ ...changedValues });
         setFormModified(false);
-        alert("User modified");
+        alert('User modified');
       })
       .catch(function (error) {
         console.log(`ORganization cannot be modified - error: ${error}`);
@@ -136,75 +138,75 @@ const OrganizationForm = ({ props }) => {
   useEffect(() => {
     /*   setInitialValues({ ...props });
     setChangedValues({ ...props }); */
-    setUrls([...initialValues["url"]]);
+    setUrls([...initialValues['url']]);
   }, []);
 
   return (
-    <form className="form-container" onSubmit={formik.handleSubmit}>
+    <form className='form-container' onSubmit={formik.handleSubmit}>
       <input
-        className="input-field"
-        type="text"
-        name="name"
-        value={formik.values.name || ""}
+        className='input-field'
+        type='text'
+        name='name'
+        value={formik.values.name || ''}
         onChange={formik.handleChange}
-        placeholder="Name"
+        placeholder='Name'
       ></input>
       {formik.touched.name && formik.errors.name ? (
-        <div className="input-error-message">{formik.errors.name}</div>
+        <div className='input-error-message'>{formik.errors.name}</div>
       ) : null}
       <input
-        className="select-file"
-        type="file"
-        name="logo"
-        value={formik.values.logo || ""}
+        className='select-file'
+        type='file'
+        name='logo'
+        value={formik.values.logo || ''}
         onChange={formik.handleChange}
-        placeholder="Logo name"
+        placeholder='Logo name'
       ></input>
 
       {formik.touched.logo && formik.errors.logo ? (
-        <p className="input-error-message">{formik.errors.logo}</p>
+        <p className='input-error-message'>{formik.errors.logo}</p>
       ) : null}
 
       <CKEditor
         editor={ClassicEditor}
         onChange={(event, editor) => {
           setChangedValues({ ...changedValues, description: editor.getData() });
-          formik.setFieldValue("shortDescription", editor.getData());
+          formik.setFieldValue('shortDescription', editor.getData());
         }}
-        id="shortDescription"
-        name="shortDescription"
-        config={{ placeholder: "Short Description..." }}
-        data={formik.values.shortDescription || ""}
+        id='shortDescription'
+        name='shortDescription'
+        config={{ placeholder: 'Short Description...' }}
+        data={formik.values.shortDescription || ''}
       />
       {formik.touched.shortDescription && formik.errors.shortDescription ? (
-        <p className="input-error-message">{formik.errors.shortDescription}</p>
+        <p className='input-error-message'>{formik.errors.shortDescription}</p>
       ) : null}
       <input
-        className="input-field"
-        type="text"
-        name="longDescription"
-        value={formik.values.longDescription || ""}
+        className='input-field'
+        type='text'
+        name='longDescription'
+        value={formik.values.longDescription || ''}
         onChange={formik.handleChange}
-        placeholder="Long Description"
+        placeholder='Long Description'
       ></input>
       {formik.touched.longDescription && formik.errors.longDescription ? (
-        <p className="input-error-message">{formik.errors.longDescription}</p>
+        <p className='input-error-message'>{formik.errors.longDescription}</p>
       ) : null}
       {/* agregando funcionalidad todo para agregar urls */}
       <div>
         <input
-          id="url"
-          type="url"
-          className="select-field"
-          name="url"
+          id='url'
+          type='url'
+          className='select-field'
+          name='url'
           onChange={handleChange}
-          placeholder="Add Links"
-        />{" "}
-        <button onClick={handleClick} type="button" className="btn-add">
+          placeholder='Add Links'
+        />{' '}
+        <button onClick={handleClick} type='button' className='btn-add'>
           Add
         </button>
         {errorUrl ? (
-          <p className="input-error-message">{formik.errors.url}</p>
+          <p className='input-error-message'>{formik.errors.url}</p>
         ) : null}
         {urls.map((value, index) => (
           <Todo
@@ -215,7 +217,7 @@ const OrganizationForm = ({ props }) => {
           />
         ))}
       </div>
-      <button className="submit-btn" type="submit">
+      <button className='submit-btn' type='submit'>
         Send
       </button>
     </form>
