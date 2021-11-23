@@ -9,10 +9,10 @@ const UserForm = () => {
     })
 
     const handleChange = (e) => {
-        if(e.target.name === 'name'){
-            setInitialValues({...initialValues, name: e.target.value})
-        } if(e.target.name === 'email'){
-            setInitialValues({...initialValues, email: e.target.value})
+        if (e.target.name === 'name') {
+            setInitialValues({ ...initialValues, name: e.target.value })
+        } if (e.target.name === 'email') {
+            setInitialValues({ ...initialValues, email: e.target.value })
         }
     }
 
@@ -25,7 +25,7 @@ const UserForm = () => {
         <form className="form-container" onSubmit={handleSubmit}>
             <input className="input-field" type="text" name="name" value={initialValues.name || ''} onChange={handleChange} placeholder="Name"></input>
             <input className="input-field" type="text" name="email" value={initialValues.description || ''} onChange={handleChange} placeholder="Email"></input>
-            <select className="input-field" value={initialValues.roleId || ''} onChange={e => setInitialValues({...initialValues, roleId: e.target.value})}>
+            <select className="input-field" value={initialValues.roleId || ''} onChange={e => setInitialValues({ ...initialValues, roleId: e.target.value })}>
                 <option value="" disabled >Select the role</option>
                 <option value="1">Admin</option>
                 <option value="2">User</option>
@@ -34,5 +34,5 @@ const UserForm = () => {
         </form>
     );
 }
- 
+
 export default UserForm;

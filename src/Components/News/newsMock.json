@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "novedad 1",
+        "image": "/images/journal-01.jpg",
+        "createdAt": true
+    },
+    {
+        "id": 2,
+        "name": "novedad 2",
+        "image": "/images/journal-02.jpg",
+        "createdAt": true
+    },
+    {
+        "id": 3,
+        "name": "novedad 3",
+        "image": "/images/journal-03.jpg",
+        "createdAt": true
+    },
+    {
+        "id": 4,
+        "name": "novedad 4",
+        "image": "/images/journal-01.jpg",
+        "createdAt": false
+    }
+]

@@ -3,9 +3,15 @@ import axios from 'axios';
 const config = {
     headers: {
         Group: 94,              //Aqui va el ID del equipo!!
-        Authorization: 'userToken'          
+        Authorization: 'userToken'
     }
 }
+
+const authAxios = axios.create({
+    headers: {
+        Authorization: `Bearer ${config.headers.Authorization}`
+    }
+})
 
 const Get = async (route, id, config) => {
     try {
@@ -27,4 +33,23 @@ const Put = async (route, id, config) => {
     }
 }
 
-export { Get, Put }
+const Patch = async (route, id, body) => {
+    try {
+        const results = await authAxios.patch(`${route}/${id}`, body)
+        console.log(results)
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+const Post = async (route, body) => {
+    try {
+        const results = await authAxios.post(route, body)
+        console.log(results)
+    } catch (err) {
+        console.log(err)
+    }
+
+}
+
+export { Get, Put, Patch, Post }
