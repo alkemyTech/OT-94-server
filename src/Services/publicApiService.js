@@ -6,9 +6,9 @@ const config = {
   },
 };
 
-export const Get = () => {
+export const Get = (route, id) => {
   axios
-    .get('https://jsonplaceholder.typicode.com/users', config)
+    .get(`${route}/${id}`, config)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
