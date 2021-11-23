@@ -22,6 +22,17 @@ const Get = async (route, id, config) => {
     }
 }
 
+const Delete = async (route, id) => {
+    try {
+        /*IsTokenConnected()*/ /*Método para agregar el header Authorization*/
+        const deleted = await axios.delete(`${route}/${id}`);
+        console.log(deleted)
+        return deleted;
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
 const Put = async (route, id, config) => {
     try {
         /* IsTokenConnected() */ /*Método para agregar el header Authorization*/
@@ -49,7 +60,6 @@ const Post = async (route, body) => {
     } catch (err) {
         console.log(err)
     }
-
 }
 
-export { Get, Put, Patch, Post }
+export { Get, Put, Patch, Post, Delete }
