@@ -8,6 +8,9 @@ import Todo from "./Todo";
 import "./styles.css";
 
 const MemberFormCreateEdit = ({ props = {} }) => {
+
+  const {REACT_APP_MEMBERS_EDITION} = process.env;
+
   const expRegLink =
     /^(https?:\/\/)(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#()?&//=]*)/;
 
@@ -89,7 +92,7 @@ const MemberFormCreateEdit = ({ props = {} }) => {
   };
 
   const validateChanges = () => {
-    if (JSON.stringify(initialValues) != JSON.stringify(changedValues)) {
+    if (JSON.stringify(initialValues) !== JSON.stringify(changedValues)) {
       setFormModified(true);
     } else {
       setFormModified(false);
@@ -106,9 +109,9 @@ const MemberFormCreateEdit = ({ props = {} }) => {
     setInitialValues({ ...changedValues });
     setFormModified(false);
     console.log(JSON.stringify(changedValues));
-    return;
+    /* return; */
     axios
-      .patch(`/members/edit`, changedValues)
+      .patch(REACT_APP_MEMBERS_EDITION, changedValues)
       .then(function (response) {
         console.log(`Member changed ${response}`);
         setInitialValues({ ...changedValues });
