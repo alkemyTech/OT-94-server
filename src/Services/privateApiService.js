@@ -22,6 +22,17 @@ const Get = async (route, id, config) => {
     }
 }
 
+const Put = async (route, id, config) => {
+    try {
+        /* IsTokenConnected() */ /*Método para agregar el header Authorization*/
+        const results = await axios.put(`${route}/${id}`, config);
+        console.log(results.data)
+        return results;
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
 const Patch = async (route, id, body) => {
     try {
         const results = await authAxios.patch(`${route}/${id}`, body)
@@ -41,4 +52,4 @@ const Post = async (route, body) => {
 
 }
 
-export default { Get, Patch, Post }
+export { Get, Put, Patch, Post }
