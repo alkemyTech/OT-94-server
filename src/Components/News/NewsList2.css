@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Rubik&display=swap');
+
+.news-list table {            
+    width: 480px; text-align: left;    
+    border-collapse: collapse; 
+}
+
+.news-list th {        
+    text-transform: uppercase; 
+    font-family: 'Lato', sans-serif;  
+    padding: 8px;     
+    background:#9AC9FB; 
+    border-bottom: 1px solid #fff; 
+    color: rgb(255, 255, 255); 
+}
+    
+
+.news-list td {    
+    text-transform: capitalize;
+    font-family: 'Rubik', sans-serif;
+    padding: 8px;     
+    background: #FAFA88;     
+    border-bottom: 1px solid #fff;
+    color: rgb(0, 0, 0);    
+    border-top: 1px solid transparent; 
+}
+
+.news-list td img {
+    box-shadow: black;
+    box-shadow: 0 4px 8px 0 #55552967, 0 6px 20px 0 #a0a03667;
+    width: 70%;
+}
+
+.news-list tr:hover td { 
+    background: #9AC9FB; 
+    color: #2c4d70; 
+}
+
+.news-list button{
+    padding: 0.3rem;
+    font-family: 'Rubik', sans-serif;
+    border-radius: 5px;
+    margin: 0.1rem;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.news-list button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #609fe2;
+}
+
+.news-list button:hover {
+    background-color: #609fe2;
+    color: white;
+}
