@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import "../FormStyles.css";
 import { useFormik } from "formik";
 
+import UsersService from "../../Services/UsersService";
+
 const UserForm = ({ props = {} }) => {
   const [initialValues, setInitialValues] = useState({
     name: "",
@@ -68,7 +70,31 @@ const UserForm = ({ props = {} }) => {
     }
   };
 
+  //axios call function aquí
   const axiosCall = () => {
+    if (!formModified) {
+      alert("Without changes, cannot be saved");
+      return;
+    }
+
+    if (objectReceived) {
+      UsersService.Patch('/users', props.id, changedValues)
+
+      setInitialValues({ ...changedValues });
+      setFormModified(false);
+      alert("User modified");
+
+    } else {
+      UsersService.Post(`/users/create`, changedValues)
+
+      setInitialValues({ ...changedValues });
+      setFormModified(false);
+      alert("User saved");
+
+    }
+  };
+
+  /*const axiosCall = () => {
     if (!formModified) {
       alert("Without changes, cannot be saved");
       return;
@@ -99,7 +125,7 @@ const UserForm = ({ props = {} }) => {
           console.log(`User cannot be saved - error: ${error}`);
         });
     }
-  };
+  };*/
 
   const formik = useFormik({
     initialValues: { ...initialValues },
