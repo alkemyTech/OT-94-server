@@ -5,6 +5,9 @@ import '../FormStyles.css';
 import axios from 'axios';
 
 const CategoriesForm = () => {
+
+    const {REACT_APP_CATEGORIES_CREATION, REACT_APP_CATEGORIES_EDITION} = process.env;
+
     const VALIDATION = {
         name: /^[a-zA-Z\s]{4,}$/,
         description: /^$/,
@@ -42,10 +45,10 @@ const CategoriesForm = () => {
         const fetchData = async (values) => {
             try {
                 if (petition) {
-                    const { data } = await axios.post('/categories', values);
+                    const { data } = await axios.post(REACT_APP_CATEGORIES_CREATION, values);
                     console.log(data)
                 } else {
-                    const { data } = await axios.patch(`/categories/:id`, values);
+                    const { data } = await axios.patch(REACT_APP_CATEGORIES_EDITION, values);
                     console.log(data)
                 }
             } catch (error) {

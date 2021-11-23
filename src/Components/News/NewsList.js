@@ -2,7 +2,9 @@ import React from 'react';
 import '../CardListStyles.css';
 import Titles from '../Titles/Titles';
 
-const NewsList = ( {novedades} ) => {
+import getDataNewsTable from "../../Services/privateApiService" //ticket emiliano conectar news con service
+
+const NewsList = ({ novedades }) => {
 
     return (
         <div>
@@ -10,19 +12,19 @@ const NewsList = ( {novedades} ) => {
             <ul className="list-container">
                 {novedades.length > 0 ?
                     novedades.map((element) => {
-                        return(
+                        return (
                             <li className="card-info" key={element.id}>
                                 <h3>{element.name}</h3>
                                 <p>{element.description}</p>
                             </li>
                         )
                     })
-                :
+                    :
                     <p>No hay novedades</p>
                 }
             </ul>
         </div>
     );
 }
- 
+
 export default NewsList;
