@@ -30,6 +30,7 @@ import MemberFormCreateEdit from './Components/Members/MemberFormCreateEdit';
 import HomeFormEdit from './Components/home/HomeFormEdit';
 import UsersList from './Components/Users/UsersList';
 import NewsList2 from './Components/News/NewsList2';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   
@@ -88,6 +89,7 @@ function App() {
           <Route path="/gracias" component={Gracias} />
         </Switch>
       </BrowserRouter>
+      <Footer />
     </>
   );
 }
