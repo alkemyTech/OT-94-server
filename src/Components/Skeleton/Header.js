@@ -3,7 +3,6 @@ import './Header.css';
 import { NavLink } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 
-// https://www.geeksforgeeks.org/create-a-responsive-navbar-using-reactjs/
 const Header = ({ menu }) => {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
