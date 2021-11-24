@@ -3,10 +3,14 @@ import axios from 'axios';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import '../FormStyles.css';
+import Alert from '../Skeleton/Alert';
+// redux
+import {showAlerts} from "../../features/alert/alertSlice";
+import { useDispatch, useSelector } from 'react-redux'; 
 
 const ActivitiesForm = () => {
-
-    const { REACT_APP_URL_ACTIVITIES } = process.env
+   
+    const { REACT_APP_URL_ACTIVITIES } = process.env;
 
     const [initialValues, setInitialValues] = useState({
         name: '',
@@ -25,11 +29,13 @@ const ActivitiesForm = () => {
         description: /^$/,
         image: /\.(jpg|png)$/i
     }
+    // redux
+    const valueAlert = useSelector(state => state.alert);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const OBJECT_VALUE = Object.values(initialValues).filter(data => data !== '');
         OBJECT_VALUE.length === 0 ? setPetition(true) : setPetition(false);
-        // eslint-disable-next-line react-hooks/exhaustive-deps 
     }, [])
 
     const handleChange = (e) => {
@@ -54,7 +60,7 @@ const ActivitiesForm = () => {
                     console.log(data)
                 }
             } catch (error) {
-                console.log(error);
+                dispatch(showAlerts(true))
             }
         }
         if (VALIDATION.name.test(initialValues.name) && VALIDATION.image.test(initialValues.image) && !VALIDATION.description.test(initialValues.description)) {
@@ -64,7 +70,6 @@ const ActivitiesForm = () => {
             setTimeout(() => setErrorSendData(false), 2000)
         }
     }
-
     return (
         <form className="form-container" onSubmit={handleSubmit}>
             <input className="input-field" type="text" name="name" value={initialValues.name} onChange={handleChange} placeholder="Activity Title"></input>
@@ -81,6 +86,18 @@ const ActivitiesForm = () => {
             {errorImage ? <p>Error, image must be in .jpg or .png format</p> : null}
             <button className="submit-btn" type="submit">Send</button>
             {errorSendData ? <p>Error, you must complete all the fields</p> : null}
+            {valueAlert.showAlert ?  
+                Alert({
+                    showAlert: valueAlert,
+                    title: "Hubo un error!",
+                    text: "Error al realizar peticion desde el servicio",
+                    type: "error",
+                    cancelButton: false,
+                    confirmButtonText: "OK",
+                    cancelButtonText: "Cancel",
+                    showDenyButton: true
+                }) 
+            : null }
         </form>
     );
 }
