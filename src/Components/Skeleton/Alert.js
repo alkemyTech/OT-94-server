@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import SweetAlert from "sweetalert2-react";
+import { useDispatch } from 'react-redux'; 
+import { showAlerts } from "../../features/alert/alertSlice";
 
 // ...
 // Types :  success | error | warning | info | question
@@ -13,10 +15,10 @@ const Alert = ({
   cancelButtonText = "Cancel",
   showDenyButton = true,
 }) => {
-  const [show, setShow] = useState(showAlert);
+  const dispatch = useDispatch();
   return (
     <SweetAlert
-      show={show}
+      show={showAlert}
       title={title}
       type={type}
       text={text}
@@ -25,7 +27,7 @@ const Alert = ({
       confirmButtonText={confirmButtonText}
       cancelButtonText={cancelButtonText}
       showDenyButton={showDenyButton}
-      onConfirm={() => setShow(false)}
+      onConfirm={() => dispatch(showAlerts(false))}
     />
   );
 };
