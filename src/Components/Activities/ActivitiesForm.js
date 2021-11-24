@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const ActivitiesForm = () => {
    
     const { REACT_APP_URL_ACTIVITIES } = process.env;
-
+    
     const [initialValues, setInitialValues] = useState({
         name: '',
         description: '',
@@ -31,6 +31,7 @@ const ActivitiesForm = () => {
     }
     // redux
     const valueAlert = useSelector(state => state.alert);
+    
     const dispatch = useDispatch();
 
     useEffect(() => {
