@@ -86,7 +86,7 @@
 }
 
 .NavBtnLink:hover {
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
   background: #9ac9fb;
   color: #fff;
 }
