@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { AnimatedSwitch } from 'react-router-transition';
 import ActivitiesForm from './Components/Activities/ActivitiesForm';
 import ActivitiesList from './Components/Activities/ActivitiesList';
 import ActivitiesDetail from './Components/Activities/Detail/ActivitiesDetail';
@@ -40,7 +41,13 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Switch>
+        <AnimatedSwitch
+          atEnter={{ opacity: 0 }}
+          atLeave={{ opacity: 0 }}
+          atActive={{ opacity: 1 }}
+          className="switch-wrapper"
+        >
+        {/* <Switch> */}
           <Route path="/" exact component={Home} />
 
           <Route path="/backoffice/members/edit" component={MemberFormCreateEdit}/>
@@ -79,7 +86,8 @@ function App() {
           <Route path="/donar" component={Donacion} />
 
           <Route path="/gracias" component={Gracias} />
-        </Switch>
+        {/* </Switch> */}
+        </AnimatedSwitch>
       </BrowserRouter>  
     </>
   );
