@@ -47,7 +47,7 @@ export const AppPublicRoutes = () => {
         <Route path='/novedades/:id' component={NewsDetail} />
         <Route path='/actividades' exact component={ActivitiesList} />
         <Route path='/actividades/:id' component={ActivitiesDetail} />
-        
+       
         <Redirect to='/backoffice' />
       </Switch>
     </>
