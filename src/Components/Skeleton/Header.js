@@ -1,28 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 import { NavLink } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 
 // https://www.geeksforgeeks.org/create-a-responsive-navbar-using-reactjs/
 const Header = ({ menu }) => {
-  console.log(menu);
-  const menuMap = menu.map((element) => {
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => setSidebar(!sidebar);
+  const menuMap = menu.map((element, index) => {
     return (
       <NavLink
-        to={element.link}
+        key={index}
+        to={element.path}
         activeStyle={{ color: 'black' }}
         exact
         className='NavLink '
       >
-        {element.menu}
+        {element.title}
       </NavLink>
     );
   });
   return (
     <>
-      <nav className='Nav'>
-        <FaBars className='Bars' />
-        <div className='NavMenu'>{menuMap}</div>
+      <nav className={sidebar ? 'Nav active' : 'Nav'}>
+        <FaBars className='Bars' onClick={showSidebar} />
+        <div className={sidebar ? 'NavMenu active' : 'NavMenu'}>{menuMap}</div>
+        <nav className={sidebar ? 'NavBtn active' : 'NavBtn'}>
+          <NavLink className='NavBtnLink' to='/login'>
+            Ingresar
+          </NavLink>
+        </nav>
       </nav>
     </>
   );

@@ -6,6 +6,7 @@ import AboutPage from '../About/AboutPage';
 import ActivitiesForm from '../Activities/ActivitiesForm';
 import ActivitiesList from '../Activities/ActivitiesList';
 import ActivitiesDetail from '../Activities/Detail/ActivitiesDetail';
+import LoginForm from '../Auth/LoginForm';
 import CategoriesForm from '../Categories/CategoriesForm';
 import ContactPage from '../Contact/ContactPage';
 import Donacion from '../Donations/Donacion';
@@ -20,45 +21,47 @@ import TestimonialForm from '../Testimonials/TestimonialsForm';
 import UserForm from '../Users/UsersForm';
 
 export const AppPublicRoutes = () => {
-	const newsMock = [
-		{ id: 2, name: 'Titulo de prueba', description: 'Descripcion de prueba' },
-		{ id: 1, name: 'Titulo de prueba', description: 'Descripcion de prueba' },
-		{ id: 3, name: 'Titulo de prueba', description: 'Descripcion de prueba' },
-	];
+  const newsMock = [
+    { id: 2, name: 'Titulo de prueba', description: 'Descripcion de prueba' },
+    { id: 1, name: 'Titulo de prueba', description: 'Descripcion de prueba' },
+    { id: 3, name: 'Titulo de prueba', description: 'Descripcion de prueba' },
+  ];
 
-	const headerElements = [
-		{ menu: 'Home', link: '/' },
-		{ menu: 'Nosotros', link: '/nosotros' },
-		{ menu: 'Contacto', link: '/contacto' },
-		{ menu: 'Campaña Escolar', link: '/school-campaign' },
-		{ menu: 'Campaña Toys', link: '/toys-campaign' },
-	];
+  const headerElements = [
+    { title: 'Home', path: '/' },
+    { title: 'Nosotros', path: '/nosotros' },
+    { title: 'Contacto', path: '/contacto' },
+    { title: 'Campaña Escolar', path: '/school-campaign' },
+    { title: 'Campaña Toys', path: '/toys-campaign' },
+  ];
 
-	return (
-		<>
-			<Header menu={headerElements} />
-			<Switch>
-				<Route path="/" exact component={Home} />
-				<Route path="/donar" exact component={Donacion} />
-				<Route path="/gracias" component={Gracias} />
-				<Route path="/contacto" component={ContactPage} />
-				<Route path="/nosotros" component={AboutPage} />
-				<Route path="/create-user" exact component={UserForm} />
-				<Route path="/school-campaign" exact component={SchoolCampaign} />
-				<Route path="/toys-campaign" exact component={ToysCampaign} />
-				<Route path="/create-member" exact component={MembersForm} />
-				<Route path="/create-project" exact component={ProjectsForm} />
-				<Route path="/create-activity" exact component={ActivitiesForm} />
-				<Route path="/create-category" exact component={CategoriesForm} />
-				<Route path="/create-testimonials" exact component={TestimonialForm} />-
-				<Route path="/novedades" exact>
-					<NewsList novedades={newsMock} />
-				</Route>
-				<Route path="/novedades/:id" component={NewsDetail} />
-				<Route path="/actividades" exact component={ActivitiesList} />
-				<Route path="/actividades/:id" component={ActivitiesDetail} />
-				<Redirect to="/backoffice" />
-			</Switch>
-		</>
-	);
+  return (
+    <>
+      <Header menu={headerElements} />
+      <p />
+      <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/donar' exact component={Donacion} />
+        <Route path='/gracias' component={Gracias} />
+        <Route path='/contacto' component={ContactPage} />
+        <Route path='/nosotros' component={AboutPage} />
+        <Route path='/create-user' exact component={UserForm} />
+        <Route path='/school-campaign' exact component={SchoolCampaign} />
+        <Route path='/toys-campaign' exact component={ToysCampaign} />
+        <Route path='/create-member' exact component={MembersForm} />
+        <Route path='/create-project' exact component={ProjectsForm} />
+        <Route path='/create-activity' exact component={ActivitiesForm} />
+        <Route path='/create-category' exact component={CategoriesForm} />
+        <Route path='/create-testimonials' exact component={TestimonialForm} />-
+        <Route path='/novedades' exact>
+          <NewsList novedades={newsMock} />
+        </Route>
+        <Route path='/novedades/:id' component={NewsDetail} />
+        <Route path='/actividades' exact component={ActivitiesList} />
+        <Route path='/actividades/:id' component={ActivitiesDetail} />
+        <Route path='/login' component={LoginForm} />
+        <Redirect to='/backoffice' />
+      </Switch>
+    </>
+  );
 };

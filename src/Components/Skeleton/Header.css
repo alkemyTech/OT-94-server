@@ -1,88 +1,92 @@
 .Nav {
-	background: #2e86c1;
-	height: 50px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0.2rem calc((100vw - 1000px) / 2);
-	z-index: 12;
-	/* Third Nav */
-	/* justify-content: flex-start; */
+  background: #2e86c1;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem calc((100vw - 1000px) / 2);
+  z-index: 12;
 }
 
 .NavLink {
-	color: #ffff;
-	display: flex;
-	align-items: center;
-	text-decoration: none;
-	padding: 0 1rem;
-	height: 100%;
-	cursor: pointer;
+  color: #ffff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.5rem 2rem;
+  height: 100%;
+  cursor: pointer;
 }
 
 .NavLink:active {
-	color: #000000;
+  color: #000000;
 }
 
 .Bars {
-	display: none;
-	color: #808080;
+  display: none;
+  color: #ffff;
 }
 
 .NavMenu {
-	display: flex;
-	align-items: center;
-	margin-right: -24px;
-	/* Second Nav */
-	/* margin-right: 24px; */
-	/* Third Nav */
-	/* width: 100vw;
-    white-space: nowrap; */
+  display: flex;
+  align-items: center;
+  margin-right: -24px;
 }
 
 .NavBtn {
-	display: flex;
-	align-items: center;
-	margin-right: 24px;
-	/* Third Nav */
-	/* justify-content: flex-end;
-  width: 100vw; */
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
 }
 
 @media screen and (max-width: 768px) {
-	.Bars {
-		display: block;
-		position: absolute;
-		top: 0;
-		right: 0;
-		transform: translate(-100%, 75%);
-		font-size: 1.8rem;
-		cursor: pointer;
-	}
-	.NavMenu {
-		display: none;
-	}
-	.NavBtn {
-		display: none;
-	}
+  .Bars {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 30%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+  .NavMenu {
+    display: none;
+  }
+  .NavBtn {
+    display: none;
+  }
+
+  .Nav.active {
+    height: auto;
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .NavMenu.active {
+    display: initial;
+  }
+
+  .NavBtn.active {
+    display: flex;
+  }
 }
 
 .NavBtnLink {
-	border-radius: 4px;
-	background: #808080;
-	padding: 10px 22px;
-	color: #000000;
-	outline: none;
-	border: none;
-	cursor: pointer;
-	transition: all 0.2s ease-in-out;
-	text-decoration: none;
-	/* Second Nav */
-	margin-left: 24px;
+  border-radius: 4px;
+  background: #ffff;
+  padding: 10px 22px;
+  color: #000000;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  margin-left: 24px;
 }
 
 .NavBtnLink:hover {
-	transition: all 0.2s ease-in-out;
-	background: #fff;
-	color: #808080;
+  transition: all 0.2s ease-in-out;
+  background: #9ac9fb;
+  color: #fff;
 }
