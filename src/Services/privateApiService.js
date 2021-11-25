@@ -62,4 +62,18 @@ const Post = async (route, body) => {
     }
 }
 
-export { Get, Put, Patch, Post, Delete }
+const IsTokenConnected = () => {
+    let token = localStorage.getItem("token");
+    if (token !== null) {
+        let data = {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        }
+        return data;
+    } else {
+        return console.log("Error, no hay token")
+    }
+}
+
+export { Get, Put, Patch, Post, Delete, IsTokenConnected }
