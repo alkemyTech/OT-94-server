@@ -29,8 +29,8 @@ export default function Footer() {
                 <a href="/donar">Donar</a>
             </div>
             <div className="footer-social">
-                <a href={social && social.facebook}>Facebook</a>
-                <a href={social && social.instagram}>Instagram</a>
+                <a href={social ? social.facebook : ""}>Facebook</a>
+                <a href={social ? social.instagram : ""}>Instagram</a>
             </div>
         </footer>
     )

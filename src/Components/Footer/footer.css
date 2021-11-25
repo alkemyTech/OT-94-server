@@ -32,3 +32,27 @@
     text-decoration: none;
     color: black;
 }
+
+@media screen and (min-width: 1000px) {
+    .footer {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .footer-navigation {
+        position: unset;
+        bottom: 0;
+    }
+
+    .footer-social {
+        position: unset;
+        bottom: 0;
+        flex-direction: column;
+        width: unset;
+    }
+
+    .footer-social a {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+}
