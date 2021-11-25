@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Logo from '../../LOGO-SOMOS-MAS.png'
 import { Get } from '../../Services/privateApiService'
 import './footer.css'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
 
@@ -12,6 +13,7 @@ export default function Footer() {
         if (contact) {
             setSocial(contact.data)
         }
+        
     }, [])
 
 
@@ -21,12 +23,12 @@ export default function Footer() {
                 <img src={Logo} alt="Logo Somos Mas" />
             </div>
             <div className="footer-navigation">
-                <a href="/">Home</a>
-                <a href="/actividades">Actividades</a>
-                <a href="/novedades">Novedades</a>
-                <a href="/nosotros">Nosotros</a>
-                <a href="/contacto">Contacto</a>
-                <a href="/donar">Donar</a>
+                <Link to="/">Home</Link>
+                <Link to="/actividades">Actividades</Link>
+                <Link to="/novedades">Novedades</Link>
+                <Link to="/nosotros">Nosotros</Link>
+                <Link to="/contacto">Contacto</Link>
+                <Link to="/donar">Donar</Link>
             </div>
             <div className="footer-social">
                 <a href={social ? social.facebook : ""}>Facebook</a>

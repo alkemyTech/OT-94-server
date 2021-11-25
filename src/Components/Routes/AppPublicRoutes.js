@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
 import SchoolCampaign from '../../Campaigns/School/SchoolCampaign';
 import ToysCampaign from '../../Campaigns/Toys/ToysCampaign';
 import AboutPage from '../About/AboutPage';
@@ -28,30 +28,32 @@ export const AppPublicRoutes = () => {
 
   return (
     <>
-      <Switch>
-        <Route path='/' exact component={Home} />
-        <Route path='/donar' exact component={Donacion} />
-         <Route path='/gracias' component={Gracias} />
-        <Route path='/contacto' component={ContactPage} />
-        <Route path='/nosotros' component={AboutPage} />
-        <Route path='/create-user' exact component={UserForm} />
-        <Route path='/school-campaign' exact component={SchoolCampaign} />
-        <Route path='/toys-campaign' exact component={ToysCampaign} />
-        <Route path='/create-member' exact component={MembersForm} />
-        <Route path='/create-project' exact component={ProjectsForm} />
-        <Route path='/create-activity' exact component={ActivitiesForm} />
-        <Route path='/create-category' exact component={CategoriesForm} />
-        <Route path='/create-testimonials' exact component={TestimonialForm} />-
-        <Route path='/novedades' exact>
-          <NewsList novedades={newsMock} />
-        </Route>
-        <Route path='/novedades/:id' component={NewsDetail} />
-        <Route path='/actividades' exact component={ActivitiesList} />
-        <Route path='/actividades/:id' component={ActivitiesDetail} />
-       
-        <Redirect to='/backoffice' />
-      </Switch>
-      <Footer />
+      <BrowserRouter>
+        <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/donar' exact component={Donacion} />
+          <Route path='/gracias' component={Gracias} />
+          <Route path='/contacto' component={ContactPage} />
+          <Route path='/nosotros' component={AboutPage} />
+          <Route path='/create-user' exact component={UserForm} />
+          <Route path='/school-campaign' exact component={SchoolCampaign} />
+          <Route path='/toys-campaign' exact component={ToysCampaign} />
+          <Route path='/create-member' exact component={MembersForm} />
+          <Route path='/create-project' exact component={ProjectsForm} />
+          <Route path='/create-activity' exact component={ActivitiesForm} />
+          <Route path='/create-category' exact component={CategoriesForm} />
+          <Route path='/create-testimonials' exact component={TestimonialForm} />-
+          <Route path='/novedades' exact>
+            <NewsList novedades={newsMock} />
+          </Route>
+          <Route path='/novedades/:id' component={NewsDetail} />
+          <Route path='/actividades' exact component={ActivitiesList} />
+          <Route path='/actividades/:id' component={ActivitiesDetail} />
+        
+          <Redirect to='/backoffice' />
+        </Switch>
+        <Footer />
+      </BrowserRouter>
     </>
   );
 };
