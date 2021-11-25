@@ -1,26 +1,44 @@
 import React from 'react'
 import Logo from '../../LOGO-SOMOS-MAS.png'
+import { Link } from 'react-router-dom'
+import './footer.css'
 
 export default function Footer() {
 
 
     return (
-        <footer>
+        <footer className="footer">
             <div>
                 <img src={Logo} alt="Logo Somos Mas" />
             </div>
-            <div>
-                <h5>items de navegacion</h5>
-                <ul>
+            <div className="footer-navigation">
+                <a href="">Actividades</a>
+                <a href="">Novedades</a>
+                <a href="">Nosotros</a>
+                <a href="">Contacto</a>
+                <a href="">Donar</a>
+                {/* <ul className="footer-navigation__list">
                     <li>
-                        <a href="">Link 1</a>
+                        <a href="">Actividades</a>
                     </li>
                     <li>
-                        <a href="">Link 2</a>
+                        <a href="">Novedades</a>
                     </li>
-                </ul>
+                    <li>
+                        <a href="">Nosotros</a>
+                    </li>
+                    <li>
+                        <a href="">Contacto</a>
+                    </li>
+                    <li>
+                        <a href="">Donar</a>
+                    </li>
+                </ul> */}
             </div>
-            <div></div>
+            <div className="footer-social">
+                <a href="">Facebook</a>
+                <a href="">Instagram</a>
+            </div>
         </footer>
     )
 }
