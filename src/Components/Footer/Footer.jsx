@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Logo from '../../LOGO-SOMOS-MAS.png'
-import { Link } from 'react-router-dom'
+import { Get } from '../../Services/privateApiService'
 import './footer.css'
 
 export default function Footer() {
+
+    const [social, setSocial] = useState()
+
+    useEffect(() => {
+        const contact = Get('baseUrl','organization')
+        if (contact) {
+            setSocial(contact.data)
+        }
+    }, [])
 
 
     return (
@@ -12,15 +21,16 @@ export default function Footer() {
                 <img src={Logo} alt="Logo Somos Mas" />
             </div>
             <div className="footer-navigation">
-                <a href="">Actividades</a>
-                <a href="">Novedades</a>
-                <a href="">Nosotros</a>
-                <a href="">Contacto</a>
-                <a href="">Donar</a>
+                <a href="/">Home</a>
+                <a href="/actividades">Actividades</a>
+                <a href="/novedades">Novedades</a>
+                <a href="/nosotros">Nosotros</a>
+                <a href="/contacto">Contacto</a>
+                <a href="/donar">Donar</a>
             </div>
             <div className="footer-social">
-                <a href="">Facebook</a>
-                <a href="">Instagram</a>
+                <a href={social && social.facebook}>Facebook</a>
+                <a href={social && social.instagram}>Instagram</a>
             </div>
         </footer>
     )
