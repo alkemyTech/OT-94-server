@@ -3,9 +3,16 @@ import '../../Components/FormStyles.css';
 import categoriesDEMO from './categories.json' //categorias locales hasta tener el endpoint real
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import Alert from '../Skeleton/Alert';
+// redux
+import {showAlerts} from "../../features/alert/alertSlice";
+import { useDispatch, useSelector } from 'react-redux'; 
 
 const NewsForm = () => {
-
+    // redux
+    const valueAlert = useSelector(state => state.alert);
+    const dispatch = useDispatch();
+    
     const [recieveNews, setRecieveNews] = useState(true);
 
     const [categories, setCategories] = useState([]);
@@ -77,8 +84,8 @@ const NewsForm = () => {
         };
         fetch('/news', requestInit)
             .then((res) => res.text())
+            .catch(error => dispatch(showAlerts(true)))
             .then((res) => console.log(res));
-
         console.log(initialValues)
     };
 
@@ -100,8 +107,8 @@ const NewsForm = () => {
         };
         fetch(`/news/${id}`, requestInit)
             .then((res) => res.text())
+            .catch(error => dispatch(showAlerts(true)))
             .then((res) => console.log(res));
-
         console.log(initialValues);
     };
 
@@ -156,6 +163,18 @@ const NewsForm = () => {
                 <button className="submit-btn" type="submit" > Send </button>
 
             </form>
+            {valueAlert.showAlert ?  
+                Alert({
+                    showAlert: valueAlert,
+                    title: "Hubo un error!",
+                    text: "Error al realizar peticion desde el servicio",
+                    type: "error",
+                    cancelButton: false,
+                    confirmButtonText: "OK",
+                    cancelButtonText: "Cancel",
+                    showDenyButton: true
+                }) 
+            : null }
         </div>
     );
 }
