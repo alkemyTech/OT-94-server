@@ -9,7 +9,7 @@ import { AppPublicRoutes } from "./Components/Routes/AppPublicRoutes";
 export const AppRoutes = () => {
 
    // realizar llamado a Redux de autenticación creado en tkt OT94-106
-    const user = { 'logged': false };
+    const user = { 'logged': true };
   
     return (
         <BrowserRouter>
