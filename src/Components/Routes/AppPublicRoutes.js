@@ -17,6 +17,7 @@ import NewsList from '../News/NewsList';
 import ProjectsForm from '../Projects/ProjectsForm';
 import TestimonialForm from '../Testimonials/TestimonialsForm';
 import UserForm from '../Users/UsersForm';
+import Footer from '../Footer/Footer';
 
 export const AppPublicRoutes = () => {
   const newsMock = [
@@ -50,6 +51,7 @@ export const AppPublicRoutes = () => {
        
         <Redirect to='/backoffice' />
       </Switch>
+      <Footer />
     </>
   );
 };

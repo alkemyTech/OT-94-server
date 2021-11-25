@@ -13,10 +13,12 @@ import OrganizationForm from "../Organization/OrganizationForm";
 import NewsList from "../News/NewsList";
 import NewsList2 from "../News/NewsList2";
 import UsersList from "../Users/UsersList";
+import Footer from "../Footer/Footer";
 
 
 export const AppPrivateRoutes = () => {
   return (
+    <>
       <Switch>
           
           <Route path="/backoffice" exact component={ScreenDashboard}/>
@@ -35,6 +37,8 @@ export const AppPrivateRoutes = () => {
           <Route path="/backoffice/users" component={UsersList} />                                        
 
          <Redirect to="/" />
-    </Switch>
+      </Switch>
+      <Footer />
+    </>
   );
 };
