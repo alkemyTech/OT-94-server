@@ -1,0 +1,33 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoutButton {
+  padding: 0 1.7142857142857142em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.875em;
+  line-height: 2.7142857142857144;
+  background: #009ee3;
+  border-radius: 0.2857142857142857em;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+
+.button {
+  appearance: none;
+  background: none;
+  font-size: 32px;
+  padding-left: 12px;
+  padding-right: 12px;
+  outline: none;
+  border: 2px solid transparent;
+  color: rgb(112, 76, 182);
+  padding-bottom: 4px;
+  cursor: pointer;
+  background-color: rgba(112, 76, 182, 0.1);
+  border-radius: 2px;
+  transition: all 0.15s;
+}
