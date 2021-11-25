@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, selectUser } from '../../features/user/userSlice';
-import './User.css';
+import '../../Components/FormStyles.css';
 
 const LogoutButton = () => {
   const user = useSelector(selectUser);
@@ -10,7 +10,7 @@ const LogoutButton = () => {
   return (
     <div>
       {user.authenticated ? (
-        <button className='logoutButton' onClick={() => dispatch(logout())}>
+        <button className='submit-btn' onClick={() => dispatch(logout())}>
           Salir
         </button>
       ) : (
