@@ -17,23 +17,6 @@ export default function Footer() {
                 <a href="">Nosotros</a>
                 <a href="">Contacto</a>
                 <a href="">Donar</a>
-                {/* <ul className="footer-navigation__list">
-                    <li>
-                        <a href="">Actividades</a>
-                    </li>
-                    <li>
-                        <a href="">Novedades</a>
-                    </li>
-                    <li>
-                        <a href="">Nosotros</a>
-                    </li>
-                    <li>
-                        <a href="">Contacto</a>
-                    </li>
-                    <li>
-                        <a href="">Donar</a>
-                    </li>
-                </ul> */}
             </div>
             <div className="footer-social">
                 <a href="">Facebook</a>
