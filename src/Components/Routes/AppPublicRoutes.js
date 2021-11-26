@@ -6,6 +6,7 @@ import AboutPage from '../About/AboutPage';
 import ActivitiesForm from '../Activities/ActivitiesForm';
 import ActivitiesList from '../Activities/ActivitiesList';
 import ActivitiesDetail from '../Activities/Detail/ActivitiesDetail';
+import LoginForm from '../Auth/LoginForm';
 import CategoriesForm from '../Categories/CategoriesForm';
 import ContactPage from '../Contact/ContactPage';
 import Donacion from '../Donations/Donacion';
@@ -15,6 +16,7 @@ import MembersForm from '../Members/MembersForm';
 import NewsDetail from '../News/Detail/NewsDetail';
 import NewsList from '../News/NewsList';
 import ProjectsForm from '../Projects/ProjectsForm';
+import Header from '../Skeleton/Header';
 import TestimonialForm from '../Testimonials/TestimonialsForm';
 import UserForm from '../Users/UsersForm';
 
@@ -25,12 +27,22 @@ export const AppPublicRoutes = () => {
     { id: 3, name: 'Titulo de prueba', description: 'Descripcion de prueba' },
   ];
 
+  const headerElements = [
+    { title: 'Home', path: '/' },
+    { title: 'Nosotros', path: '/nosotros' },
+    { title: 'Contacto', path: '/contacto' },
+    { title: 'Campaña Escolar', path: '/school-campaign' },
+    { title: 'Campaña Toys', path: '/toys-campaign' },
+  ];
+
   return (
     <>
+      <Header menu={headerElements} />
+      <p />
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/donar' exact component={Donacion} />
-         <Route path='/gracias' component={Gracias} />
+        <Route path='/gracias' component={Gracias} />
         <Route path='/contacto' component={ContactPage} />
         <Route path='/nosotros' component={AboutPage} />
         <Route path='/create-user' exact component={UserForm} />
@@ -47,7 +59,7 @@ export const AppPublicRoutes = () => {
         <Route path='/novedades/:id' component={NewsDetail} />
         <Route path='/actividades' exact component={ActivitiesList} />
         <Route path='/actividades/:id' component={ActivitiesDetail} />
-       
+        <Route path='/login' component={LoginForm} />
         <Redirect to='/backoffice' />
       </Switch>
     </>
