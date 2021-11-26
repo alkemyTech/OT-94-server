@@ -14,6 +14,7 @@ import NewsList from "../News/NewsList";
 import NewsList2 from "../News/NewsList2";
 import UsersList from "../Users/UsersList";
 
+import ActivitiesTable from "../Activities/Table/ActivitiesTable";
 
 export const AppPrivateRoutes = () => {
   return (
@@ -34,6 +35,7 @@ export const AppPrivateRoutes = () => {
           <Route path="/backoffice/organization/edit" exact component={OrganizationForm}/>                                                                
           <Route path="/backoffice/users" component={UsersList} />                                        
 
+          <Route path ="/backoffice/activities" component={ActivitiesTable} />
          <Redirect to="/" />
     </Switch>
   );
