@@ -1,12 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import '../FormStyles.css';
+// import { getSlidesList } from "../../features/slides/slidesSlice";
+// import { useDispatch, useSelector } from 'react-redux';
 
 export default function SlideForm() {
+    // Con el dispatch se hace el llamado a la funcion thunk, y con { slides } tenes los valores
+    
+    // const dispatch = useDispatch();
+    // const { slides } = useSelector((state) => state.slides)
+    // useEffect(() => {
+    //     dispatch(getSlidesList('https://jsonplaceholder.typicode.com/users'))
+    // }, [dispatch])
+    // console.log(slides)
 
     const {REACT_APP_SLIDE_CREATION, REACT_APP_SLIDE_EDITION} = process.env
 
