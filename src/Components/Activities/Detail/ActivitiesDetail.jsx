@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState, Fragment } from 'react'
 import Titles from '../../Titles/Titles'
 import ActivitiesContent from './ActivitiesContent'
-
+import { getDataActivityDetail } from '../../../Services/activityService'
 export default function ActivitiesDetail(props) {
 
     const [content, setContent] = useState()
