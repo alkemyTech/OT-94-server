@@ -4,6 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 export const PublicRoute = ({
   isAuthenticated,
+  role,
   component: Component,
   ...rest
 }) => {
@@ -11,7 +12,11 @@ export const PublicRoute = ({
     <Route
       {...rest}
       component={(props) =>
-        !isAuthenticated ? <Component {...props} /> : <Redirect to='/backoffice' />
+        !isAuthenticated || role.toLowerCase() !== 'administrador' ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to='/backoffice' />
+        )
       }
     />
   );
