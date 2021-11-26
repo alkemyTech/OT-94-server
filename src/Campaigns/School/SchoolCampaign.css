@@ -1,0 +1,60 @@
+.header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.campaign-logo{
+    height: 150px;
+    margin-left: 2rem;
+}
+.logo-ONG{
+    height: 200px;
+    margin-right: 1.5rem;
+}
+
+.slogan{
+    font-family: 'Lato', sans-serif;
+    color: black;
+    padding: 0 200px;
+    text-align: center;
+}
+
+/* tabletas */
+@media (max-width: 1000px){
+    .header{
+        display: flex;
+        align-items: center;
+       
+    }
+    .slogan{
+        display: none;
+    }
+    .campaign-logo{
+        height: 130px;
+    }
+    .logo-ONG{
+        float: right;
+        height: 180px;
+    }
+}
+
+/* dispositivos moviles */
+@media (max-width: 360px){
+    .campaign-logo{
+        height: 150px;
+        display:block;
+        margin:auto;
+        margin-top: 3rem;
+    }
+    .logo-ONG{
+        display: none;
+    }
+    
+}
+
+/* smart tv */
+@media screen and (min-width: 1920px) {
+    .header {
+        background-color: rgba(247, 118, 113, 0.164)
+    }
+}
