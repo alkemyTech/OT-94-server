@@ -4,6 +4,7 @@ import categoriesDEMO from './categories.json' //categorias locales hasta tener 
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Alert from '../Skeleton/Alert';
+import { getDataNewsForm } from '../../Services/NewsService';
 // redux
 import {showAlerts} from "../../features/alert/alertSlice";
 import { useDispatch, useSelector } from 'react-redux'; 
