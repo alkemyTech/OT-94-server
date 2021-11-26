@@ -19,6 +19,7 @@ import ProjectsForm from '../Projects/ProjectsForm';
 import Header from '../Skeleton/Header';
 import TestimonialForm from '../Testimonials/TestimonialsForm';
 import UserForm from '../Users/UsersForm';
+import Footer from '../Footer/Footer';
 
 export const AppPublicRoutes = () => {
   const newsMock = [
@@ -62,6 +63,7 @@ export const AppPublicRoutes = () => {
         <Route path='/login' component={LoginForm} />
         <Redirect to='/backoffice' />
       </Switch>
+      <Footer />
     </>
   );
 };

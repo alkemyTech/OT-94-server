@@ -17,6 +17,7 @@ import UsersList from "../Users/UsersList";
 
 export const AppPrivateRoutes = () => {
   return (
+    <>
       <Switch>
           
           <Route path="/backoffice" exact component={ScreenDashboard}/>
@@ -34,7 +35,8 @@ export const AppPrivateRoutes = () => {
           <Route path="/backoffice/organization/edit" exact component={OrganizationForm}/>                                                                
           <Route path="/backoffice/users" component={UsersList} />                                        
 
-         <Redirect to="/" />
-    </Switch>
+        <Redirect to="/" />
+      </Switch>
+    </>
   );
 };
