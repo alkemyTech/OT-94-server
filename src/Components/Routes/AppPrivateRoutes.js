@@ -13,7 +13,7 @@ import OrganizationForm from "../Organization/OrganizationForm";
 import NewsList from "../News/NewsList";
 import NewsList2 from "../News/NewsList2";
 import UsersList from "../Users/UsersList";
-
+import SlidesTable from "../Slides/Table/SlidesTable";
 
 export const AppPrivateRoutes = () => {
   return (
@@ -33,7 +33,7 @@ export const AppPrivateRoutes = () => {
           <Route path="/backoffice/organization" exact component={Organization} />
           <Route path="/backoffice/organization/edit" exact component={OrganizationForm}/>                                                                
           <Route path="/backoffice/users" component={UsersList} />                                        
-
+          <Route path="/backoffice/slides" component={SlidesTable} />
          <Redirect to="/" />
     </Switch>
   );
