@@ -38,9 +38,9 @@ const Home = () => {
                 textoBienvenida === "cargando" ? <Loader /> : <h2 style={{textAlign: "center"}}>{textoBienvenida}</h2>
             }
 
-            {/* {valueAlert.showAlert ?
+            {valueAlert.showAlert ?
                 Alert({
-                    showAlert: valueAlert,
+                    showAlert: false,
                     title: "Hubo un error!",
                     text: "Error al realizar peticion desde el servicio",
                     type: "error",
@@ -49,7 +49,7 @@ const Home = () => {
                     cancelButtonText: "Cancel",
                     showDenyButton: true
                 })
-                : null} */}
+                : null}
             <Carrousel />
         </div>
     )

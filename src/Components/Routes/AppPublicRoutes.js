@@ -33,7 +33,6 @@ export const AppPublicRoutes = () => {
     { title: 'Nosotros', path: '/nosotros' },
     { title: 'Contacto', path: '/contacto' },
     { title: 'Campaña Escolar', path: '/school-campaign' },
-    { title: 'Campaña Toys', path: '/toys-campaign' },
   ];
 
   return (
