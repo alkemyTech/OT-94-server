@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import MockList from './newsMock.json'
 import './NewsList2.css'
-
+import { getDataNewsTable } from '../../Services/NewsService'
 const NewsList2 = () => {
     return (
         <div className="news-list">
