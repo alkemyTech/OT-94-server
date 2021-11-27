@@ -5,7 +5,7 @@ import './BackofficeSidebar.css';
 
 export default function BackofficeSidebar() {
   return (
-    <div class='sidenav'>
+    <div className='sidenav'>
       <Link to='/backoffice'>Backoffice</Link>
       <Link to='/backoffice/home'>Editar home</Link>
       <Link to='/backoffice/news/create'>Crear/editar novedad</Link>
