@@ -7,9 +7,8 @@ const ContactPage = () => {
     return (
         <div>
             <Titles titulo='Contacto' />
-           //Datos de contacto
-           <ContactForm />
-           <LeafletMap />
+            <ContactForm />
+            <LeafletMap />
         </div>
     )
 }

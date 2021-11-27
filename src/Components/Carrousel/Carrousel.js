@@ -4,28 +4,28 @@ import "./carrousel.css";
 const Carrousel = () => {
   const data = [
     {
-      title: "imagen 1",
-      description: "texto mas texto y nose que mas poner texto texto mas texto y nose que mas ponertexto mas texto y nose que mas poner",
+      title: "Título",
+      description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam perspiciatis rem, quidem nemo ut rerum voluptas cupiditate",
       image: "https://images.freeimages.com/images/large-previews/b2d/kiwi-fruit-macros-1313905.jpg"
     },
     {
-      title: "imagen 2",
-      description: "texto mas texto y nose uqe mas poner texto texto mas texto y nose que mas ponertexto mas texto y nose que mas poner",
+      title: "Título",
+      description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam perspiciatis rem, quidem nemo ut rerum voluptas cupiditate",
       image: "https://images.freeimages.com/images/large-previews/047/headed-down-1400175.jpg"
     },
     {
-      title: "imagen 3",
-      description: "texto mas texto y nose uqe mas poner texto texto mas texto y nose que mas ponertexto mas texto y nose que mas poner",
+      title: "Título",
+      description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam perspiciatis rem, quidem nemo ut rerum voluptas cupiditater",
       image: "https://images.freeimages.com/images/large-previews/bd7/falloxbow-1058032.jpg"
     },
     {
-      title: "imagen 4",
-      description: "texto mas texto y nose uqe mas poner texto texto mas texto y nose que mas ponertexto mas texto y nose que mas poner",
+      title: "Título",
+      description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam perspiciatis rem, quidem nemo ut rerum voluptas cupiditate",
       image: "https://images.freeimages.com/images/large-previews/b8d/irish-landscape-1393571.jpg"
     },
     {
-      title: "imagen 5",
-      description: "texto mas texto y nose uqe mas poner texto texto mas texto y nose que mas ponertexto mas texto y nose que mas poner ",
+      title: "Título",
+      description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam perspiciatis rem, quidem nemo ut rerum voluptas cupiditate",
       image: "https://media.istockphoto.com/photos/dunluce-castle-picture-id492959422?b=1&k=20&m=492959422&s=170x170&h=81undclnuMxXsOEoWbS0z-4VxfQ86gJ6UHbpd2RTk98="
     }
   ];
