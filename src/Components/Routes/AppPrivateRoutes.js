@@ -13,9 +13,9 @@ import OrganizationForm from "../Organization/OrganizationForm";
 import NewsList from "../News/NewsList";
 import NewsList2 from "../News/NewsList2";
 import UsersList from "../Users/UsersList";
+import SlidesTable from "../Slides/Table/SlidesTable";
 import CategoriesTable from "../Categories/Table/CategoriesTable";
 import BackofficeSidebar from "../Backoffice/BackofficeSidebar";
-
 import ActivitiesTable from "../Activities/Table/ActivitiesTable";
 
 export const AppPrivateRoutes = () => {
@@ -37,8 +37,9 @@ export const AppPrivateRoutes = () => {
           <Route path="/backoffice/members" exact component={MembersList} />
           <Route path="/backoffice/members/edit" exact component={MemberFormCreateEdit} />
           <Route path="/backoffice/organization" exact component={Organization} />
-          <Route path="/backoffice/organization/edit" exact component={OrganizationForm} />
-          <Route path="/backoffice/users" component={UsersList} />
+          <Route path="/backoffice/organization/edit" exact component={OrganizationForm}/>                                                                
+          <Route path="/backoffice/users" component={UsersList} />                                        
+          <Route path="/backoffice/slides" component={SlidesTable} />
           <Route path="/backoffice/categories" component={CategoriesTable} />
           <Route path ="/backoffice/activities" component={ActivitiesTable} />
           <Redirect to="/" />
