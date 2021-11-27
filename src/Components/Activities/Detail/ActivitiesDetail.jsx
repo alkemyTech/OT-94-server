@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState, Fragment } from 'react'
 import Titles from '../../Titles/Titles'
 import ActivitiesContent from './ActivitiesContent'
+import { getDataActivityDetail } from '../../../Services/activityService'
 // llamada a Api con redux thunk Activiti
 // import { getListActivities } from '../../../features/activity/activitySlice'
 // import { useDispatch, useSelector } from 'react-redux'
