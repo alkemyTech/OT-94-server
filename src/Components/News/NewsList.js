@@ -1,8 +1,7 @@
 import React from 'react';
 import '../CardListStyles.css';
 import Titles from '../Titles/Titles';
-
-import getDataNewsTable from "../../Services/privateApiService" //ticket emiliano conectar news con service
+import { getDataNewsList } from '../../Services/NewsService'; //cambie table por List porque es una lista
 
 const NewsList = ({ novedades }) => {
 
