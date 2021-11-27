@@ -12,7 +12,7 @@ const Home = () => {
     const valueAlert = useSelector(state => state.alert);
     const dispatch = useDispatch();
 
-    const welcomeText = 'texto de bienvenida example';
+    const welcomeText = 'Bienvenidos al sitio web de Somos Mas';
 
     const [textoBienvenida, setTextoBienvenida] = useState("cargando")
 
@@ -35,10 +35,10 @@ const Home = () => {
     return (
         <div>
             {
-                textoBienvenida === "cargando" ? <Loader /> : <h2>{textoBienvenida}</h2>
+                textoBienvenida === "cargando" ? <Loader /> : <h2 style={{textAlign: "center"}}>{textoBienvenida}</h2>
             }
 
-            {valueAlert.showAlert ?
+            {/* {valueAlert.showAlert ?
                 Alert({
                     showAlert: valueAlert,
                     title: "Hubo un error!",
@@ -49,10 +49,7 @@ const Home = () => {
                     cancelButtonText: "Cancel",
                     showDenyButton: true
                 })
-                : null}
-            <div>//placeholder
-            //slider  //listado de novedades
-            </div>
+                : null} */}
             <Carrousel />
         </div>
     )
