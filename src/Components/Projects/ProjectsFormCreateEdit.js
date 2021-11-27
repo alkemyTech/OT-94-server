@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "../FormStyles.css";
-
+import Fade from "react-reveal/Fade";
 const ProjectsFormCreateEdit = ({ props = {} }) => {
   const [initialValues, setInitialValues] = useState({
     title: "",
@@ -61,7 +61,7 @@ const ProjectsFormCreateEdit = ({ props = {} }) => {
       return false;
     }
     if (!changedValues.image.includes("jpg") &&
-        !changedValues.image.includes("png")) {
+      !changedValues.image.includes("png")) {
       return false;
     }
     return true;
@@ -70,7 +70,7 @@ const ProjectsFormCreateEdit = ({ props = {} }) => {
 
   function isValidDueDate() {
     let dateString = changedValues.due_date;
-  
+
     if (!dateString) {
       return true;
     }
@@ -106,35 +106,35 @@ const ProjectsFormCreateEdit = ({ props = {} }) => {
       alert("Due date is invalid");
       return;
     }
-  
+
     if (objectReceived) {
       axios.patch(`/projects/${props.id}`, changedValues)
-           .then(function (response) {
-                console.log(`project changed ${response}`);
-                setInitialValues({ ...changedValues });
-                setFormModified(false);
-                alert("Project modified");
-            })
-           .catch(function (error) {
-                console.log(`project cannot be changed ${error}`);
+        .then(function (response) {
+          console.log(`project changed ${response}`);
+          setInitialValues({ ...changedValues });
+          setFormModified(false);
+          alert("Project modified");
+        })
+        .catch(function (error) {
+          console.log(`project cannot be changed ${error}`);
         });
     } else {
       axios.post(`/projects/create`, changedValues)
-           .then(function (response) {
-                 console.log(`project saved ${response}`);
-                 setInitialValues({ ...changedValues });
-                 setFormModified(false);              
-                 alert("Project saved");
-            })
-           .catch(function (error) {
-                  console.log(`project cannot be saved ${error}`);
-            });
-    }    
+        .then(function (response) {
+          console.log(`project saved ${response}`);
+          setInitialValues({ ...changedValues });
+          setFormModified(false);
+          alert("Project saved");
+        })
+        .catch(function (error) {
+          console.log(`project cannot be saved ${error}`);
+        });
+    }
   };
 
   useEffect(() => {
     if (typeof props.id === "undefined") {
-      objectReceived = false;      
+      objectReceived = false;
     } else {
       setInitialValues({ ...initialValues, title: props.title });
       setInitialValues({ ...initialValues, description: props.description });
@@ -147,46 +147,48 @@ const ProjectsFormCreateEdit = ({ props = {} }) => {
   }, []);
 
   return (
-    <form className="form-container" onSubmit={handleSubmit}>
-      <input
-        className="input-field"
-        type="text"
-        name="title"
-        value={changedValues.title}
-        onChange={handleChange}
-        placeholder="Title"
-        required
-      ></input>
-      <input
-        className="input-field"
-        type="text"
-        name="description"
-        value={changedValues.description}
-        onChange={handleChange}
-        placeholder="Write a description about the project"
-        required
-      ></input>
-      <input
-        className="input-field"
-        type="text"
-        name="image"
-        value={changedValues.image}
-        onChange={handleChange}
-        placeholder="Select an image"
-        required
-      ></input>
-      <input 
-        className="input-field"
-        type="date"
-        name="due_date"
-        value={changedValues.due_date}
-        onChange={handleChange}
-        placeholder="Select an due date"
-      ></input>
-      <button className="submit-btn" type="submit">
-        Save Project
-      </button>
-    </form>
+    <Fade right>
+      <form className="form-container" onSubmit={handleSubmit}>
+        <input
+          className="input-field"
+          type="text"
+          name="title"
+          value={changedValues.title}
+          onChange={handleChange}
+          placeholder="Title"
+          required
+        ></input>
+        <input
+          className="input-field"
+          type="text"
+          name="description"
+          value={changedValues.description}
+          onChange={handleChange}
+          placeholder="Write a description about the project"
+          required
+        ></input>
+        <input
+          className="input-field"
+          type="text"
+          name="image"
+          value={changedValues.image}
+          onChange={handleChange}
+          placeholder="Select an image"
+          required
+        ></input>
+        <input
+          className="input-field"
+          type="date"
+          name="due_date"
+          value={changedValues.due_date}
+          onChange={handleChange}
+          placeholder="Select an due date"
+        ></input>
+        <button className="submit-btn" type="submit">
+          Save Project
+        </button>
+      </form>
+    </Fade>
   );
 };
 

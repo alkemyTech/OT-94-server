@@ -4,6 +4,7 @@ import categoriesDEMO from './categories.json' //categorias locales hasta tener 
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Alert from '../Skeleton/Alert';
+import Fade from "react-reveal/Fade"
 import { getDataNewsForm } from '../../Services/NewsService';
 // redux
 import {showAlerts} from "../../features/alert/alertSlice";
@@ -115,8 +116,9 @@ const NewsForm = () => {
 
 
     return (
-        <div >
-            <h1 > Formulario Edición / Creación de Novedades </h1>
+        <div>
+            <Fade right>
+            <h1> Formulario Edición / Creación de Novedades </h1>
 
             <form className="form-container"
                 onSubmit={recieveNews ? sendData : sendNewData} >
@@ -164,6 +166,7 @@ const NewsForm = () => {
                 <button className="submit-btn" type="submit" > Send </button>
 
             </form>
+            </Fade>
             {valueAlert.showAlert ?  
                 Alert({
                     showAlert: valueAlert,
@@ -176,6 +179,7 @@ const NewsForm = () => {
                     showDenyButton: true
                 }) 
             : null }
+            
         </div>
     );
 }

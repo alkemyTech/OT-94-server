@@ -2,9 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import MockList from './membersMock.json' //fotos sacas de random user generator
 import './MemberList.css'
-
+import Fade from "react-reveal/Fade";
 const MembersList = () => {
     return (
+        <Fade right>
         <div className="members-list">
             <Link to='/backoffice/members/create'>link a....crear miembro</Link>
             <h2>Miembros de la ONG </h2>
@@ -36,6 +37,7 @@ const MembersList = () => {
                 </tbody>
             </table>
         </div>
+        </Fade>
     )
 }
 

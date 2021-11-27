@@ -6,7 +6,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Todo from "./Todo";
 import "./styles.css";
-
+import Fade from "react-reveal/Fade";
 const MemberFormCreateEdit = ({ props = {} }) => {
 
   const {REACT_APP_MEMBERS_EDITION} = process.env;
@@ -140,7 +140,7 @@ const MemberFormCreateEdit = ({ props = {} }) => {
   }, []);
 
   return (
-    <>
+    <Fade right>
       <h1>Member Edit</h1>
       <form className="form-container" onSubmit={formik.handleSubmit}>
         <input
@@ -213,7 +213,7 @@ const MemberFormCreateEdit = ({ props = {} }) => {
           Send
         </button>
       </form>
-    </>
+    </Fade>
   );
 };
 

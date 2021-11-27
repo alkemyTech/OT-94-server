@@ -2,9 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import MockList from './newsMock.json'
 import './NewsList2.css'
-import { getDataNewsTable } from '../../Services/NewsService'
+import { getDataNewsTable } from '../../Services/NewsService';
+import Fade from "react-reveal/Fade";
 const NewsList2 = () => {
     return (
+        <Fade right>
         <div className="news-list">
             <Link to='/backoffice/news/create'>link a....crear novedad</Link>
             <h2>Novedades</h2>
@@ -38,6 +40,7 @@ const NewsList2 = () => {
                 </tbody>
             </table>
         </div>
+        </Fade>
     )
 }
 
