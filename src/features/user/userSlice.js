@@ -5,6 +5,7 @@ const initialState = {
   id: '',
   token: '',
   authenticated: false,
+  role: '',
 };
 export const userSlice = createSlice({
   name: 'authentication',
@@ -17,6 +18,7 @@ export const userSlice = createSlice({
         id: action.payload.id,
         token: action.payload.token,
         authenticated: true,
+        role: action.payload.role,
       };
       return state;
     },
