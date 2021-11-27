@@ -3,7 +3,7 @@ import axios from 'axios';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import '../FormStyles.css';
-
+import { getDataActivityForm } from '../../Services/activityService';
 const ActivitiesForm = () => {
 
     const { REACT_APP_URL_ACTIVITIES } = process.env

@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Titles from '../../Titles/Titles'
 import Alert from '../../Skeleton/Alert';
+import { getDataNewsDetail } from '../../../Services/NewsService';
 // redux
 import { showAlerts } from '../../../features/alert/alertSlice';
 import { useDispatch, useSelector } from 'react-redux'; 

@@ -17,6 +17,7 @@ const Get = async (route, id, config) => {
     try {
         const results = await axios.get(`${route}/${id}`, config);
         console.log(results.data)
+        return results
     } catch (err) {
         console.log(err.message)
     }
@@ -62,4 +63,18 @@ const Post = async (route, body) => {
     }
 }
 
-export { Get, Put, Patch, Post, Delete }
+const IsTokenConnected = () => {
+    let token = localStorage.getItem("token");
+    if (token !== null) {
+        let data = {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        }
+        return data;
+    } else {
+        return console.log("Error, no hay token")
+    }
+}
+
+export { Get, Put, Patch, Post, Delete, IsTokenConnected }
