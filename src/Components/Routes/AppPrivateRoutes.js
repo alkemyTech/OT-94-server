@@ -13,11 +13,15 @@ import OrganizationForm from "../Organization/OrganizationForm";
 import NewsList from "../News/NewsList";
 import NewsList2 from "../News/NewsList2";
 import UsersList from "../Users/UsersList";
+import BackofficeSidebar from "../Backoffice/BackofficeSidebar";
 
 
 export const AppPrivateRoutes = () => {
   return (
-      <Switch>
+    <>
+      <BackofficeSidebar />
+      <div style={{marginLeft: "170px"}}>
+        <Switch>
           
           <Route path="/backoffice" exact component={ScreenDashboard}/>
           <Route path="/backoffice/home" exact component={HomeFormEdit} />
@@ -34,7 +38,10 @@ export const AppPrivateRoutes = () => {
           <Route path="/backoffice/organization/edit" exact component={OrganizationForm}/>                                                                
           <Route path="/backoffice/users" component={UsersList} />                                        
 
-         <Redirect to="/" />
-    </Switch>
+          <Redirect to="/" />
+        </Switch>
+      </div>
+    </>
+      
   );
 };
