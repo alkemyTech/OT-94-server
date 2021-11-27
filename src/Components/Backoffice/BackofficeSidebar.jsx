@@ -20,7 +20,9 @@ export default function BackofficeSidebar() {
         Editar datos de la organización
       </Link>
       <Link to='/backoffice/users'>Usuarios</Link>
-      <LogoutButton />
+      <div className='sidenavLogout'>
+        <LogoutButton />
+      </div>
     </div>
   );
 }
