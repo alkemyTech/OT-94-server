@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "../FormStyles.css";
 import { useFormik } from "formik";
 import Alert from '../Skeleton/Alert';
+import Fade from "react-reveal/Fade";
 // redux
 import { showAlerts } from "../../features/alert/alertSlice";
 import { useDispatch, useSelector } from 'react-redux';
@@ -116,6 +117,7 @@ const HomeFormEdit = ({ props }) => {
 
   return (
     <>
+      <Fade right>
       <form className="form-container" onSubmit={formik.handleSubmit}>
         <textarea
           className="input-field input-textarea"
@@ -206,6 +208,7 @@ const HomeFormEdit = ({ props }) => {
           Send
         </button>
       </form>
+      </Fade>
       {valueAlert.showAlert ?
         Alert({
           showAlert: valueAlert,

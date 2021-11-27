@@ -6,7 +6,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Todo from './Todo';
 import './styles.css';
-
+import Fade from "react-reveal/Fade"
 const OrganizationForm = ({ props }) => {
   const URL_ORGANIZATION_EDITION =
     process.env.REACT_APP_URL_ORGANIZATION_EDITION;
@@ -142,6 +142,7 @@ const OrganizationForm = ({ props }) => {
   }, []);
 
   return (
+    <Fade right>
     <form className='form-container' onSubmit={formik.handleSubmit}>
       <input
         className='input-field'
@@ -221,6 +222,7 @@ const OrganizationForm = ({ props }) => {
         Send
       </button>
     </form>
+    </Fade>
   );
 };
 

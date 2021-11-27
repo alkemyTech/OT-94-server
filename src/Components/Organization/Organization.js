@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import "./organization.css";
+import Fade from "react-reveal/Fade"
 const Organization = () => {
     const data = {
         name: 'Nombre de la empresa',
@@ -8,16 +9,18 @@ const Organization = () => {
         shortDescription: 'Descripcion de la empresa' 
     }
     return (
-        <div className="container--organization">
-            {Object.values(data).filter(data => data !== "").length !== 0 ? 
-                    <section className="container--organization-data">    
-                        <h1 className="title-organization">{data.name}</h1>
-                        <img className="image-organization" src={data.image} alt={`${data.name}`} />
-                        <p className="shortDescription-organization">{data.shortDescription}</p>
-                    </section>
-            : <h1 className="title-organization">No se encontraron datos de la empresa</h1>}
-            <Link className="link" to="/backoffice/organization/edit">Formulario de edicion</Link>
-        </div>
+        <Fade right>
+            <div className="container--organization">
+                {Object.values(data).filter(data => data !== "").length !== 0 ? 
+                        <section className="container--organization-data">    
+                            <h1 className="title-organization">{data.name}</h1>
+                            <img className="image-organization" src={data.image} alt={`${data.name}`} />
+                            <p className="shortDescription-organization">{data.shortDescription}</p>
+                        </section>
+                : <h1 className="title-organization">No se encontraron datos de la empresa</h1>}
+                <Link className="link" to="/backoffice/organization/edit">Formulario de edicion</Link>
+            </div>
+        </Fade>
     )
 }
 

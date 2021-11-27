@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../FormStyles.css";
 import { useFormik } from "formik";
-
+import Fade from "react-reveal/Fade";
 import UsersService from "../../Services/UsersService";
 
 const UserForm = ({ props = {} }) => {
@@ -151,6 +151,7 @@ const UserForm = ({ props = {} }) => {
   }, []);
 
   return (
+    <Fade right>
     <form className="form-container" onSubmit={formik.handleSubmit}>
       <input
         className="input-field"
@@ -220,6 +221,7 @@ const UserForm = ({ props = {} }) => {
         Send
       </button>
     </form>
+    </Fade>
   );
 };
 

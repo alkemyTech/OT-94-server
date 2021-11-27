@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
+import Fade from "react-reveal/Fade";
 import '../FormStyles.css';
 // import { getSlidesList } from "../../features/slides/slidesSlice";
 // import { useDispatch, useSelector } from 'react-redux';
@@ -23,6 +23,7 @@ export default function SlideForm() {
     let objectRecieved = false;
 
     return(
+        <Fade right>
         <div>
             <Formik
                 initialValues={{
@@ -137,6 +138,6 @@ export default function SlideForm() {
                 )}
             </Formik>
         </div>
-        
+        </Fade>
     )
 }
