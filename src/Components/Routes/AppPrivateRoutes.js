@@ -16,6 +16,7 @@ import UsersList from "../Users/UsersList";
 import CategoriesTable from "../Categories/Table/CategoriesTable";
 import BackofficeSidebar from "../Backoffice/BackofficeSidebar";
 
+import ActivitiesTable from "../Activities/Table/ActivitiesTable";
 
 export const AppPrivateRoutes = () => {
   return (
@@ -39,10 +40,10 @@ export const AppPrivateRoutes = () => {
           <Route path="/backoffice/organization/edit" exact component={OrganizationForm} />
           <Route path="/backoffice/users" component={UsersList} />
           <Route path="/backoffice/categories" component={CategoriesTable} />
+          <Route path ="/backoffice/activities" component={ActivitiesTable} />
           <Redirect to="/" />
         </Switch>
       </div>
     </>
-
   );
 };
