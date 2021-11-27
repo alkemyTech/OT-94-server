@@ -17,6 +17,7 @@ const Get = async (route, id, config) => {
     try {
         const results = await axios.get(`${route}/${id}`, config);
         console.log(results.data)
+        return results
     } catch (err) {
         console.log(err.message)
     }

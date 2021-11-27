@@ -5,6 +5,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 export const PrivateRoute = ({
   isAuthenticated,
+  role,
   component: Component,
   ...rest
 }) => {
@@ -16,7 +17,11 @@ export const PrivateRoute = ({
       <Route
         {...rest}
         component={(props) =>
-          isAuthenticated ? <Component {...props} /> : <Redirect to='/' />
+          isAuthenticated && role.toLowerCase() === 'administrador' ? (
+            <Component {...props} />
+          ) : (
+            <Redirect to='/' />
+          )
         }
       />
     </>
@@ -25,5 +30,6 @@ export const PrivateRoute = ({
 
 PrivateRoute.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
+  role: PropTypes.string.isRequired,
   component: PropTypes.func.isRequired,
 };
