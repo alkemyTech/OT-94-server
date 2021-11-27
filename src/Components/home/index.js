@@ -1,14 +1,20 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Carrousel from '../Carrousel/Carrousel'
-import Alert from '../Skeleton/Alert'
 import Loader from '../Skeleton/Loader'
+import Alert from '../Skeleton/Alert'
+// redux
+import { showAlerts } from '../../features/alert/alertSlice'
+import { useDispatch, useSelector } from 'react-redux';
 
 const Home = () => {
+    // redux
+    const valueAlert = useSelector(state => state.alert);
+    const dispatch = useDispatch();
+
     const welcomeText = 'texto de bienvenida example';
 
     const [textoBienvenida, setTextoBienvenida] = useState("cargando")
-    const [huboError, setHuboError] = useState(false)
 
     useEffect(() => {
 
@@ -17,8 +23,7 @@ const Home = () => {
                 const texto = await axios.get("url")
                 setTextoBienvenida(texto.data)
             } catch (err) {
-                console.log(err)
-                setHuboError(true)
+                dispatch(showAlerts(true))
                 setTextoBienvenida(welcomeText)
             }
         }
@@ -32,9 +37,19 @@ const Home = () => {
             {
                 textoBienvenida === "cargando" ? <Loader /> : <h2>{textoBienvenida}</h2>
             }
-            {
-                huboError && <Alert />
-            }
+
+            {valueAlert.showAlert ?
+                Alert({
+                    showAlert: valueAlert,
+                    title: "Hubo un error!",
+                    text: "Error al realizar peticion desde el servicio",
+                    type: "error",
+                    cancelButton: false,
+                    confirmButtonText: "OK",
+                    cancelButtonText: "Cancel",
+                    showDenyButton: true
+                })
+                : null}
             <div>//placeholder
             //slider  //listado de novedades
             </div>

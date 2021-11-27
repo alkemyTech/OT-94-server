@@ -2,8 +2,16 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../FormStyles.css";
 import { useFormik } from "formik";
+import Alert from '../Skeleton/Alert';
+// redux
+import { showAlerts } from "../../features/alert/alertSlice";
+import { useDispatch, useSelector } from 'react-redux';
 
 const HomeFormEdit = ({ props }) => {
+  // redux
+  const valueAlert = useSelector(state => state.alert);
+  const dispatch = useDispatch();
+
   const mockDataHome = {
     welcome: "Mensaje de bienvenida",
     slideImage1: "",
@@ -86,7 +94,7 @@ const HomeFormEdit = ({ props }) => {
         alert("Home modified");
       })
       .catch(function (error) {
-        console.log(`Home content cannot be modified - error: ${error}`);
+        dispatch(showAlerts(true))
       });
   };
 
@@ -107,96 +115,110 @@ const HomeFormEdit = ({ props }) => {
   }, []);
 
   return (
-    <form className="form-container" onSubmit={formik.handleSubmit}>
-      <textarea
-        className="input-field input-textarea"
-        name="welcome"
-        rows="3"
-        minLength="20"
-        placeholder="Texto de Bienvenida"
-        onChange={formik.handleChange}
-        defaultValue={formik.values.welcome || ""}
-      ></textarea>
-      {formik.touched.welcome && formik.errors.welcome ? (
-        <div className="input-error-message">{formik.errors.welcome}</div>
-      ) : null}
+    <>
+      <form className="form-container" onSubmit={formik.handleSubmit}>
+        <textarea
+          className="input-field input-textarea"
+          name="welcome"
+          rows="3"
+          minLength="20"
+          placeholder="Texto de Bienvenida"
+          onChange={formik.handleChange}
+          defaultValue={formik.values.welcome || ""}
+        ></textarea>
+        {formik.touched.welcome && formik.errors.welcome ? (
+          <div className="input-error-message">{formik.errors.welcome}</div>
+        ) : null}
 
-      <input
-        className="select-file"
-        type="file"
-        name="slideImage1"
-        value={formik.values.slideImage1 || ""}
-        onChange={formik.handleChange}
-        placeholder="image.jpg/.png"
-      ></input>
-      {formik.touched.slideImage1 && formik.errors.slideImage1 ? (
-        <p className="input-error-message">{formik.errors.slideImage1}</p>
-      ) : null}
+        <input
+          className="select-file"
+          type="file"
+          name="slideImage1"
+          value={formik.values.slideImage1 || ""}
+          onChange={formik.handleChange}
+          placeholder="image.jpg/.png"
+        ></input>
+        {formik.touched.slideImage1 && formik.errors.slideImage1 ? (
+          <p className="input-error-message">{formik.errors.slideImage1}</p>
+        ) : null}
 
-      <input
-        className="input-field"
-        type="text"
-        name="slideText1"
-        value={formik.values.slideText1 || ""}
-        onChange={formik.handleChange}
-        placeholder="Descripción Slide 1"
-      ></input>
-      {formik.touched.slideText1 && formik.errors.slideText1 ? (
-        <p className="input-error-message">{formik.errors.slideText1}</p>
-      ) : null}
+        <input
+          className="input-field"
+          type="text"
+          name="slideText1"
+          value={formik.values.slideText1 || ""}
+          onChange={formik.handleChange}
+          placeholder="Descripción Slide 1"
+        ></input>
+        {formik.touched.slideText1 && formik.errors.slideText1 ? (
+          <p className="input-error-message">{formik.errors.slideText1}</p>
+        ) : null}
 
-      <input
-        className="select-file"
-        type="file"
-        name="slideImage2"
-        value={formik.values.slideImage2 || ""}
-        onChange={formik.handleChange}
-        placeholder="image.jpg/.png"
-      ></input>
-      {formik.touched.slideImage2 && formik.errors.slideImage2 ? (
-        <p className="input-error-message">{formik.errors.slideImage2}</p>
-      ) : null}
+        <input
+          className="select-file"
+          type="file"
+          name="slideImage2"
+          value={formik.values.slideImage2 || ""}
+          onChange={formik.handleChange}
+          placeholder="image.jpg/.png"
+        ></input>
+        {formik.touched.slideImage2 && formik.errors.slideImage2 ? (
+          <p className="input-error-message">{formik.errors.slideImage2}</p>
+        ) : null}
 
-      <input
-        className="input-field"
-        type="text"
-        name="slideText2"
-        value={formik.values.slideText2 || ""}
-        onChange={formik.handleChange}
-        placeholder="Descripción Slide 2"
-      ></input>
-      {formik.touched.slideText2 && formik.errors.slideText2 ? (
-        <p className="input-error-message">{formik.errors.slideText2}</p>
-      ) : null}
+        <input
+          className="input-field"
+          type="text"
+          name="slideText2"
+          value={formik.values.slideText2 || ""}
+          onChange={formik.handleChange}
+          placeholder="Descripción Slide 2"
+        ></input>
+        {formik.touched.slideText2 && formik.errors.slideText2 ? (
+          <p className="input-error-message">{formik.errors.slideText2}</p>
+        ) : null}
 
-      <input
-        className="select-file"
-        type="file"
-        name="slideImage3"
-        value={formik.values.slideImage3 || ""}
-        onChange={formik.handleChange}
-        placeholder="image.jpg/.png"
-      ></input>
-      {formik.touched.slideImage3 && formik.errors.slideImage3 ? (
-        <p className="input-error-message">{formik.errors.slideImage3}</p>
-      ) : null}
+        <input
+          className="select-file"
+          type="file"
+          name="slideImage3"
+          value={formik.values.slideImage3 || ""}
+          onChange={formik.handleChange}
+          placeholder="image.jpg/.png"
+        ></input>
+        {formik.touched.slideImage3 && formik.errors.slideImage3 ? (
+          <p className="input-error-message">{formik.errors.slideImage3}</p>
+        ) : null}
 
-      <input
-        className="input-field"
-        type="text"
-        name="slideText3"
-        value={formik.values.slideText3 || ""}
-        onChange={formik.handleChange}
-        placeholder="Descripción Slide 3"
-      ></input>
-      {formik.touched.slideText3 && formik.errors.slideText3 ? (
-        <p className="input-error-message">{formik.errors.slideText3}</p>
-      ) : null}
+        <input
+          className="input-field"
+          type="text"
+          name="slideText3"
+          value={formik.values.slideText3 || ""}
+          onChange={formik.handleChange}
+          placeholder="Descripción Slide 3"
+        ></input>
+        {formik.touched.slideText3 && formik.errors.slideText3 ? (
+          <p className="input-error-message">{formik.errors.slideText3}</p>
+        ) : null}
 
-      <button className="submit-btn" type="submit">
-        Send
-      </button>
-    </form>
+        <button className="submit-btn" type="submit">
+          Send
+        </button>
+      </form>
+      {valueAlert.showAlert ?
+        Alert({
+          showAlert: valueAlert,
+          title: "Hubo un error!",
+          text: "Error al realizar peticion desde el servicio",
+          type: "error",
+          cancelButton: false,
+          confirmButtonText: "OK",
+          cancelButtonText: "Cancel",
+          showDenyButton: true
+        })
+        : null}
+    </>
   );
 };
 
