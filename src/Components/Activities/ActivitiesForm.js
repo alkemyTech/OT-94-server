@@ -7,7 +7,8 @@ import Alert from '../Skeleton/Alert';
 // redux
 import {showAlerts} from "../../features/alert/alertSlice";
 import { useDispatch, useSelector } from 'react-redux'; 
-
+// api service
+import { getDataActivityForm } from '../../Services/activityService';
 const ActivitiesForm = () => {
    
     const { REACT_APP_URL_ACTIVITIES } = process.env;
