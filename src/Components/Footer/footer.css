@@ -1,58 +1,89 @@
+html {
+    min-height: 100%;
+    position: relative;
+  }
+  body {
+    margin: 0;
+    margin-bottom:199px;
+  }
 .footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
+    background-color: #292927;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+}
+
+.logo-somos-mas{
+  height: 114px;
+}
+
+.logo-somos-mas img{
+  width: 180px;
+  position: relative;
+  margin-top: -27px;
 }
 
 .footer-navigation {
-    position: relative;
-    bottom: 40px;
+    
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-bottom: 0.5rem;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-bottom: 2px solid rgb(14, 13, 13);
+    
 }
 
 .footer-navigation a {
-    display: block;
+ 
     margin-bottom: 0.5rem;
     text-decoration: none;
-    color: black;
+    color: #9AC9FB;
+    
 }
 
 .footer-social {
-    position: relative;
-    bottom: 40px;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 11px;
 }
 
 .footer-social a {
     text-decoration: none;
-    color: black;
+    color:rgb(14, 13, 13);
+    
 }
 
-@media screen and (min-width: 1000px) {
-    .footer {
-        flex-direction: row;
-        justify-content: space-around;
-    }
-
-    .footer-navigation {
-        position: unset;
-        bottom: 0;
-    }
-
-    .footer-social {
-        position: unset;
-        bottom: 0;
-        flex-direction: column;
-        width: unset;
-    }
-
-    .footer-social a {
-        display: block;
-        margin-bottom: 0.5rem;
-    }
+.footer svg {
+    width: 30px;
+    margin: 10px 10px 3px;
+    
 }
+
+
+ @media (max-width: 650px) {
+   .logo-somos-mas {
+      display: none;
+   }
+ 
+   .footer-navigation {
+       flex-direction: column;
+       border-bottom: 1px solid #000;
+       margin-top: 10px;
+   }
+   .footer svg {
+    width: 20px;
+    margin: 5px 10px;
+    
+}
+
+.footer-social {
+  margin-left: -5px;
+}
+body{
+  margin-bottom:240px
+}
+
+} 
