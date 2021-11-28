@@ -1,58 +1,81 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Rubik&display=swap');
-
-.users-list table {            
-    width: 480px; text-align: left;    
-    border-collapse: collapse; 
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Rubik&display=swap'); */
+.container--table {
+    font-family: 'Lato', sans-serif;
+    display: block;
+    width: 100%;
+    min-height: 100vh;
 }
 
-.users-list th {        
-    text-transform: uppercase; 
-    font-family: 'Lato', sans-serif;  
-    padding: 8px;     
-    background:#9AC9FB; 
-    border-bottom: 1px solid #fff; 
-    color: rgb(255, 255, 255); 
+.link--table {
+    display: block;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 24px;
+    color: white;
+    background-color: #9AC9FB;  
 }
-    
-
-.users-list td {    
-    text-transform: capitalize;
-    font-family: 'Rubik', sans-serif;
-    padding: 8px;     
-    background: #FAFA88;     
-    border-bottom: 1px solid #fff;
-    color: rgb(0, 0, 0);    
-    border-top: 1px solid transparent; 
+.table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
 }
-
-.users-list td img {
+@media screen and (min-width:768px) {
+    .table {
+        width: 70%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+.table--container-header {
+    background-color: #9AC9FB;
+}
+.header-table {
+    width: 100%;
+}
+.header--text {
+    padding: 10px;
+    color: white;
+}
+.body {
+    background-color: #FAFA88;
+    height: 120px;
+}
+@media screen and (min-width: 768px) {
+    .body:hover {
+        background-color: #9AC9FB;
+        transition: .5s background-color;
+    }
+}
+.body--image {
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    box-shadow: black;
-    box-shadow: 0 4px 8px 0 #55552967, 0 6px 20px 0 #a0a03667;
 }
 
-.users-list tr:hover td { 
-    background: #9AC9FB; 
-    color: #2c4d70; 
+.container--buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
-.users-list button{
-    padding: 0.3rem;
-    font-family: 'Rubik', sans-serif;
-    border-radius: 5px;
-    margin: 0.1rem;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
+.body-button {
+    width: 70%;
+    margin-bottom: 10px;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 6px;
+    outline: 0;
+    border: 2px solid #9AC9FB;
     cursor: pointer;
 }
 
-.users-list button {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #609fe2;
-}
-
-.users-list button:hover {
-    background-color: #609fe2;
-    color: white;
+.title--error {
+    text-align: center;
 }

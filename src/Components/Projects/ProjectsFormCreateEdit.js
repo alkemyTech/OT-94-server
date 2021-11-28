@@ -148,6 +148,7 @@ const ProjectsFormCreateEdit = ({ props = {} }) => {
 
   return (
     <Fade right>
+      <h1 className="title">Crear proyectos</h1>
       <form className="form-container" onSubmit={handleSubmit}>
         <input
           className="input-field"

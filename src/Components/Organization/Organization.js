@@ -13,7 +13,7 @@ const Organization = () => {
             <div className="container--organization">
                 {Object.values(data).filter(data => data !== "").length !== 0 ? 
                         <section className="container--organization-data">    
-                            <h1 className="title-organization">{data.name}</h1>
+                            <h1 className="title-organization title">{data.name}</h1>
                             <img className="image-organization" src={data.image} alt={`${data.name}`} />
                             <p className="shortDescription-organization">{data.shortDescription}</p>
                         </section>

@@ -118,6 +118,7 @@ const HomeFormEdit = ({ props }) => {
   return (
     <>
       <Fade right>
+        <h1 className="title">Editar home</h1>
       <form className="form-container" onSubmit={formik.handleSubmit}>
         <textarea
           className="input-field input-textarea"

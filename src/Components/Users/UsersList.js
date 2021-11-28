@@ -4,39 +4,49 @@ import MockList from './usersMock.json'
 import './UsersList.css'
 import Fade from "react-reveal/Fade"
 const UsersList = () => {
+    
+    const eliminateData = () => {
+        console.log("Eliminar");
+    }
+
+    const editData = () => {
+        console.log("Editar");
+    }
+
     return (
-        <div className="users-list">
+        <div className="container--table">
             <Fade right>
-                <Link to='/backoffice/users/create'>link a....crear usuario</Link>
-                <h2>Usuarios existentes</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>name</th>
-                            <th>email</th>
-                            <th>actions</th>
+            <h1 className="title">Usuarios</h1>
+        <Link className="link--table" to="/backoffice/create-user">Crear usuario</Link>
+
+        {MockList.length !== 0 ? 
+                <table className="table">
+                    <thead className="table--container-header">
+                        <tr className="header-table">
+                            <th className="header--text">NOMBRE</th>
+                            <th className="header--text">EMAIL</th>
+                            <th className="header--text">BOTONES</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {MockList.map((user) => (
-                            <tr key={user.id}>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
+                    <tbody className="table--container-body">
+                        {MockList.map((dato, i) => 
+                            <tr className="body" key={i}>
+                                <td className="body--text">{dato.name}</td>
+                                <td className="container--body-image">{dato.email}</td>
+                               
                                 <td>
-                                    <div>
-                                        <button  >Eliminar</button>
-                                    </div>
-                                    <div>
-                                        <button>Editar</button>
+                                    <div className="container--buttons">
+                                        <button className="body-button" onClick={editData}>Editar</button>
+                                        <button className="body-button" onClick={eliminateData}>Eliminar</button>
                                     </div>
                                 </td>
                             </tr>
-                        ))}
-
+                            )}
                     </tbody>
                 </table>
-            </Fade>
-        </div>
+        : <h2 className="title--error">No hay data para mostrar</h2>}
+        </Fade>
+    </div>
     )
 }
 

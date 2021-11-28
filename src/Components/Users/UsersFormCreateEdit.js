@@ -152,6 +152,7 @@ const UserForm = ({ props = {} }) => {
 
   return (
     <Fade right>
+      <h1 className="title">Crear usuarios</h1>
     <form className="form-container" onSubmit={formik.handleSubmit}>
       <input
         className="input-field"
