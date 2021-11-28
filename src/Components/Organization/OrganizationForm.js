@@ -143,6 +143,7 @@ const OrganizationForm = ({ props }) => {
 
   return (
     <Fade right>
+      <h1 className="title">Editar datos de la organizacion</h1>
     <form className='form-container' onSubmit={formik.handleSubmit}>
       <input
         className='input-field'

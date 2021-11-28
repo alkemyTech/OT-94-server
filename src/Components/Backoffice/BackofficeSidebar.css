@@ -8,6 +8,7 @@
   background-color: #111;
   overflow-x: hidden;
   padding-top: 20px;
+  
 }
 
 .sidenav a {
@@ -16,8 +17,20 @@
   font-size: 15px;
   color: #818181;
   display: block;
+  
 }
 
 .sidenavLogout {
   margin-left: 12px;
+}
+
+.active-side {
+  height: 100%;
+  width: 60px;
+  position: fixed;
+  background-color: #111; 
+  
+}
+.active-wrapper{
+  display: none;
 }

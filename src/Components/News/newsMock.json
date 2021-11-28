@@ -3,24 +3,24 @@
         "id": 1,
         "name": "novedad 1",
         "image": "/images/journal-01.jpg",
-        "createdAt": true
+        "createdAt": "25/3/2020"
     },
     {
         "id": 2,
         "name": "novedad 2",
         "image": "/images/journal-02.jpg",
-        "createdAt": true
+        "createdAt": "14/07/2020"
     },
     {
         "id": 3,
         "name": "novedad 3",
         "image": "/images/journal-03.jpg",
-        "createdAt": true
+        "createdAt": "18/09/2020"
     },
     {
         "id": 4,
         "name": "novedad 4",
         "image": "/images/journal-01.jpg",
-        "createdAt": false
+        "createdAt": "28/11/2020"
     }
 ]

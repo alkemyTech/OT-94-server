@@ -151,7 +151,7 @@ const MemberFormCreateEdit = ({ props = {} }) => {
         showDenyButton={true}
       />
       <Fade right>
-        <h1>Formulario Edición / Creación de Miembros</h1>
+        <h1 className="title">Formulario Edición / Creación de Miembros</h1>
         <form className='form-container' onSubmit={formik.handleSubmit}>
           <input
             className='input-field'

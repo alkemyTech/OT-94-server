@@ -118,7 +118,7 @@ const NewsForm = () => {
     return (
         <div>
             <Fade right>
-            <h1> Formulario Edición / Creación de Novedades </h1>
+            <h1 className="title"> Formulario Edición / Creación de Novedades </h1>
 
             <form className="form-container"
                 onSubmit={recieveNews ? sendData : sendNewData} >

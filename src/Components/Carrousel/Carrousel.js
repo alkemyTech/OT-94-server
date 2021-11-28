@@ -50,26 +50,26 @@ const Carrousel = () => {
   }
   return (
 
-      <div className="container--slider">
-        {data.length !== 0 ?
-          <>
-            <FaArrowLeft className="left-arrow" onClick={slidePrev} />
-            <FaArrowRight className="right-arrow" onClick={slideNext} />
-            {data.map((dato, i) =>
-              <section className={i === current ? "slide-active" : "slide"} key={i} >
-                {i === current && (
-                  <div className="container--slide-data">
-                    <h2 className="slide--title">{dato.title}</h2>
-                    <p className="slide--description">{dato.description}</p>
-                    <img src={dato.image} alt={dato.title} className="slide--image" />
-                  </div>
-                )}
-              </section>
-            )}
-          </>
-          : null}
-      </div>
- 
+    <div className="container--slider">
+      {data.length !== 0 ?
+        <>
+          <FaArrowLeft className="left-arrow" onClick={slidePrev} />
+          <FaArrowRight className="right-arrow" onClick={slideNext} />
+          {data.map((dato, i) =>
+            <section className={i === current ? "slide-active" : "slide"} key={i} >
+              {i === current && (
+                <div className="container--slide-data">
+                  <h2 className="slide--title">{dato.title}</h2>
+                  <p className="slide--description">{dato.description}</p>
+                  <img src={dato.image} alt={dato.title} className="slide--image" />
+                </div>
+              )}
+            </section>
+          )}
+        </>
+        : null}
+    </div>
+
   )
 }
 

@@ -24,6 +24,7 @@ export default function SlideForm() {
 
     return(
         <Fade right>
+            <h1 className="title">Crear Slides</h1>
         <div>
             <Formik
                 initialValues={{
