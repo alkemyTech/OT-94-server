@@ -29,7 +29,7 @@ export default function Footer() {
                 <Link to="/actividades">Actividades</Link>
                 <Link to="/novedades">Novedades</Link>
 
-                <div className="d-none">
+                <div className="logo-somos-mas">
                     <img src={Logo} alt="Logo Somos Mas" />
                 </div>
 
