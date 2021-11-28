@@ -14,7 +14,7 @@ export default function BackofficeSidebar() {
       <Link to='/backoffice/create-slide'>Crear slide</Link>
       <Link to='/backoffice/create-project'>Crear proyecto</Link>
       <Link to='/backoffice/members'>Ver miembros</Link>
-      <Link to='/backoffice/members/edit'>Editar miembros</Link>
+      <Link to='/backoffice/members/edit'>Crear/Editar miembros</Link>
       <Link to='/backoffice/organization'>Datos de la organización</Link>
       <Link to='/backoffice/organization/edit'>
         Editar datos de la organización
