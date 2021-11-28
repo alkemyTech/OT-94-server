@@ -1,0 +1,39 @@
+.error {
+    color: red;
+}
+
+.text {
+    width: 60%;
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.name-mail {
+    width: 100%;
+}
+
+/* .message {
+    resize: none;
+    width: 100%;
+    height: 10rem;
+} */
+
+.boton-submit {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+    .container {
+        width: 80%;
+    }
+}
+
+
