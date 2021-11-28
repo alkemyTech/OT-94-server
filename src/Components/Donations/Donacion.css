@@ -1,0 +1,16 @@
+.button-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: 6rem;
+}
+
+.agradecimiento {
+    text-align: center;
+}
+
+.mercadopago-button {
+    width: 10rem;
+}
