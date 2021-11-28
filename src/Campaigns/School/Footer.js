@@ -6,11 +6,6 @@ const Footer = () => {
 
   const [formFooter, setFormFooter] = useState()
 
-  function set() {
-    setFormFooter(true)
-    localStorage.setItem("formu-footer", true)
-  }
-
   useEffect(() => {
     localStorage.getItem("formu-footer") ? setFormFooter(true) : setFormFooter(false)
   }, [])
@@ -38,12 +33,23 @@ const Footer = () => {
           }}
             validate={(values) => {
               let errors = {};
-              if (!VALIDATION.name.test(values.name)) {
+
+              if (!values.name) {
+                errors.name = "Debe ingresar su nombre"
+              } else if (!VALIDATION.name.test(values.name)) {
                 errors.name = "Este campo debe contener solo letras, y un mínimo de 3 caracteres."
               }
-              if (!VALIDATION.email.test(values.email)) {
-                errors.email = "Debe completar este campo con su email.";
+              /* if (!VALIDATION.name.test(values.name)) {
+                errors.name = "Este campo debe contener solo letras, y un mínimo de 3 caracteres."
+              } */
+              if (!values.email) {
+                errors.email = 'Ingrese una dirección de correo'
+              } else if (!VALIDATION.email.test(values.email)) {
+                errors.email = "Formato inválido. Ejemplo de formato válido: correo@correo.com"
               }
+              /* if (!VALIDATION.email.test(values.email)) {
+                errors.email = "Debe completar este campo con su email.";
+              } */
               /* if (VALIDATION.message.test(values.message)) {
                 errors.message = "Debe completar este campo."
               } */
@@ -55,7 +61,8 @@ const Footer = () => {
                 email: values.email,
                 /* message: values.message */
               }
-              /* localStorage.setItem("formu-footer", true); */
+              localStorage.setItem("formu-footer", true);
+              setFormFooter(true)
               return DATA;
             }}
           >
@@ -77,7 +84,7 @@ const Footer = () => {
                   <ErrorMessage name="message" component={() => <p className="error">{errors.message}</p>} />
                 </div> */}
                 <div>
-                  <button className="submit-btn boton-submit" type="submit" onClick={set}>Enviar</button>
+                  <button className="submit-btn boton-submit" type="submit">Enviar</button>
                 </div>
               </Form>
             )}
