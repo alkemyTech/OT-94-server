@@ -108,6 +108,7 @@ const MemberFormCreateEdit = ({ props = {} }) => {
 
     setFormModified(false);
     setAlert(true);
+    alertFalse()
     return;
     axios
       .patch(REACT_APP_MEMBERS_EDITION, JSON.stringify(changedValues))
@@ -137,6 +138,12 @@ const MemberFormCreateEdit = ({ props = {} }) => {
      setChangedValues({ ...props }); */
     setUrls([...initialValues['url']]);
   }, []);
+
+  function alertFalse() {
+    setTimeout(() => {
+      setAlert(false)
+    }, 2000);
+  }
 
   return (
     <>

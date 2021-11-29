@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import '../FormStyles.css';
 //import { login } from './userSlice';
 import { useDispatch } from 'react-redux';
 import { login } from '../../features/user/userSlice';
-
+import Alert from "../Skeleton/Alert"
 const LoginForm = () => {
+  const [alert, setAlert] = useState(false);
   const validation = {
     password:
       /(?=(.*[0-9]))(?=(.*[a-zA-Z]))(?=.*[\!@#$%&/()\[\]{}\-_+='|:;<>,./?])(?=.*).{6,}$/,
     email: /^[0-9a-zA-Z\._-]+@[0-9a-zA-Z\._-]+\.[a-z\.]{2,6}$/,
   };
   const dispatch = useDispatch();
+
+  function alertFalse() {
+    setTimeout(() => {
+      setAlert(false)
+    }, 2000);
+  }
   return (
     <div>
       <Formik
@@ -22,11 +29,11 @@ const LoginForm = () => {
         validate={(values) => {
           let errors = {};
           if (!validation.email.test(values.email)) {
-            errors.email = 'Error, you must complete the email';
+            errors.email = 'Error, debe completar con el formato email correo@correo.com';
           }
           if (!validation.password.test(values.password)) {
             errors.password =
-              'Error, it must have a minimum length of 6 characters, and contain at least one number, one letter and one symbol';
+              'Error, debe contener al menos 6 caracteres y contener al menos un numero, una letra y un simbolo';
           }
           return errors;
         }}
@@ -35,15 +42,19 @@ const LoginForm = () => {
             email: values.email,
             password: values.password,
           };
-          //return USERLOGGED;
-          dispatch(
-            login({
-              user: values.email,
-              id: 2,
-              token: 'asdfa$$%#23piren...s,3#$ADF',
-              role: 'administrador',
-            })
-          );
+          if (values.email === 'somosmas@gmail.com' && values.password === 'react94@') {
+            dispatch(
+              login({
+                user: values.email,
+                id: 2,
+                token: 'asdfa$$%#23piren...s,3#$ADF',
+                role: 'administrador',
+              })
+            );
+          } else {
+            setAlert(true);
+            alertFalse();
+          }
         }}
       >
         {({ errors }) => (
@@ -63,7 +74,7 @@ const LoginForm = () => {
               />
             </div>
             <div>
-              <label id='labelPassword'>Password: </label>
+              <label id='labelPassword'>Contraseña: </label>
               <Field
                 id='labelPassword'
                 className='input-field'
@@ -78,12 +89,25 @@ const LoginForm = () => {
             </div>
             <div>
               <button className='submit-btn' type='submit'>
-                Login
+                Iniciar sesion
               </button>
             </div>
           </Form>
         )}
       </Formik>
+
+      <Alert
+        showAlert={alert}
+        title={'Error!'}
+        text={'No coincide usuario y/o contraseña'}
+        type={'error'}
+        cancelButton={false}
+        confirmButtonText={'OK'}
+        cancelButtonText={'Cancel'}
+        showDenyButton={true}
+
+      />
+
     </div>
   );
 };
