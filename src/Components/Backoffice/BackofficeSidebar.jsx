@@ -18,7 +18,6 @@ export default function BackofficeSidebar() {
           <Link className="backoffice-links-menu" to='/backoffice/home'>Editar home</Link>
           <Link className="backoffice-links-menu" to='/backoffice/news/create'>Crear/editar novedad</Link>
           <Link className="backoffice-links-menu" to='/backoffice/news2'>Listado novedades</Link>
-          <Link className="backoffice-links-menu" to='/backoffice/create-user'>Crear usuario</Link>
           <Link className="backoffice-links-menu" to='/backoffice/create-slide'>Crear slide</Link>
           <Link className="backoffice-links-menu" to='/backoffice/create-project'>Crear proyecto</Link>
           <Link className="backoffice-links-menu" to='/backoffice/members'>Ver miembros</Link>
@@ -28,6 +27,7 @@ export default function BackofficeSidebar() {
             Editar datos de la organización
           </Link>
           <Link className="backoffice-links-menu" to='/backoffice/users'>Usuarios</Link>
+          <Link className="backoffice-links-menu" to='/backoffice/create-user'>Crear usuario</Link>
           <div className='container--logout'>
             <LogoutButton />
           </div>
