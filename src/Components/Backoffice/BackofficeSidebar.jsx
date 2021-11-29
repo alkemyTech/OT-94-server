@@ -1,40 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import LogoutButton from '../Auth/LogoutButton';
 import './BackofficeSidebar.css';
-
+import {GiHamburgerMenu} from "react-icons/gi"
 export default function BackofficeSidebar() {
-
-
-
-  const toggle = () => {
-    document.getElementById("sidenav").classList.toggle("active-side");
-    document.getElementById("wrapper").classList.toggle("active-wrapper");
-  }
+  
+  const [showMenu, setShowMenu] = useState(false)
 
   return (
-       <div className='sidenav' id="sidenav">
-
-<a onClick={toggle} ><img src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/24/000000/external-mobile-application-hamburger-menu-setting-interface-basic-color-tal-revivo.png"/></a>
-<div id="wrapper">
-  <Link to='/backoffice'>Backoffice</Link>
-  <Link to='/backoffice/home'>Editar home</Link>
-  <Link to='/backoffice/news/create'>Crear/editar novedad</Link>
-  <Link to='/backoffice/news2'>Listado novedades</Link>
-  <Link to='/backoffice/create-user'>Crear usuario</Link>
-  <Link to='/backoffice/create-slide'>Crear slide</Link>
-  <Link to='/backoffice/create-project'>Crear proyecto</Link>
-  <Link to='/backoffice/members'>Ver miembros</Link>
-  <Link to='/backoffice/members/edit'>Crear/Editar miembros</Link>
-  <Link to='/backoffice/organization'>Datos de la organización</Link>
-  <Link to='/backoffice/organization/edit'>
-    Editar datos de la organización
-  </Link>
-  <Link to='/backoffice/users'>Usuarios</Link>
-  <div className='sidenavLogout'>
-    <LogoutButton />
-  </div>
-</div>
-</div>
+    <div className='sidenav'>
+      <div className="container--icon-hamburger">
+        <GiHamburgerMenu onClick={() => showMenu ? setShowMenu(false) : setShowMenu(true)} className="icon-hamburger" />
+      </div>
+      <div className={showMenu ? "container--show-menu" : "no--show "}>
+        <div className="container--backoffice-links">
+          <Link className="backoffice-links-menu" to='/backoffice'>Backoffice</Link>
+          <Link className="backoffice-links-menu" to='/backoffice/home'>Editar home</Link>
+          <Link className="backoffice-links-menu" to='/backoffice/news/create'>Crear/editar novedad</Link>
+          <Link className="backoffice-links-menu" to='/backoffice/news2'>Listado novedades</Link>
+          <Link className="backoffice-links-menu" to='/backoffice/create-user'>Crear usuario</Link>
+          <Link className="backoffice-links-menu" to='/backoffice/create-slide'>Crear slide</Link>
+          <Link className="backoffice-links-menu" to='/backoffice/create-project'>Crear proyecto</Link>
+          <Link className="backoffice-links-menu" to='/backoffice/members'>Ver miembros</Link>
+          <Link className="backoffice-links-menu" to='/backoffice/members/edit'>Crear/Editar miembros</Link>
+          <Link className="backoffice-links-menu" to='/backoffice/organization'>Datos de la organización</Link>
+          <Link className="backoffice-links-menu" to='/backoffice/organization/edit'>
+            Editar datos de la organización
+          </Link>
+          <Link className="backoffice-links-menu" to='/backoffice/users'>Usuarios</Link>
+          <div className='container--logout'>
+            <LogoutButton />
+          </div>
+        </div>
+        
+      </div>
+    </div>
   );
 }

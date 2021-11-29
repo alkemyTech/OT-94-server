@@ -22,7 +22,7 @@ export const AppPrivateRoutes = () => {
   return (
     <>
       <BackofficeSidebar />
-      <div style={{ marginLeft: "170px" }}>
+      <div>
         <Switch>
 
           <Route path="/backoffice" exact component={ScreenDashboard} />

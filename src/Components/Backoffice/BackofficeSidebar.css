@@ -1,36 +1,66 @@
-.sidenav {
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
-  
+
+.no--show {
+  position: relative;
+  transition: transform 1s;
+  transform: translateX(-100%);
+  z-index: 1000;
+}
+.container--icon-hamburger {
+  position: relative;
+  background-color: #9AC9FB;
+  height: 50px;
+}
+.icon-hamburger {
+  position: absolute;
+  right: 10px;
+  font-size: 45px;
+}
+@media screen and (min-width: 768px) {
+  .icon-hamburger {
+    left: 10px;
+  }
+}
+.container--show-menu {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1000;
+  transition: transform 1s;
+  transform: translateX(0);
 }
 
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 15px;
-  color: #818181;
+.container--backoffice-links {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  position: absolute;
+  background-color: #FAFA88;
+  z-index: 1000;
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .container--backoffice-links {
+    width: 35%;
+  }
+}
+.backoffice-links-menu {
   display: block;
-  
+  color: black;
+  font-size: 18px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
 }
+/* .container--logout {
 
-.sidenavLogout {
-  margin-left: 12px;
-}
-
-.active-side {
-  height: 100%;
-  width: 60px;
-  position: fixed;
-  background-color: #111; 
-  
-}
-.active-wrapper{
-  display: none;
+} */
+.button--logout {
+  width: 100%;
+  font-size: 18px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
