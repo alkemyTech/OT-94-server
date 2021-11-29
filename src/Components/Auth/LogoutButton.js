@@ -10,7 +10,7 @@ const LogoutButton = () => {
   return (
     <div>
       {user.authenticated ? (
-        <button className='submit-btn' onClick={() => dispatch(logout())}>
+        <button className='submit-btn button--logout' onClick={() => dispatch(logout())}>
           Salir
         </button>
       ) : (
