@@ -7,7 +7,8 @@ import Alert from '../Skeleton/Alert';
 export default function LeafletMap() {
   const [direccion, setDireccion] = useState();
   const [huboError, setHuboError] = useState(false);
-  const position = [-34.6037, -58.3816];
+  const position = [-34.439837347788526, -58.556327027441405];
+
 
   return (
     <div className='contenedor'>
